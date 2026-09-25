@@ -6,7 +6,7 @@ A página inicial (`index.html` na raiz) lista todas as disciplinas do curso e d
 
 ## Publicação (GitHub Pages)
 
-Em **Settings → Pages**, escolha *Deploy from a branch*, a branch `main` e a pasta `/ (root)`. O site fica em `https://cleitonfranco74.github.io/zero_claude/`.
+Em **Settings → Pages**, escolha *Deploy from a branch*, a branch `main` e a pasta `/ (root)`. O site fica em `https://cleitonfranco74.github.io/gestao_publica/`.
 
 ## Disciplina 01: Estado, Governo e Mercado (30 h)
 
