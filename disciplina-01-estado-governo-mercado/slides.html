@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slides: Estado, Governo e Mercado</title>
+<meta name="description" content="Slides da disciplina Estado, Governo e Mercado: introdução à economia e às relações entre Estado e mercado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e9e5dc;
+    --slide: #fbfaf7;
+    --text: #1f2328;
+    --muted: #5b6168;
+    --border: #ddd6c8;
+    --accent: #1d5c63;
+    --accent-soft: #d8ebe9;
+    --accent-2: #a4471f;
+    --surface-2: #efebe2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1113; --slide: #1d2125; --text: #e8e6e1; --muted: #a3a9b0; --border: #353b42;
+      --accent: #6cc3bb; --accent-soft: #1f3a3c; --accent-2: #e59a74; --surface-2: #262b30;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1113; --slide: #1d2125; --text: #e8e6e1; --muted: #a3a9b0; --border: #353b42;
+    --accent: #6cc3bb; --accent-soft: #1f3a3c; --accent-2: #e59a74; --surface-2: #262b30;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .stage {
+    width: min(100vw, calc((100vh - 52px) * 16 / 9));
+    aspect-ratio: 16 / 9;
+    container-type: inline-size;
+    position: relative;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    display: none; flex-direction: column;
+    background: var(--slide);
+    border-radius: 1cqw;
+    box-shadow: 0 .6cqw 2.4cqw rgba(0,0,0,.18);
+    padding: 4.2cqw 5.5cqw 3.6cqw;
+    font-size: 2.05cqw; line-height: 1.45;
+    overflow: hidden;
+  }
+  .slide.active { display: flex; }
+  .slide::after {
+    content: attr(data-n); position: absolute; right: 2.4cqw; bottom: 1.6cqw;
+    font-size: 1.3cqw; color: var(--muted);
+  }
+  .slide::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: .7cqw; background: var(--accent);
+    border-radius: 1cqw 0 0 1cqw;
+  }
+
+  .slide h1, .slide h2 { font-family: "Source Serif 4", Georgia, serif; margin: 0 0 1.6cqw; line-height: 1.15; }
+  .slide h1 { font-size: 5cqw; }
+  .slide h2 { font-size: 3.4cqw; }
+  .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: 1.35cqw; font-weight: 700; color: var(--accent-2); margin: 0 0 .8cqw; }
+  .slide p { margin: 0 0 1.2cqw; }
+  .slide ul, .slide ol { margin: 0 0 1.2cqw; padding-left: 2.6cqw; }
+  .slide li { margin: 0 0 .7cqw; }
+  .slide strong { color: var(--accent); }
+  .muted { color: var(--muted); }
+  .big { font-size: 2.6cqw; }
+  .quote {
+    font-family: "Source Serif 4", Georgia, serif; font-size: 2.6cqw; line-height: 1.35;
+    border-left: .5cqw solid var(--accent-2); padding-left: 2cqw; margin: 1cqw 0 1.6cqw;
+  }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4cqw; }
+  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8cqw; }
+  .cols4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4cqw; }
+  .tile {
+    background: var(--surface-2); border: .12cqw solid var(--border); border-radius: .9cqw;
+    padding: 1.5cqw 1.7cqw;
+  }
+  .tile h3 { margin: 0 0 .6cqw; font-size: 2.1cqw; color: var(--accent); }
+  .tile p { margin: 0; font-size: 1.8cqw; }
+  .tile .tag { font-size: 1.3cqw; text-transform: uppercase; letter-spacing: .08em; color: var(--accent-2); font-weight: 700; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 1.65cqw; }
+  th, td { text-align: left; padding: .7cqw 1cqw; border-bottom: .12cqw solid var(--border); vertical-align: top; }
+  th { background: var(--surface-2); }
+
+  .title-slide { justify-content: center; }
+  .title-slide h1 { font-size: 6cqw; }
+  .title-slide .sub { font-size: 2.4cqw; color: var(--muted); }
+  .title-slide .foot { position: absolute; left: 5.5cqw; bottom: 3.6cqw; font-size: 1.5cqw; color: var(--muted); }
+
+  .tl { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1cqw; margin-top: 2cqw; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 0; right: 0; top: 1.1cqw; height: .3cqw; background: var(--accent); }
+  .tl div { position: relative; padding-top: 3cqw; font-size: 1.6cqw; }
+  .tl div::before {
+    content: ""; position: absolute; top: .3cqw; left: 0; width: 1.8cqw; height: 1.8cqw; border-radius: 50%;
+    background: var(--slide); border: .35cqw solid var(--accent-2);
+  }
+  .tl b { display: block; color: var(--accent-2); font-size: 1.9cqw; }
+
+  svg.pend { width: 100%; height: auto; }
+
+  .controls {
+    height: 52px; display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: var(--muted);
+  }
+  .controls button {
+    font: inherit; cursor: pointer; background: transparent; color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px;
+  }
+  .controls button:hover { border-color: var(--accent); }
+  .controls a { color: var(--accent); }
+  .progress { position: fixed; left: 0; top: 0; height: 3px; background: var(--accent); transition: width .2s; }
+
+  @media print {
+    @page { size: 1280px 720px; margin: 0; }
+    html, body { height: auto; overflow: visible; background: #fff; display: block; }
+    .controls, .progress { display: none; }
+    .stage { width: 1280px; aspect-ratio: auto; }
+    .slide { position: relative; display: flex !important; width: 1280px; height: 720px; border-radius: 0; box-shadow: none; break-after: page; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<main class="stage" id="deck" aria-live="polite">
+
+<!-- 1 -->
+<section class="slide title-slide">
+  <p class="kicker">Especialização em Gestão Pública · 1º Eixo</p>
+  <h1>Estado, Governo e Mercado</h1>
+  <p class="sub">Introdução à economia e às relações entre Estado e mercado</p>
+  <p class="foot">UNEMAT / UAB · Módulo Básico · 30 h · EaD</p>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <p class="kicker">Roteiro</p>
+  <h2>O que vamos estudar</h2>
+  <div class="cols">
+    <ol>
+      <li>Introdução à economia</li>
+      <li>Estado, governo e mercado</li>
+      <li>A dinâmica pendular</li>
+      <li>A matriz liberal</li>
+    </ol>
+    <ol start="5">
+      <li>A matriz marxista</li>
+      <li>As mudanças do final do séc. XIX</li>
+      <li>Liberal, socialista, bem-estar, neoliberal</li>
+      <li>Estado e capital no Brasil e no séc. XXI</li>
+    </ol>
+  </div>
+  <p class="muted">Avaliação 1: Unidades 1–4 · Avaliação 2: Unidades 5–8</p>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <p class="kicker">Unidade 1 · Introdução à economia</p>
+  <h2>O que é economia?</h2>
+  <p class="quote">Ciência social que estuda como a sociedade emprega recursos <strong>escassos</strong> para produzir bens e serviços e distribuí-los entre as pessoas.</p>
+  <div class="cols">
+    <div class="tile"><h3>Escassez</h3><p>Os recursos são limitados e as necessidades, ilimitadas. Por isso é preciso escolher.</p></div>
+    <div class="tile"><h3>Custo de oportunidade</h3><p>O valor da melhor alternativa sacrificada. Construir uma ponte pode significar não construir uma escola.</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <p class="kicker">Unidade 1 · Introdução à economia</p>
+  <h2>Os três problemas econômicos fundamentais</h2>
+  <div class="cols3">
+    <div class="tile"><span class="tag">1</span><h3>O que produzir?</h3><p>Quais bens e em que quantidade: hospitais ou estradas?</p></div>
+    <div class="tile"><span class="tag">2</span><h3>Como produzir?</h3><p>Com que tecnologia e com que combinação de fatores?</p></div>
+    <div class="tile"><span class="tag">3</span><h3>Para quem produzir?</h3><p>Como distribuir o produto e a renda?</p></div>
+  </div>
+  <p style="margin-top:2.4cqw" class="big">A forma de responder a essas perguntas define o <strong>sistema econômico</strong>.</p>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <p class="kicker">Unidade 1 · Introdução à economia</p>
+  <h2>Fatores de produção e agentes econômicos</h2>
+  <div class="cols">
+    <table>
+      <thead><tr><th>Fator</th><th>Remuneração</th></tr></thead>
+      <tbody>
+        <tr><td>Terra</td><td>Aluguel</td></tr>
+        <tr><td>Trabalho</td><td>Salário</td></tr>
+        <tr><td>Capital</td><td>Juros</td></tr>
+        <tr><td>Capacidade empresarial</td><td>Lucro</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Famílias</strong> ofertam fatores e consomem</li>
+      <li><strong>Empresas</strong> contratam fatores e produzem</li>
+      <li><strong>Governo</strong> tributa, provê, regula e redistribui</li>
+      <li><strong>Setor externo</strong> troca bens e capitais com o país</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <p class="kicker">Unidade 1 · Introdução à economia</p>
+  <h2>Sistemas econômicos</h2>
+  <div class="cols3">
+    <div class="tile"><h3>De mercado</h3><p>Decisões descentralizadas, coordenadas pelos preços. Propriedade privada.</p></div>
+    <div class="tile"><h3>Planificado</h3><p>Um órgão central define metas de produção. Propriedade estatal ou coletiva.</p></div>
+    <div class="tile"><h3>Misto</h3><p>Mercado com regulação, empresas públicas e políticas sociais.</p></div>
+  </div>
+  <p style="margin-top:2.4cqw" class="big">Todas as economias atuais são mistas. O que muda é o <strong>grau</strong> de presença do Estado.</p>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <p class="kicker">Unidade 1 · Introdução à economia</p>
+  <h2>Mercado: oferta, demanda e preço</h2>
+  <div class="cols">
+    <ul>
+      <li><strong>Lei da demanda:</strong> preço ↑ → quantidade demandada ↓</li>
+      <li><strong>Lei da oferta:</strong> preço ↑ → quantidade ofertada ↑</li>
+      <li><strong>Equilíbrio:</strong> demanda = oferta</li>
+      <li>Preço acima do equilíbrio gera excedente. Preço abaixo gera escassez.</li>
+    </ul>
+    <svg viewBox="0 0 300 220" role="img" aria-label="Gráfico de oferta e demanda: curva de demanda decrescente, curva de oferta crescente, cruzando no ponto de equilíbrio.">
+      <line x1="30" y1="200" x2="290" y2="200" stroke="currentColor" stroke-width="2"/>
+      <line x1="30" y1="200" x2="30" y2="10" stroke="currentColor" stroke-width="2"/>
+      <text x="280" y="216" font-size="13" fill="currentColor" text-anchor="end">Quantidade</text>
+      <text x="36" y="18" font-size="13" fill="currentColor">Preço</text>
+      <line x1="50" y1="30" x2="270" y2="180" stroke="var(--accent)" stroke-width="4"/>
+      <line x1="50" y1="180" x2="270" y2="30" stroke="var(--accent-2)" stroke-width="4"/>
+      <text x="262" y="170" font-size="15" fill="var(--accent)" font-weight="700">D</text>
+      <text x="262" y="48" font-size="15" fill="var(--accent-2)" font-weight="700">O</text>
+      <line x1="30" y1="105" x2="160" y2="105" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity=".6"/>
+      <line x1="160" y1="105" x2="160" y2="200" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity=".6"/>
+      <circle cx="160" cy="105" r="6" fill="currentColor"/>
+      <text x="170" y="100" font-size="13" fill="currentColor">Equilíbrio</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <p class="kicker">Unidade 2 · Conceitos</p>
+  <h2>Estado, governo e mercado</h2>
+  <div class="cols">
+    <div class="tile"><h3>Estado</h3><p>Organização permanente e soberana sobre um território. Para Weber, detém o <strong>monopólio do uso legítimo da força</strong>.</p></div>
+    <div class="tile"><h3>Governo</h3><p>Grupo que dirige o Estado em dado momento. É transitório.</p></div>
+    <div class="tile"><h3>Mercado</h3><p>Coordenação descentralizada pela troca voluntária e pelos preços.</p></div>
+    <div class="tile"><h3>Sociedade civil</h3><p>Associações, movimentos e terceiro setor, fora do Estado e do mercado estrito.</p></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <p class="kicker">Unidade 2 · Por que o Estado atua?</p>
+  <h2>Falhas de mercado</h2>
+  <div class="cols">
+    <ul>
+      <li><strong>Bens públicos</strong>: não rivais e não excludentes (defesa, iluminação)</li>
+      <li><strong>Externalidades</strong>: poluição (−), vacinação (+)</li>
+      <li><strong>Poder de mercado</strong>: monopólios naturais</li>
+    </ul>
+    <ul>
+      <li><strong>Assimetria de informação</strong>: saúde, crédito</li>
+      <li><strong>Instabilidade</strong>: desemprego, inflação</li>
+      <li><strong>Desigualdade</strong> de renda e riqueza</li>
+    </ul>
+  </div>
+  <p class="muted">Também há <strong>falhas de governo</strong>: captura, ineficiência, corrupção, rigidez.</p>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <p class="kicker">Unidade 2 · Funções do Estado</p>
+  <h2>As três funções econômicas (Musgrave)</h2>
+  <div class="cols3">
+    <div class="tile"><h3>Alocativa</h3><p>Ofertar bens que o mercado não provê: segurança, saneamento, infraestrutura.</p></div>
+    <div class="tile"><h3>Distributiva</h3><p>Ajustar a distribuição da renda: tributação progressiva, Bolsa Família, BPC.</p></div>
+    <div class="tile"><h3>Estabilizadora</h3><p>Emprego, preços estáveis e crescimento, por meio das políticas fiscal e monetária.</p></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <p class="kicker">Unidade 3 · Dinâmica pendular</p>
+  <h2>O pêndulo entre Estado e mercado</h2>
+  <svg class="pend" viewBox="0 0 800 262" role="img" aria-label="Pêndulo histórico: liberalismo no século XIX, bem-estar de 1930 a 1970, neoliberalismo de 1980 a 2000, retorno do Estado depois de 2008.">
+    <line x1="40" y1="130" x2="760" y2="130" stroke="currentColor" stroke-opacity=".35" stroke-width="2"/>
+    <text x="40" y="30" fill="currentColor" font-size="16" font-weight="700">+ Mercado</text>
+    <text x="40" y="250" fill="currentColor" font-size="16" font-weight="700">+ Estado</text>
+    <path d="M 90 60 C 200 60, 230 205, 330 205 S 460 60, 560 60 S 690 170, 740 170" fill="none" stroke="var(--accent)" stroke-width="5"/>
+    <g font-size="15" fill="currentColor" text-anchor="middle">
+      <circle cx="140" cy="62" r="7" fill="var(--accent-2)"/><text x="140" y="95">Liberalismo</text><text x="140" y="113">séc. XIX</text>
+      <circle cx="330" cy="205" r="7" fill="var(--accent-2)"/><text x="330" y="232">Bem-estar / Keynes</text><text x="330" y="251">1930–1970</text>
+      <circle cx="560" cy="60" r="7" fill="var(--accent-2)"/><text x="560" y="95">Neoliberalismo</text><text x="560" y="113">1980–2000</text>
+      <circle cx="740" cy="170" r="7" fill="var(--accent-2)"/><text x="690" y="210">Retorno do Estado</text><text x="690" y="228">pós-2008</text>
+    </g>
+  </svg>
+  <p class="muted">Cada extremo gera problemas que impulsionam o movimento de volta.</p>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+  <p class="kicker">Unidade 3 · Dinâmica pendular</p>
+  <h2>Linha do tempo</h2>
+  <div class="tl">
+    <div><b>Séc. XVIII–XIX</b>Liberalismo e Estado mínimo</div>
+    <div><b>1929</b>Grande Depressão</div>
+    <div><b>1945–73</b>Anos dourados do bem-estar</div>
+    <div><b>1973–79</b>Choques do petróleo, estagflação</div>
+    <div><b>1979–2000</b>Neoliberalismo</div>
+    <div><b>2008 / 2020</b>Crise financeira e pandemia</div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+  <p class="kicker">Unidade 4 · Matriz liberal</p>
+  <h2>As origens: contra o absolutismo e o mercantilismo</h2>
+  <div class="cols">
+    <div>
+      <p><strong>Mercantilismo:</strong> Estado controla o comércio, concede monopólios e acumula metais preciosos.</p>
+      <p><strong>Liberalismo:</strong> defende a liberdade individual, a propriedade e a limitação do poder.</p>
+    </div>
+    <div class="tile">
+      <h3>John Locke (1632–1704)</h3>
+      <p>Direitos naturais de <strong>vida, liberdade e propriedade</strong>. O Estado nasce de um contrato social para protegê-los e tem poder limitado. Há direito de resistência.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+  <p class="kicker">Unidade 4 · Matriz liberal</p>
+  <h2>Adam Smith: <em>A Riqueza das Nações</em> (1776)</h2>
+  <ul class="big">
+    <li>A riqueza vem do <strong>trabalho</strong>, não do ouro</li>
+    <li>A <strong>divisão do trabalho</strong> multiplica a produtividade</li>
+    <li>A <strong>mão invisível</strong>: o interesse próprio, via mercado, promove o bem comum</li>
+    <li>Ricardo (vantagens comparativas) e Say completam a economia política clássica</li>
+  </ul>
+</section>
+
+<!-- 15 -->
+<section class="slide">
+  <p class="kicker">Unidade 4 · Matriz liberal</p>
+  <h2>O Estado mínimo segundo Smith</h2>
+  <div class="cols3">
+    <div class="tile"><span class="tag">Dever 1</span><h3>Defesa</h3><p>Proteger a sociedade contra agressões externas.</p></div>
+    <div class="tile"><span class="tag">Dever 2</span><h3>Justiça</h3><p>Proteger cada cidadão contra a injustiça de outros.</p></div>
+    <div class="tile"><span class="tag">Dever 3</span><h3>Obras públicas</h3><p>Manter obras e instituições que não dão lucro ao particular.</p></div>
+  </div>
+  <p style="margin-top:2.4cqw" class="big"><em>Laissez-faire, laissez-passer</em>: o Estado “guarda-noturno”.</p>
+</section>
+
+<!-- 16 -->
+<section class="slide">
+  <p class="kicker">Unidade 5 · Matriz marxista</p>
+  <h2>Marx e Engels: o capitalismo como modo de produção histórico</h2>
+  <div class="cols">
+    <ul>
+      <li><strong>Materialismo histórico</strong>: a base econômica condiciona a superestrutura</li>
+      <li><strong>Luta de classes</strong>: burguesia × proletariado</li>
+    </ul>
+    <ul>
+      <li><strong>Mais-valia</strong>: valor produzido pelo trabalhador além do salário, que é a fonte do lucro</li>
+      <li><strong>Crises</strong> de superprodução e concentração do capital</li>
+    </ul>
+  </div>
+  <p class="quote">“A história de todas as sociedades até hoje existentes é a história das lutas de classes.” (<em>Manifesto Comunista</em>, 1848)</p>
+</section>
+
+<!-- 17 -->
+<section class="slide">
+  <p class="kicker">Unidade 5 · Matriz marxista</p>
+  <h2>O Estado na visão marxista</h2>
+  <p class="quote">“O executivo do Estado moderno não passa de um comitê para gerir os negócios comuns de toda a burguesia.”</p>
+  <div class="cols">
+    <div class="tile"><h3>Socialismo</h3><p>Transição: socialização dos meios de produção e ditadura do proletariado.</p></div>
+    <div class="tile"><h3>Comunismo</h3><p>Sociedade sem classes, na qual o Estado se extingue.</p></div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="slide">
+  <p class="kicker">Unidades 4 e 5 · Síntese</p>
+  <h2>Liberal × marxista</h2>
+  <table>
+    <thead><tr><th></th><th>Matriz liberal</th><th>Matriz marxista</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Mercado</strong></td><td>Eficiente e natural</td><td>Exploração e crises</td></tr>
+      <tr><td><strong>Estado</strong></td><td>Garante direitos; deve ser limitado</td><td>Instrumento de dominação de classe</td></tr>
+      <tr><td><strong>Unidade de análise</strong></td><td>Indivíduo</td><td>Classes sociais</td></tr>
+      <tr><td><strong>Propriedade privada</strong></td><td>Direito natural</td><td>Base da exploração</td></tr>
+      <tr><td><strong>Horizonte</strong></td><td>Aperfeiçoar o capitalismo</td><td>Superar o capitalismo</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 19 -->
+<section class="slide">
+  <p class="kicker">Unidade 6 · Final do século XIX</p>
+  <h2>Um novo capitalismo</h2>
+  <div class="cols">
+    <ul>
+      <li><strong>Segunda Revolução Industrial</strong>: aço, eletricidade, química, petróleo</li>
+      <li>Grandes empresas, <strong>trustes e cartéis</strong></li>
+      <li><strong>Capital financeiro</strong>: fusão de bancos e indústria</li>
+    </ul>
+    <ul>
+      <li>Sindicatos e partidos operários</li>
+      <li>Ampliação do sufrágio</li>
+      <li>Primeiros seguros sociais (<strong>Bismarck</strong>, década de 1880)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="slide">
+  <p class="kicker">Unidade 6 · Final do século XIX</p>
+  <h2>Impactos sobre as duas matrizes</h2>
+  <div class="cols">
+    <div class="tile">
+      <span class="tag">Matriz liberal</span>
+      <h3>Liberalismo social</h3>
+      <p>A concorrência perfeita é desmentida pelos monopólios. Surgem leis antitruste (Sherman Act, 1890) e a aceitação de alguma intervenção.</p>
+    </div>
+    <div class="tile">
+      <span class="tag">Matriz marxista</span>
+      <h3>Reforma × revolução</h3>
+      <p><strong>Bernstein</strong>: social-democracia e reformas graduais.<br><strong>Lênin</strong>: imperialismo (1916) e via revolucionária.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="slide">
+  <p class="kicker">Unidade 7 · Modelos de Estado</p>
+  <h2>O Estado liberal e a crise de 1929</h2>
+  <div class="cols">
+    <ul>
+      <li>Estado mínimo</li>
+      <li>Orçamento equilibrado</li>
+      <li>Padrão-ouro e livre comércio</li>
+      <li>Pouca proteção social</li>
+    </ul>
+    <div class="tile">
+      <h3>1929: a Grande Depressão</h3>
+      <p>Quebra da Bolsa de Nova York, falências e desemprego em massa. A confiança na <strong>autorregulação do mercado</strong> é abalada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="slide">
+  <p class="kicker">Unidade 7 · Modelos de Estado</p>
+  <h2>O Estado socialista (1917–1991)</h2>
+  <div class="cols">
+    <ul>
+      <li>Revolução Russa de 1917</li>
+      <li>Propriedade estatal dos meios de produção</li>
+      <li><strong>Planejamento central</strong> (planos quinquenais desde 1928)</li>
+      <li>Partido único</li>
+    </ul>
+    <div>
+      <p><strong>Resultados:</strong> industrialização acelerada.</p>
+      <p><strong>Limites:</strong> ineficiência, escassez de bens de consumo, ausência de liberdades.</p>
+      <p><strong>Fim:</strong> queda do Muro de Berlim (1989) e dissolução da URSS (1991).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 23 -->
+<section class="slide">
+  <p class="kicker">Unidade 7 · Modelos de Estado</p>
+  <h2>O Estado de bem-estar social</h2>
+  <div class="cols3">
+    <div class="tile"><h3>Keynes (1936)</h3><p>O desemprego vem da falta de <strong>demanda efetiva</strong>. O Estado deve gastar e investir, mesmo com déficit.</p></div>
+    <div class="tile"><h3>New Deal (1933)</h3><p>Obras públicas, regulação bancária e seguridade social nos EUA.</p></div>
+    <div class="tile"><h3>Beveridge (1942)</h3><p>Proteção social universal “do berço ao túmulo”.</p></div>
+  </div>
+  <p style="margin-top:2cqw">1945–1973, os <strong>anos dourados</strong>: crescimento, pleno emprego e direitos sociais universais.</p>
+</section>
+
+<!-- 24 -->
+<section class="slide">
+  <p class="kicker">Unidade 7 · Modelos de Estado</p>
+  <h2>O Estado neoliberal</h2>
+  <div class="cols">
+    <div>
+      <p><strong>Crise:</strong> choques do petróleo (1973, 1979), <strong>estagflação</strong> e crise fiscal.</p>
+      <p><strong>Ideias:</strong> Hayek (<em>O Caminho da Servidão</em>, 1944) e Friedman (monetarismo).</p>
+      <p><strong>Governos:</strong> Thatcher (1979), Reagan (1981).</p>
+    </div>
+    <div class="tile">
+      <h3>Consenso de Washington (1989)</h3>
+      <p>Disciplina fiscal, privatizações, desregulamentação, abertura comercial e financeira.<br>O Estado passa de <strong>produtor</strong> a <strong>regulador</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 25 -->
+<section class="slide">
+  <p class="kicker">Unidade 7 · Síntese</p>
+  <h2>Quatro modelos de Estado</h2>
+  <table>
+    <thead><tr><th>Modelo</th><th>Período</th><th>Papel do Estado</th><th>Referências</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Liberal</strong></td><td>Séc. XIX – 1929</td><td>Mínimo: segurança, justiça, contratos</td><td>Locke, Smith</td></tr>
+      <tr><td><strong>Socialista</strong></td><td>1917 – 1991</td><td>Proprietário e planejador central</td><td>Marx, Lênin</td></tr>
+      <tr><td><strong>Bem-estar</strong></td><td>1945 – 1973</td><td>Indutor da demanda, provedor de direitos</td><td>Keynes, Beveridge</td></tr>
+      <tr><td><strong>Neoliberal</strong></td><td>1979 – 2008</td><td>Regulador e enxuto</td><td>Hayek, Friedman</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 26 -->
+<section class="slide">
+  <p class="kicker">Unidade 8 · Brasil</p>
+  <h2>O pêndulo no Brasil</h2>
+  <div class="cols">
+    <div class="tile">
+      <span class="tag">1930–1980</span>
+      <h3>Estado desenvolvimentista</h3>
+      <p>Vargas, JK e o regime militar: estatais (CSN, Petrobras), BNDE (1952) e Plano de Metas.</p>
+    </div>
+    <div class="tile">
+      <span class="tag">1990–2000</span>
+      <h3>Reformas do Estado</h3>
+      <p>Desestatização (1990), <strong>Plano Diretor</strong> (1995): administração gerencial e agências reguladoras. LRF (2000).</p>
+    </div>
+  </div>
+  <p style="margin-top:2cqw">A <strong>Constituição de 1988</strong> cria a seguridade social universal (SUS, previdência, assistência).</p>
+</section>
+
+<!-- 27 -->
+<section class="slide">
+  <p class="kicker">Unidade 8 · Século XXI</p>
+  <h2>Estado <em>e</em> mercado</h2>
+  <ul class="big">
+    <li>A crise de 2008 trouxe resgates bancários e estímulos fiscais</li>
+    <li>A pandemia de 2020 trouxe o auxílio emergencial e mostrou o papel do SUS</li>
+    <li>A pergunta atual: <strong>que Estado</strong> e <strong>que mercado</strong>?</li>
+  </ul>
+  <div class="tile"><h3>Para refletir</h3><p>Escolha uma política pública do seu município. Que falha de mercado ela corrige? Qual função de Musgrave cumpre?</p></div>
+</section>
+
+<!-- 28 -->
+<section class="slide title-slide">
+  <p class="kicker">Próximos passos</p>
+  <h1>Hora de avaliar</h1>
+  <p class="sub">Avaliação 1: Unidades 1–4 · Avaliação 2: Unidades 5–8<br>10 questões de múltipla escolha cada</p>
+  <p class="foot">Leitura-base: COELHO, R. C. <em>Estado, governo e mercado</em>. 3. ed. Florianópolis: UFSC; Brasília: CAPES/UAB, 2014.</p>
+</section>
+
+</main>
+
+<div class="controls">
+  <button id="prev" aria-label="Slide anterior">←</button>
+  <span id="counter">1 / 1</span>
+  <button id="next" aria-label="Próximo slide">→</button>
+  <a href="index.html">Conteúdos</a>
+  <a href="../index.html">Curso</a>
+</div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var i = 0;
+  slides.forEach(function (s, k) { s.setAttribute('data-n', (k + 1) + ' / ' + slides.length); });
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, k) { s.classList.toggle('active', k === i); });
+    counter.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    if (location.hash !== '#' + (i + 1)) history.replaceState(null, '', '#' + (i + 1));
+  }
+  function fromHash() {
+    var n = parseInt(location.hash.slice(1), 10);
+    return isNaN(n) ? 0 : n - 1;
+  }
+
+  document.getElementById('prev').onclick = function () { show(i - 1); };
+  document.getElementById('next').onclick = function () { show(i + 1); };
+  document.addEventListener('keydown', function (e) {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].indexOf(e.key) >= 0) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].indexOf(e.key) >= 0) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+  });
+  var x0 = null;
+  document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  window.addEventListener('hashchange', function () { show(fromHash()); });
+  show(fromHash());
+})();
+</script>
+</body>
+</html>
