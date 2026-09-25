@@ -2,6 +2,12 @@
 
 Material da **primeira disciplina** do 1º Eixo (Módulo Básico) do Curso de Especialização em Gestão Pública (UNEMAT/UAB, EaD), elaborado a partir da ementa do Projeto Pedagógico do Curso.
 
+A página inicial (`index.html` na raiz) lista todas as disciplinas do curso e dá acesso ao material de cada uma.
+
+## Publicação (GitHub Pages)
+
+Em **Settings → Pages**, escolha *Deploy from a branch*, a branch `main` e a pasta `/ (root)`. O site fica em `https://cleitonfranco74.github.io/zero_claude/`.
+
 ## Disciplina 01: Estado, Governo e Mercado (30 h)
 
 Pasta: [`disciplina-01-estado-governo-mercado/`](disciplina-01-estado-governo-mercado/)
