@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avaliação 1: Estado, Governo e Mercado</title>
+<meta name="description" content="Avaliação 1 (Unidades 1 a 4) da disciplina Estado, Governo e Mercado: 10 questões de múltipla escolha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">Estado, Governo e Mercado</a>
+    <nav aria-label="Material da disciplina">
+      <a href="index.html">Conteúdos</a>
+      <a href="slides.html">Slides</a>
+      <a href="avaliacao-1.html" aria-current="page">Avaliação 1</a>
+      <a href="avaliacao-2.html">Avaliação 2</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Avaliação 1 · Unidades 1 a 4</p>
+    <h1>Introdução à economia, Estado e matriz liberal</h1>
+    <p class="lead">10 questões de múltipla escolha, 1 ponto cada. Marque uma alternativa por questão e clique em “Enviar respostas” para ver a nota e os comentários.</p>
+    <div class="meta">
+      <div><b>Conteúdo</b>Unidades 1, 2, 3 e 4</div>
+      <div><b>Valor</b>10 pontos</div>
+      <div><b>Tempo sugerido</b>40 minutos</div>
+    </div>
+  </header>
+
+  <form id="quiz" onsubmit="return false"></form>
+
+  <div class="actions">
+    <button class="btn" id="submit" type="button">Enviar respostas</button>
+    <button class="btn secondary" id="reset" type="button">Refazer</button>
+    <button class="btn secondary" id="print-test" type="button">Imprimir prova</button>
+    <button class="btn secondary" id="print-key" type="button">Imprimir gabarito</button>
+  </div>
+
+  <section class="card result" id="result" aria-live="polite">
+    <div class="score"></div>
+    <p class="detail"></p>
+    <p>Revise na <a href="index.html">página de conteúdos</a> as questões que você errou e depois siga para a <a href="avaliacao-2.html">Avaliação 2</a>.</p>
+  </section>
+
+  <section class="gabarito" id="gabarito">
+    <h2>Gabarito comentado: Avaliação 1</h2>
+  </section>
+
+  <footer>Especialização em Gestão Pública · Estado, Governo e Mercado</footer>
+</main>
+
+<script>
+window.QUIZ = { questions: [
+  {
+    q: 'O problema econômico central, que dá origem à própria ciência econômica, é:',
+    opts: [
+      'a existência de moeda e de sistema bancário.',
+      'a escassez de recursos produtivos diante de necessidades humanas ilimitadas.',
+      'a intervenção do Estado nos mercados.',
+      'a desigualdade na distribuição da renda entre os países.',
+      'o comércio internacional entre nações com moedas diferentes.'
+    ],
+    a: 1,
+    exp: 'A economia existe porque os recursos são escassos e as necessidades, ilimitadas. Isso obriga a sociedade a fazer escolhas.'
+  },
+  {
+    q: 'Uma prefeitura dispõe de recursos para apenas uma obra e decide construir uma praça em vez de uma creche. O custo de oportunidade dessa decisão é:',
+    opts: [
+      'o valor gasto na construção da praça.',
+      'o custo de manutenção da praça nos anos seguintes.',
+      'os benefícios que a creche teria gerado e dos quais se abriu mão.',
+      'os impostos arrecadados para financiar a obra.',
+      'nulo, porque os recursos são públicos.'
+    ],
+    a: 2,
+    exp: 'Custo de oportunidade é o valor da melhor alternativa sacrificada. Aqui, são os benefícios da creche que não foi construída.'
+  },
+  {
+    q: 'Assinale a alternativa que relaciona corretamente o fator de produção à sua remuneração:',
+    opts: [
+      'Trabalho: lucro.',
+      'Terra: juros.',
+      'Capacidade empresarial: salário.',
+      'Capital: aluguel.',
+      'Capital: juros.'
+    ],
+    a: 4,
+    exp: 'Terra recebe aluguel, trabalho recebe salário, capital recebe juros e capacidade empresarial recebe lucro.'
+  },
+  {
+    q: 'Um município fixa, por decreto, a tarifa de um serviço bem abaixo do preço de equilíbrio de mercado. A tendência, segundo as leis da oferta e da demanda, é:',
+    opts: [
+      'surgir excesso de demanda, ou seja, falta do serviço.',
+      'surgir excesso de oferta, ou seja, sobra do serviço.',
+      'o mercado permanecer em equilíbrio, pois o preço é definido pelo governo.',
+      'a quantidade ofertada aumentar, estimulada pelo preço mais baixo.',
+      'a quantidade demandada diminuir, pois o serviço fica mais barato.'
+    ],
+    a: 0,
+    exp: 'Com o preço abaixo do equilíbrio, a quantidade demandada aumenta e a ofertada diminui. O resultado é escassez (excesso de demanda).'
+  },
+  {
+    q: 'Sobre os sistemas econômicos, é correto afirmar que:',
+    opts: [
+      'na economia de mercado, um órgão central decide o que, como e para quem produzir.',
+      'a economia planificada se coordena principalmente pelo sistema de preços.',
+      'as economias contemporâneas são mistas, e o que varia entre elas é o grau de presença do Estado.',
+      'a economia mista caracteriza-se pela ausência total de empresas estatais.',
+      'o Brasil é um exemplo de economia centralmente planificada.'
+    ],
+    a: 2,
+    exp: 'Nenhuma economia real é de mercado puro ou planificada pura. Todas são mistas, com diferentes graus de intervenção estatal.'
+  },
+  {
+    q: 'A respeito dos conceitos de Estado e governo, assinale a alternativa correta:',
+    opts: [
+      'Estado e governo são sinônimos, pois ambos mudam a cada eleição.',
+      'O governo é permanente e o Estado é transitório.',
+      'O Estado é o conjunto de empresas privadas que atuam em um território.',
+      'Para Max Weber, o Estado é a comunidade humana que reivindica com êxito o monopólio do uso legítimo da força física em um território, e o governo é o grupo que o dirige temporariamente.',
+      'O governo é o mecanismo de coordenação da economia pelos preços.'
+    ],
+    a: 3,
+    exp: 'O Estado é a organização permanente e soberana (em Weber, com o monopólio da força legítima). O governo é o grupo transitório que o dirige.'
+  },
+  {
+    q: 'A iluminação pública costuma ser oferecida pelo Estado, e não pelo mercado, porque se trata de um bem:',
+    opts: [
+      'não rival e não excludente, o que gera o problema do “carona” (free rider).',
+      'rival e excludente, cujo consumo pode ser cobrado individualmente.',
+      'que gera apenas externalidades negativas.',
+      'produzido em regime de concorrência perfeita.',
+      'de luxo, consumido apenas pelas classes mais altas.'
+    ],
+    a: 0,
+    exp: 'Bens públicos são não rivais e não excludentes. Como não dá para impedir quem não paga de usufruir, o mercado tende a não ofertá-los.'
+  },
+  {
+    q: 'Programas de transferência de renda, como o Bolsa Família, e a tributação progressiva são exemplos de qual função econômica do Estado, segundo Musgrave?',
+    opts: [
+      'Alocativa.',
+      'Estabilizadora.',
+      'Reguladora de monopólios.',
+      'Distributiva.',
+      'Mercantilista.'
+    ],
+    a: 3,
+    exp: 'A função distributiva busca ajustar a distribuição de renda e riqueza por meio de tributos e transferências.'
+  },
+  {
+    q: 'A expressão “dinâmica pendular” nas relações entre Estado e mercado refere-se:',
+    opts: [
+      'à alternância anual entre governos de partidos diferentes.',
+      'ao movimento histórico em que ora se amplia a confiança no mercado, ora se amplia a presença do Estado na economia.',
+      'à oscilação diária dos preços nas bolsas de valores.',
+      'à passagem definitiva do capitalismo ao socialismo.',
+      'à migração de trabalhadores do campo para a cidade.'
+    ],
+    a: 1,
+    exp: 'O pêndulo descreve a alternância histórica entre liberalismo, Estado de bem-estar, neoliberalismo e o retorno do Estado depois de 2008.'
+  },
+  {
+    q: 'Em “A Riqueza das Nações” (1776), Adam Smith sustenta que:',
+    opts: [
+      'a riqueza de uma nação depende do acúmulo de ouro e prata, como defendiam os mercantilistas.',
+      'o Estado deve planejar a produção para evitar crises de superprodução.',
+      'o interesse individual, coordenado pelo mercado (a “mão invisível”), promove o bem comum, e o Estado deve cuidar da defesa, da justiça e de obras públicas.',
+      'o trabalhador produz mais-valia, que é apropriada pelo capitalista.',
+      'o desemprego resulta da insuficiência de demanda efetiva.'
+    ],
+    a: 2,
+    exp: 'Smith defende a mão invisível e um Estado com três deveres: defesa, justiça e obras públicas. Mais-valia é de Marx, e demanda efetiva é de Keynes.'
+  }
+]};
+</script>
+<script src="assets/quiz.js"></script>
+</body>
+</html>

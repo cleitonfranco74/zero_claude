@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avaliação 2: Estado, Governo e Mercado</title>
+<meta name="description" content="Avaliação 2 (Unidades 5 a 8) da disciplina Estado, Governo e Mercado: 10 questões de múltipla escolha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">Estado, Governo e Mercado</a>
+    <nav aria-label="Material da disciplina">
+      <a href="index.html">Conteúdos</a>
+      <a href="slides.html">Slides</a>
+      <a href="avaliacao-1.html">Avaliação 1</a>
+      <a href="avaliacao-2.html" aria-current="page">Avaliação 2</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Avaliação 2 · Unidades 5 a 8</p>
+    <h1>Matriz marxista e modelos de Estado</h1>
+    <p class="lead">10 questões de múltipla escolha, 1 ponto cada. Marque uma alternativa por questão e clique em “Enviar respostas” para ver a nota e os comentários.</p>
+    <div class="meta">
+      <div><b>Conteúdo</b>Unidades 5, 6, 7 e 8</div>
+      <div><b>Valor</b>10 pontos</div>
+      <div><b>Tempo sugerido</b>40 minutos</div>
+    </div>
+  </header>
+
+  <form id="quiz" onsubmit="return false"></form>
+
+  <div class="actions">
+    <button class="btn" id="submit" type="button">Enviar respostas</button>
+    <button class="btn secondary" id="reset" type="button">Refazer</button>
+    <button class="btn secondary" id="print-test" type="button">Imprimir prova</button>
+    <button class="btn secondary" id="print-key" type="button">Imprimir gabarito</button>
+  </div>
+
+  <section class="card result" id="result" aria-live="polite">
+    <div class="score"></div>
+    <p class="detail"></p>
+    <p>Revise na <a href="index.html">página de conteúdos</a> as questões que você errou e depois revise os <a href="slides.html">slides</a> de síntese.</p>
+  </section>
+
+  <section class="gabarito" id="gabarito">
+    <h2>Gabarito comentado: Avaliação 2</h2>
+  </section>
+
+  <footer>Especialização em Gestão Pública · Estado, Governo e Mercado</footer>
+</main>
+
+<script>
+window.QUIZ = { questions: [
+  {
+    q: 'Na teoria de Karl Marx, a mais-valia corresponde:',
+    opts: [
+      'ao lucro obtido pelo comerciante ao revender mercadorias por preço maior.',
+      'aos juros pagos pelo capitalista ao banco.',
+      'aos impostos cobrados pelo Estado sobre a produção.',
+      'ao valor produzido pelo trabalhador além do valor de sua força de trabalho (salário), apropriado pelo capitalista.',
+      'à valorização dos imóveis urbanos ao longo do tempo.'
+    ],
+    a: 3,
+    exp: 'A mais-valia é a diferença entre o valor que o trabalhador produz e o salário que recebe. Para Marx, é a fonte do lucro e a base da exploração.'
+  },
+  {
+    q: 'Para a matriz marxista, o Estado moderno:',
+    opts: [
+      'é um instrumento de dominação de classe, “um comitê para gerir os negócios comuns de toda a burguesia”.',
+      'é um árbitro neutro, situado acima dos interesses das classes sociais.',
+      'deve se limitar à defesa, à justiça e às obras públicas.',
+      'surge de um contrato social para proteger a vida, a liberdade e a propriedade.',
+      'é o principal responsável por corrigir as falhas de mercado de forma neutra.'
+    ],
+    a: 0,
+    exp: 'No Manifesto Comunista (1848), o Estado aparece como instrumento da classe dominante. As alternativas C e D descrevem a matriz liberal (Smith e Locke).'
+  },
+  {
+    q: 'Na perspectiva marxista, a diferença entre socialismo e comunismo é que:',
+    opts: [
+      'o socialismo elimina o Estado e o comunismo o fortalece.',
+      'o comunismo mantém a propriedade privada dos meios de produção.',
+      'socialismo e comunismo são sinônimos na obra de Marx.',
+      'o socialismo é o retorno ao feudalismo.',
+      'o socialismo é a fase de transição, com socialização dos meios de produção, e o comunismo é a sociedade sem classes, na qual o Estado se extingue.'
+    ],
+    a: 4,
+    exp: 'O socialismo é a etapa de transição (ditadura do proletariado). O comunismo é a sociedade sem classes e, por isso, sem Estado.'
+  },
+  {
+    q: 'No final do século XIX, Eduard Bernstein propôs uma revisão do marxismo segundo a qual:',
+    opts: [
+      'o capitalismo havia chegado à fase do imperialismo e só a revolução armada poderia superá-lo.',
+      'o socialismo poderia ser alcançado gradualmente, por meio de reformas e da via eleitoral (social-democracia).',
+      'o Estado deveria ser reduzido ao mínimo, como defendia Adam Smith.',
+      'o planejamento central deveria substituir imediatamente o mercado.',
+      'os sindicatos deveriam ser proibidos para garantir a livre concorrência.'
+    ],
+    a: 1,
+    exp: 'Bernstein é o principal nome do revisionismo e da social-democracia. A tese do imperialismo e da via revolucionária é de Lênin.'
+  },
+  {
+    q: 'Para John Maynard Keynes (Teoria Geral, 1936), em uma situação de recessão com desemprego elevado, o Estado deveria:',
+    opts: [
+      'cortar gastos para equilibrar o orçamento e deixar o mercado se ajustar sozinho.',
+      'privatizar as empresas estatais para atrair investimentos.',
+      'estimular a demanda efetiva por meio de gasto e investimento públicos, mesmo que isso gere déficit.',
+      'fixar todos os preços e salários por meio de um plano central.',
+      'reduzir a oferta de moeda para combater a inflação.'
+    ],
+    a: 2,
+    exp: 'Para Keynes, o desemprego decorre da insuficiência de demanda efetiva, e o gasto público pode compensá-la nas recessões.'
+  },
+  {
+    q: 'São características do Estado de bem-estar social nos países centrais entre 1945 e 1973, EXCETO:',
+    opts: [
+      'políticas de pleno emprego inspiradas no keynesianismo.',
+      'ampliação de direitos sociais universais, como saúde, educação e previdência.',
+      'pacto entre capital e trabalho, com forte presença de sindicatos.',
+      'proteção social “do berço ao túmulo”, na linha do Relatório Beveridge.',
+      'desregulamentação dos mercados financeiros e privatização dos serviços públicos.'
+    ],
+    a: 4,
+    exp: 'Desregulamentação e privatização são marcas do Estado neoliberal (a partir de 1979), e não do Estado de bem-estar.'
+  },
+  {
+    q: 'O termo “estagflação”, associado à crise dos anos 1970 que abriu caminho para o neoliberalismo, designa:',
+    opts: [
+      'a combinação de estagnação econômica (baixo crescimento e desemprego) com inflação elevada.',
+      'um período de forte crescimento com preços estáveis.',
+      'a queda generalizada de preços (deflação) com pleno emprego.',
+      'a estatização de bancos durante crises financeiras.',
+      'a estabilidade da moeda garantida pelo padrão-ouro.'
+    ],
+    a: 0,
+    exp: 'Depois dos choques do petróleo (1973 e 1979), houve ao mesmo tempo estagnação e inflação, algo que o receituário keynesiano tinha dificuldade de resolver.'
+  },
+  {
+    q: 'Assinale a alternativa que NÃO corresponde às recomendações do chamado Consenso de Washington (1989):',
+    opts: [
+      'Disciplina fiscal.',
+      'Ampliação das empresas estatais e do controle do Estado sobre os preços.',
+      'Privatização de empresas estatais.',
+      'Abertura comercial e financeira.',
+      'Desregulamentação dos mercados.'
+    ],
+    a: 1,
+    exp: 'O Consenso de Washington recomendava reduzir o Estado produtor. Ampliar estatais e controlar preços vai no sentido oposto.'
+  },
+  {
+    q: 'O Estado socialista implantado na URSS a partir de 1917 caracterizou-se:',
+    opts: [
+      'pela livre concorrência entre empresas privadas.',
+      'pelo Estado mínimo e pelo laissez-faire.',
+      'pelo pluripartidarismo e pela alternância de poder.',
+      'pela propriedade estatal dos meios de produção e pelo planejamento central da economia, com planos quinquenais.',
+      'pela adoção das recomendações do Consenso de Washington.'
+    ],
+    a: 3,
+    exp: 'O modelo soviético baseava-se na propriedade estatal e no planejamento central (planos quinquenais desde 1928), com partido único.'
+  },
+  {
+    q: 'O Plano Diretor da Reforma do Aparelho do Estado (1995), elaborado no Brasil sob coordenação de Bresser-Pereira, propunha:',
+    opts: [
+      'a volta ao modelo desenvolvimentista, com criação de novas estatais produtivas.',
+      'a extinção do Sistema Único de Saúde (SUS).',
+      'a transição da administração pública burocrática para a administração pública gerencial, com o Estado atuando mais como regulador.',
+      'a adoção do planejamento central nos moldes soviéticos.',
+      'a volta ao padrão-ouro como regime monetário.'
+    ],
+    a: 2,
+    exp: 'O Plano Diretor de 1995 propôs a administração gerencial, a criação de agências reguladoras e o fortalecimento do público não estatal.'
+  }
+]};
+</script>
+<script src="assets/quiz.js"></script>
+</body>
+</html>
