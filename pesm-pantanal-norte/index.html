@@ -5,227 +5,354 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SWOT PESM Pantanal Norte</title>
 <meta name="description" content="Matriz SWOT do Perfil Econômico-Produtivo Setorial Municipal (PESM) dos 13 municípios do Pantanal Norte (MT): indicadores, fatores externos e gráficos por município.">
+<link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../disciplina-01-estado-governo-mercado/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --maxw: 1080px;
-    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7;
-    --grid: #e4dfd4; --axis: #8a8f96; --neutral: #b9b4a9;
+    --text: #333333;
+    --muted: #555555;
+    --surface: #ffffff;
+    --surface-2: #f0f0f0;
+    --line: #cccccc;
+    --grid: #e6e6e6;
+    --axis: #888888;
+    --neutral: #adadad;
+    --primary: #1351b4;
+    --primary-dark: #0c326f;
+    --primary-soft: #edf5ff;
+    --ok: #168821;
+    --ok-soft: #e3f5e1;
+    --bad: #e52207;
+    --bad-soft: #fff3f2;
+    --warn-soft: #fff5c2;
+    --s1: #1351b4; --s2: #d54309; --s3: #00687d; --s4: #c2850c; --s5: #d72d79; --s6: #168821; --s7: #783cb9;
+    --font: Rawline, Raleway, sans-serif;
+    color-scheme: light;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9;
-      --grid: #30363c; --axis: #7d848c; --neutral: #5a5f65;
-    }
-  }
-  :root[data-theme="dark"] {
-    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9;
-    --grid: #30363c; --axis: #7d848c; --neutral: #5a5f65;
-  }
-  section { margin-top: 2.4rem; }
-  .note { background: var(--surface-2); border-left: 4px solid var(--accent-2); padding: .8rem 1rem; border-radius: 6px; font-size: .95rem; }
-  .note p { margin: .3rem 0; }
-  .chart { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1rem .6rem; margin: 1rem 0; }
-  .chart h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
-  .chart .sub { margin: 0 0 .6rem; color: var(--muted); font-size: .88rem; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #ffffff; color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.5; }
+  h1, h2, h3, h4 { text-wrap: balance; color: var(--text); }
+  h1 { font-size: 2rem; font-weight: 400; margin: 1.5rem 0 .5rem; line-height: 1.25; }
+  h2 { font-size: 1.6rem; font-weight: 400; margin: 2.5rem 0 .75rem; }
+  h3 { font-size: 1.15rem; font-weight: 600; margin: 1.5rem 0 .5rem; }
+  p { max-width: 72ch; }
+  code { font-size: .85em; background: var(--surface-2); padding: 0 .25em; border-radius: 3px; }
+  a { color: var(--primary); }
+  :focus-visible { outline: 4px dashed #c2850c; outline-offset: 2px; }
+
+  /* Cabeçalho institucional */
+  .br-header { position: relative; box-shadow: 0 1px 6px rgba(0,0,0,.16); background: var(--surface); }
+  .br-header .header-top { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+  .inst { font-weight: 800; letter-spacing: .02em; color: var(--primary-dark); font-size: 1.05rem; }
+  .inst-sep { width: 1px; align-self: stretch; background: var(--line); }
+  .inst-sign { font-size: .85rem; color: var(--muted); }
+  .br-header .header-bottom { padding: 4px 0 14px; }
+  .header-title { font-size: 1.25rem; color: var(--text); }
+  .header-subtitle { font-size: .85rem; color: var(--muted); font-weight: 500; }
+  .header-nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 10px; font-size: .95rem; }
+  .header-nav a { text-decoration: none; font-weight: 600; }
+  .header-nav a:hover { text-decoration: underline; }
+
+  .container-lg { max-width: 1200px; margin: 0 auto; padding-inline: 24px; box-sizing: border-box; }
+  @media (max-width: 575px) { .container-lg { padding-inline: 16px; } }
+
+  /* Trilha */
+  .br-breadcrumb { margin-top: 16px; font-size: .9rem; }
+  .br-breadcrumb .crumb-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .br-breadcrumb .crumb { display: flex; align-items: center; gap: 6px; color: var(--muted); }
+  .br-breadcrumb .crumb svg { width: 10px; height: 10px; fill: var(--muted); }
+  .br-breadcrumb .crumb a { text-decoration: none; }
+  .br-breadcrumb .crumb [aria-current] { color: var(--text); font-weight: 600; }
+
+  .lead { font-size: 1.1rem; color: var(--muted); max-width: 72ch; }
+  .meta-line { display: flex; flex-wrap: wrap; gap: 4px 24px; font-size: .9rem; color: var(--muted); margin: .75rem 0 1rem; }
+  .meta-line b { color: var(--text); font-weight: 600; }
+
+  /* Mensagem */
+  .br-message { display: flex; gap: 12px; padding: 16px; margin: 16px 0; background: var(--warn-soft); border-left: 4px solid #c2850c; }
+  .br-message.info { background: var(--primary-soft); border-left-color: var(--primary); }
+  .br-message .icon svg { width: 22px; height: 22px; fill: #936f38; }
+  .br-message.info .icon svg { fill: var(--primary); }
+  .br-message .content { font-size: .95rem; }
+  .br-message .content p { margin: 0 0 .35rem; }
+  .br-message .message-title { font-weight: 700; }
+
+  /* Seções e divisores */
+  .br-divider { border: 0; border-top: 1px solid var(--line); margin: 2rem 0 0; }
+  .section-intro { color: var(--muted); max-width: 72ch; margin: 0 0 1rem; }
+
+  /* Cards de gráfico */
+  .br-card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,.08); margin: 16px 0; }
+  .br-card .card-header { padding: 16px 16px 0; }
+  .br-card .card-header h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+  .br-card .card-header .sub { margin: 4px 0 0; color: var(--muted); font-size: .88rem; max-width: none; }
+  .br-card .card-content { padding: 8px 16px 16px; }
+  .chart { }
   .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
-  .chart > div[id^="c-"] { width: 100%; }
   .chart svg text { fill: var(--text); font-family: var(--font); }
   .chart svg .muted { fill: var(--muted); }
   .chart svg .halo { paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
-  .legend { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .85rem; color: var(--muted); margin: .2rem 0 .5rem; }
-  .legend span { display: inline-flex; align-items: center; gap: .35rem; }
-  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
-  .sub-p { color: var(--muted); margin: .2rem 0 .6rem; }
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
-  .picker { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; position: sticky; top: 0; z-index: 5; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--border); }
-  .picker label { font-weight: 600; }
-  .picker select { font: inherit; padding: .4rem .6rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); min-width: 16rem; }
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .7rem; margin: 1rem 0; }
-  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .7rem .9rem; }
-  .tile b { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 700; }
-  .tile .v { font-size: 1.55rem; font-weight: 700; line-height: 1.2; margin-top: .2rem; font-variant-numeric: tabular-nums; }
-  .tile small { color: var(--muted); font-size: .82rem; }
-  .swot { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: 1rem 0; }
-  .quad { border-radius: var(--radius); padding: .7rem .9rem; border: 1px solid var(--border); background: var(--surface); }
-  .quad h4 { margin: 0 0 .4rem; font-size: .95rem; display: flex; justify-content: space-between; }
-  .quad ul { margin: 0; padding-left: 1.1rem; font-size: .9rem; }
-  .quad li { margin: .2rem 0; }
-  .quad .empty { color: var(--muted); font-size: .88rem; font-style: italic; }
-  .q-s { border-top: 4px solid var(--ok); } .q-w { border-top: 4px solid var(--bad); }
-  .q-o { border-top: 4px solid var(--s1); } .q-t { border-top: 4px solid var(--s2); }
-  .tag { font-size: .75rem; font-weight: 700; padding: .1rem .45rem; border-radius: 99px; white-space: nowrap; }
-  .tag.f { background: var(--ok-soft); color: var(--ok); }
-  .tag.w { background: var(--bad-soft); color: var(--bad); }
-  .tag.n { background: var(--surface-2); color: var(--muted); }
-  .tag.x { background: transparent; color: var(--muted); border: 1px dashed var(--border); }
-  #t-ind td:first-child, #t-evid td:first-child { white-space: nowrap; }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .85rem; color: var(--muted); margin: 4px 0 8px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  @media (max-width: 767px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* Tabelas no padrão br-table */
+  .br-table { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin: 16px 0; background: var(--surface); }
+  .br-table .table-header { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .br-table .table-title { font-weight: 600; font-size: 1.05rem; }
+  .br-table .table-sub { color: var(--muted); font-size: .88rem; }
+  .table-scroll { overflow-x: auto; }
+  .br-table table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  .br-table th { background: var(--surface-2); text-align: left; font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: bottom; }
+  .br-table td { padding: 10px 12px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  .br-table tbody tr:nth-child(even) td { background: #f8f8f8; }
+  .br-table tbody tr:hover td { background: var(--primary-soft); }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  #tip { position: fixed; pointer-events: none; z-index: 20; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: .45rem .6rem; font-size: .85rem; box-shadow: 0 4px 16px rgba(0,0,0,.15); opacity: 0; transition: opacity .08s; max-width: 280px; }
+  #t-ind td:first-child, #t-evid td:first-child { white-space: nowrap; }
+  small.muted, .muted { color: var(--muted); }
+
+  /* Ficha-resumo (antigos "tiles"): lista de rótulo e valor */
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin: 8px 0 16px; border-top: 1px solid var(--line); }
+  .tile { display: grid; grid-template-columns: minmax(9rem, 12rem) 1fr; column-gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .tile b { grid-row: span 2; font-size: .88rem; font-weight: 600; color: var(--muted); }
+  .tile .v { font-size: 1.05rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .tile small { color: var(--muted); font-size: .82rem; }
+  #inf-tiles { grid-template-columns: 1fr !important; margin-top: 0; }
+  @media (max-width: 767px) { .tiles { grid-template-columns: 1fr !important; } }
+
+  /* Seletor de município */
+  .picker { position: sticky; top: 0; z-index: 5; background: #ffffff; padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+  .picker label { font-weight: 600; font-size: .95rem; }
+  .br-select select { font: inherit; font-size: 1rem; height: 40px; padding: 0 36px 0 12px; border: 1px solid #888888; border-radius: 4px; background: #ffffff; color: var(--text); min-width: 18rem; appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #1351b4 50%), linear-gradient(135deg, #1351b4 50%, transparent 50%); background-position: calc(100% - 18px) 17px, calc(100% - 12px) 17px; background-size: 6px 6px; background-repeat: no-repeat; }
+  .br-select select:hover { background-color: var(--primary-soft); }
+  @media (max-width: 575px) { .br-select, .br-select select { width: 100%; min-width: 0; } }
+
+  /* Abas br-tab */
+  .br-tab .tab-nav { border-bottom: 1px solid var(--line); overflow-x: auto; }
+  .br-tab .tab-nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+  .br-tab .tab-item button { font: inherit; font-size: .95rem; font-weight: 600; color: var(--muted); background: none; border: 0; border-bottom: 4px solid transparent; padding: 12px 16px; cursor: pointer; white-space: nowrap; }
+  .br-tab .tab-item button:hover { color: var(--primary); background: var(--primary-soft); }
+  .br-tab .tab-item.active button { color: var(--primary); border-bottom-color: var(--primary); }
+  .br-tab .tab-panel { display: none; padding-top: 8px; }
+  .br-tab .tab-panel.active { display: block; }
+
+  /* Matriz SWOT */
+  .swot { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 16px 0; border: 1px solid var(--line); }
+  .quad { padding: 12px 16px; border: 1px solid var(--grid); background: var(--surface); }
+  .quad h4 { margin: 0 0 8px; font-size: .95rem; font-weight: 700; display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: .03em; padding-bottom: 6px; border-bottom: 3px solid var(--line); }
+  .q-s h4 { border-bottom-color: var(--ok); } .q-w h4 { border-bottom-color: var(--bad); }
+  .q-o h4 { border-bottom-color: var(--s1); } .q-t h4 { border-bottom-color: var(--s2); }
+  .quad ul { margin: 0; padding-left: 1.1rem; font-size: .92rem; }
+  .quad li { margin: .25rem 0; }
+  .quad .empty { color: var(--muted); font-size: .9rem; font-style: italic; margin: 0; }
+  .swot-axis { display: grid; grid-template-columns: 1fr 1fr; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-top: 12px; }
+  .swot-axis span:last-child { text-align: right; }
+  @media (max-width: 767px) { .swot { grid-template-columns: 1fr; } }
+
+  /* Tags de status (br-tag) */
+  .tag { display: inline-block; font-size: .78rem; font-weight: 700; padding: 1px 8px; border-radius: 999em; white-space: nowrap; }
+  .tag.f { background: var(--ok-soft); color: #154c21; }
+  .tag.w { background: var(--bad-soft); color: #b50909; }
+  .tag.n { background: var(--surface-2); color: var(--muted); }
+  .tag.x { background: transparent; color: var(--muted); border: 1px dashed var(--axis); }
+
+  details summary { cursor: pointer; color: var(--primary); font-weight: 600; margin: .5rem 0; }
+  .fontes p { max-width: 80ch; }
+
+  /* Rodapé br-footer */
+  .br-footer { background: #071d41; color: #ffffff; margin-top: 48px; padding: 32px 0 24px; font-size: .9rem; }
+  .br-footer .foot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 32px; }
+  .br-footer .foot-title { font-weight: 700; text-transform: uppercase; font-size: .8rem; letter-spacing: .06em; color: #adcdff; margin-bottom: 6px; }
+  .br-footer p { margin: 0; color: #ffffff; }
+  .br-footer .foot-note { border-top: 1px solid rgba(255,255,255,.25); margin-top: 24px; padding-top: 12px; color: #d4e5ff; font-size: .82rem; }
+
+  #tip { position: fixed; pointer-events: none; z-index: 20; background: #ffffff; color: var(--text); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; font-size: .85rem; box-shadow: 0 3px 6px rgba(0,0,0,.16); opacity: 0; transition: opacity .08s; max-width: 300px; }
   #tip b { display: block; }
-  .hit { fill: transparent; cursor: default; }
-  .hit:hover + .mk, .mk.on { opacity: .8; }
-  @media (min-width: 721px) { #amb-tiles { grid-template-columns: repeat(3, 1fr); } }
-  details summary { cursor: pointer; color: var(--accent); font-weight: 600; margin: .4rem 0; }
-  @media (max-width: 720px) { .two, .swot { grid-template-columns: 1fr; } .picker select { min-width: 0; width: 100%; } }
+  .hit { fill: transparent; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } #tip { transition: none; } }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="wrap">
-    <a class="brand" href="../index.html">Especialização em Gestão Pública</a>
-    <nav aria-label="Atalhos">
-      <a href="#regiao">Região</a>
-      <a href="#municipio">Município</a>
-      <a href="#evolucao">Evolução</a>
-      <a href="#social">Social</a>
-      <a href="#ambiental">Ambiental</a>
-      <a href="#fontes">Fontes</a>
-    </nav>
-  </div>
-</div>
-
-<main class="wrap">
-  <header class="hero">
-    <p class="eyebrow">Projeto DSIP-MT · Convênio 984799/2025 SUDECO-UNEMAT · Meta 1</p>
-    <h1>Matriz SWOT do PESM: Pantanal Norte</h1>
-    <p class="lead">Perfil Econômico-Produtivo Setorial Municipal dos 13 municípios do Pantanal Norte (MT). Forças e fraquezas vêm de indicadores internos classificados contra a referência de Mato Grosso; oportunidades e ameaças vêm de fatores externos pontuados de 0 a 3.</p>
-    <div class="meta">
-      <div><b>Municípios</b>13</div>
-      <div><b>Áreas-chave</b>4</div>
-      <div><b>Indicadores internos</b><span id="m-cov"></span></div>
-      <div><b>Fatores externos</b>11 pontuados</div>
+<header class="br-header">
+  <div class="container-lg">
+    <div class="header-top">
+      <span class="inst">UNEMAT</span><span class="inst-sep" aria-hidden="true"></span>
+      <span class="inst-sign">Universidade do Estado de Mato Grosso · Convênio 984799/2025 SUDECO-UNEMAT</span>
     </div>
-  </header>
+    <div class="header-bottom">
+      <div class="header-title">Projeto DSIP-MT</div>
+      <div class="header-subtitle">Meta 1 · Análise Diagnóstica Estratégica do Perfil Econômico-Produtivo Setorial Municipal</div>
+      <nav class="header-nav" aria-label="Seções da página">
+        <a href="#regiao">Visão regional</a>
+        <a href="#municipio">Por município</a>
+        <a href="#fontes">Fontes e método</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-  <div class="note">
-    <p><b>Leitura com cautela.</b> Os 14 indicadores internos têm dado para os 13 municípios. A cobertura mínima de 75% do ranking foi atingida, mas as notas dos fatores externos são de uma rodada de pesquisa web-based e ainda precisam de consenso da equipe e de conferência em campo.</p>
-    <p>Baixe a planilha completa: <a href="dados/Matriz_SWOT_PESM_Pantanal_Norte.xlsx">Matriz_SWOT_PESM_Pantanal_Norte.xlsx</a>.</p>
+<main class="container-lg" id="conteudo">
+  <nav class="br-breadcrumb" aria-label="Trilha de navegação">
+    <ol class="crumb-list">
+      <li class="crumb"><a href="../index.html">Início</a></li>
+      <li class="crumb"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 0l5 5-5 5-1.2-1.2L5.6 5 1.8 1.2z"/></svg><span>PESM</span></li>
+      <li class="crumb"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 0l5 5-5 5-1.2-1.2L5.6 5 1.8 1.2z"/></svg><span aria-current="page">Matriz SWOT · Pantanal Norte</span></li>
+    </ol>
+  </nav>
+
+  <h1>Matriz SWOT do Perfil Econômico-Produtivo Setorial Municipal: Pantanal Norte</h1>
+  <p class="lead">Diagnóstico dos 13 municípios do Pantanal Norte (MT). Forças e fraquezas vêm de 14 indicadores internos comparados com a referência de Mato Grosso. Oportunidades e ameaças vêm de 11 fatores externos pontuados de 0 a 3.</p>
+  <div class="meta-line">
+    <span><b>Municípios:</b> 13</span>
+    <span><b>Áreas-chave:</b> 4</span>
+    <span><b>Indicadores internos:</b> <span id="m-cov"></span></span>
+    <span><b>Fatores externos:</b> 11 pontuados</span>
+    <span><b>Atualização:</b> setembro de 2026</span>
+  </div>
+
+  <div class="br-message" role="note">
+    <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></div>
+    <div class="content">
+      <p><span class="message-title">Resultados para discussão técnica.</span> Os 14 indicadores internos têm dado para os 13 municípios e a cobertura mínima do ranking foi atingida. As notas dos fatores externos vêm de pesquisa documental e de dados das bases do projeto e ainda precisam de validação por consenso da equipe e de conferência em campo.</p>
+      <p>Planilha completa: <a href="dados/Matriz_SWOT_PESM_Pantanal_Norte.xlsx">Matriz_SWOT_PESM_Pantanal_Norte.xlsx</a>.</p>
+    </div>
   </div>
 
   <section id="regiao">
-    <h2>Panorama regional</h2>
+    <h2>Visão regional</h2>
+    <p class="section-intro">Comparação entre os 13 municípios. Passe o cursor sobre os gráficos para ver os valores.</p>
 
-    <div class="chart">
-      <h3>Índice SWOT por município</h3>
-      <p class="sub">Média de (Forças − Fraquezas)/n e (Oportunidades − Ameaças)/n. Acima de zero, o balanço é favorável. A ordem tem correlação de 0,65 (Spearman) com o IFDM 2023, um índice independente da matriz.</p>
-      <div id="c-idx"></div>
+    <div class="br-card">
+      <div class="card-header"><h3>Índice SWOT por município</h3><p class="sub">Média de (Forças − Fraquezas)/n e (Oportunidades − Ameaças)/n. Valores acima de zero indicam balanço favorável. A ordem tem correlação de 0,65 (Spearman) com o IFDM 2023.</p></div>
+      <div class="card-content"><div class="chart" id="c-idx"></div></div>
     </div>
 
-    <div class="chart">
-      <h3>Estrutura do valor adicionado bruto, 2021</h3>
-      <p class="sub">Participação de cada grande setor no VAB municipal. A última barra é Mato Grosso.</p>
-      <div class="legend" id="lg-vab"></div>
-      <div id="c-vab"></div>
+    <div class="br-card">
+      <div class="card-header"><h3>Estrutura do valor adicionado bruto, 2021</h3><p class="sub">Participação de cada grande setor no VAB municipal. A última barra é Mato Grosso.</p></div>
+      <div class="card-content"><div class="legend" id="lg-vab"></div><div class="chart" id="c-vab"></div></div>
     </div>
 
-    <div class="chart">
-      <h3>PIB per capita, 2023 (R$)</h3>
-      <p class="sub">A linha tracejada marca Mato Grosso (R$ 74.620). Barras mais escuras ficam acima da faixa de ±10% do estado.</p>
-      <div id="c-pib"></div>
+    <div class="br-card">
+      <div class="card-header"><h3>PIB per capita, 2023 (R$)</h3><p class="sub">A linha tracejada marca Mato Grosso (R$ 74.620). Em azul, municípios acima da faixa de ±10% do estado.</p></div>
+      <div class="card-content"><div class="chart" id="c-pib"></div></div>
     </div>
 
-    <div class="chart">
-      <h3>Balanço interno e externo</h3>
-      <p class="sub">Contagem de itens em cada quadrante (corte de relevância dos fatores externos: intensidade ≥ <span class="corte"></span>).</p>
+    <div class="br-table">
+      <div class="table-header"><div class="table-title">Balanço interno e externo</div><div class="table-sub">Itens em cada quadrante. Fatores externos entram com intensidade maior ou igual a <span class="corte"></span>.</div></div>
       <div class="table-scroll"><table id="t-painel"></table></div>
     </div>
   </section>
+
+  <hr class="br-divider">
 
   <section id="municipio">
     <h2>Por município</h2>
     <div class="picker">
       <label for="sel">Município</label>
-      <select id="sel"></select>
+      <div class="br-select"><select id="sel"></select></div>
     </div>
 
-    <div class="tiles" id="tiles"></div>
+    <div class="br-tab" id="tabs">
+      <nav class="tab-nav" aria-label="Conteúdo do município">
+        <ul role="tablist">
+          <li class="tab-item active"><button type="button" role="tab" data-panel="p-matriz" aria-selected="true">Matriz SWOT</button></li>
+          <li class="tab-item"><button type="button" role="tab" data-panel="p-ind" aria-selected="false">Indicadores</button></li>
+          <li class="tab-item"><button type="button" role="tab" data-panel="p-evol" aria-selected="false">Evolução</button></li>
+          <li class="tab-item"><button type="button" role="tab" data-panel="social" aria-selected="false">Contexto social</button></li>
+          <li class="tab-item"><button type="button" role="tab" data-panel="ambiental" aria-selected="false">Ambiente e infraestrutura</button></li>
+        </ul>
+      </nav>
+      <div class="tab-content">
 
-    <h3>Matriz SWOT</h3>
-    <div class="swot" id="swot"></div>
+        <div class="tab-panel active" id="p-matriz" role="tabpanel">
+          <h3>Resumo</h3>
+          <div class="tiles" id="tiles"></div>
+          <h3>Matriz SWOT</h3>
+          <div class="swot-axis"><span>Favorável</span><span>Desfavorável</span></div>
+          <div class="swot" id="swot"></div>
+          <div class="br-card">
+            <div class="card-header"><h3>Intensidade dos fatores externos</h3><p class="sub">0 = não se aplica · 1 = baixa · 2 = média · 3 = alta. Entram na matriz os fatores com nota maior ou igual a <span class="corte"></span> (linha tracejada).</p></div>
+            <div class="card-content"><div class="legend"><span><i style="background:var(--s1)"></i>Oportunidade</span><span><i style="background:var(--s2)"></i>Ameaça</span></div><div class="chart" id="c-ext"></div></div>
+          </div>
+        </div>
 
-    <div class="two">
-      <div class="chart">
-        <h3>Estrutura do VAB: município e MT (2021)</h3>
-        <p class="sub">Onde o município se afasta da estrutura estadual.</p>
-        <div class="legend" id="lg-vab2"></div>
-        <div id="c-vab2"></div>
+        <div class="tab-panel" id="p-ind" role="tabpanel">
+          <div class="grid-2">
+            <div class="br-card">
+              <div class="card-header"><h3>Estrutura do VAB: município e MT (2021)</h3><p class="sub">Onde o município se afasta da estrutura estadual.</p></div>
+              <div class="card-content"><div class="legend" id="lg-vab2"></div><div class="chart" id="c-vab2"></div></div>
+            </div>
+            <div class="br-card">
+              <div class="card-header"><h3>Quocientes locacionais (2021)</h3><p class="sub">Faixa cinza (0,8 a 1,2): neutro. À direita, especialização (força); à esquerda, sub-representação (fraqueza).</p></div>
+              <div class="card-content"><div class="chart" id="c-ql"></div></div>
+            </div>
+          </div>
+          <div class="br-table">
+            <div class="table-header"><div class="table-title">Indicadores internos</div><div class="table-sub">Valor do município, limiares efetivos e classificação automática da planilha.</div></div>
+            <div class="table-scroll"><table id="t-ind"></table></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="p-evol" role="tabpanel">
+          <p class="section-intro" id="evolucao">Séries das bases do projeto (IBGE, RAIS, BCB, Comex Stat, Siconfi, MapBiomas). Valores monetários em reais correntes, salvo indicação no título.</p>
+          <div class="grid-2">
+            <div class="br-card"><div class="card-header"><h3>PIB per capita (R$ correntes)</h3><p class="sub">2002–2023</p></div><div class="card-content"><div class="legend" data-lg="mt"></div><div class="chart" id="e-pib"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Crescimento real do PIB (2010 = 100)</h3><p class="sub">2002–2023 · acima da linha de MT, o município cresceu mais que o estado desde 2010</p></div><div class="card-content"><div class="legend" data-lg="mt"></div><div class="chart" id="e-real"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Composição do VAB (%)</h3><p class="sub">2002–2021 · participação de cada setor no VAB total</p></div><div class="card-content"><div class="legend" data-lg="vab"></div><div class="chart" id="e-vab"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Rebanho bovino (mil cabeças)</h3><p class="sub">2000–2024 · efetivo em 31/12</p></div><div class="card-content"><div class="chart" id="e-reb"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Valor da produção das lavouras (R$/ha)</h3><p class="sub">2000–2024 · base do indicador AGR-02</p></div><div class="card-content"><div class="legend" data-lg="mt"></div><div class="chart" id="e-lav"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Crédito rural (R$ milhões correntes)</h3><p class="sub">2013–2024</p></div><div class="card-content"><div class="chart" id="e-cred"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Emprego formal (vínculos em 31/12)</h3><p class="sub">2000–2024 · RAIS</p></div><div class="card-content"><div class="chart" id="e-emp"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Exportações (US$ milhões FOB)</h3><p class="sub">2000–2024 · anos sem barra não têm registro de exportação</p></div><div class="card-content"><div class="chart" id="e-exp"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Bioeconomia (R$ milhões de 2024)</h3><p class="sub">2002–2024 · extrativismo vegetal, silvicultura e aquicultura</p></div><div class="card-content"><div class="legend"><span><i style="background:var(--s5)"></i>Extrativismo</span><span><i style="background:var(--s6)"></i>Silvicultura</span><span><i style="background:var(--s7)"></i>Aquicultura</span></div><div class="chart" id="e-bio"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Autonomia fiscal (% da receita)</h3><p class="sub">2013–2023 · receita própria ÷ receita total, base do EST-05</p></div><div class="card-content"><div class="legend" data-lg="mt"></div><div class="chart" id="e-aut"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Área desmatada acumulada (% do território)</h3><p class="sub">2000–2023</p></div><div class="card-content"><div class="legend" data-lg="mt"></div><div class="chart" id="e-desm"></div></div></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="social" role="tabpanel">
+          <p class="section-intro">Indicadores de desenvolvimento social (dimensão D3). Não entram na matriz SWOT, que trata do perfil econômico-produtivo, mas ajudam a ler os resultados.</p>
+          <div class="tiles" id="soc-tiles"></div>
+          <div class="grid-2">
+            <div class="br-card"><div class="card-header"><h3>IFDM, Índice Firjan de Desenvolvimento Municipal</h3><p class="sub">2013–2023 · de 0 a 1. Tracejado: mediana dos municípios de MT</p></div><div class="card-content"><div class="legend" data-lg="mt-med"></div><div class="chart" id="s-ifdm"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>População residente (mil habitantes)</h3><p class="sub">2000–2025 · estimativas e censos do IBGE</p></div><div class="card-content"><div class="chart" id="s-pop"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Bolsa Família (% da população)</h3><p class="sub">2013–2024 · beneficiários ÷ população</p></div><div class="card-content"><div class="legend" data-lg="mt"></div><div class="chart" id="s-bf"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Mortalidade infantil (por mil nascidos vivos)</h3><p class="sub">2000–2022 · município: média móvel; MT: taxa anual</p></div><div class="card-content"><div class="legend" data-lg="mt"></div><div class="chart" id="s-tmi"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>IDEB da rede pública</h3><p class="sub">2005–2023 · ensino fundamental</p></div><div class="card-content"><div class="legend"><span><i style="background:var(--s1)"></i>Anos iniciais</span><span><i style="background:var(--s2)"></i>Anos finais</span><span>Tracejado: mediana dos municípios de MT</span></div><div class="chart" id="s-ideb"></div></div></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="ambiental" role="tabpanel">
+          <p class="section-intro">Desmatamento, focos de calor, uso da terra, Cadastro Ambiental Rural e infraestrutura (dimensões D4 e D5). Estes dados embasam os fatores AM-01, AM-03 e OP-05.</p>
+          <div class="tiles" id="amb-tiles"></div>
+          <div class="grid-2">
+            <div class="br-card"><div class="card-header"><h3>Focos de calor por ano</h3><p class="sub">2003–2022 · satélite de referência do INPE (2023–2024 excluídos por mudança de escala)</p></div><div class="card-content"><div class="chart" id="a-fogo"></div></div></div>
+            <div class="br-card"><div class="card-header"><h3>Infraestrutura</h3><p class="sub">Rodovias, energia elétrica (2023) e saneamento (SNIS 2022)</p></div><div class="card-content"><div class="tiles" id="inf-tiles"></div></div></div>
+          </div>
+          <div class="br-card"><div class="card-header"><h3>Uso e cobertura da terra (% do território)</h3><p class="sub">2000–2021 · MapBiomas. A queda da superfície de água é evidência do fator AM-01</p></div><div class="card-content"><div class="legend"><span><i style="background:var(--s6)"></i>Vegetação natural</span><span><i style="background:var(--s1)"></i>Água</span><span><i style="background:var(--s4)"></i>Agropecuária</span><span><i style="background:var(--s7)"></i>Área urbana</span></div><div class="chart" id="a-uso"></div></div></div>
+          <div class="br-card"><div class="card-header"><h3>Desmatamento anual por bioma (km²)</h3><p class="sub">2001–2023 · variação anual da área desmatada acumulada</p></div><div class="card-content"><div class="legend"><span><i style="background:var(--s6)"></i>Amazônia</span><span><i style="background:var(--s4)"></i>Cerrado</span><span><i style="background:var(--s1)"></i>Pantanal</span></div><div class="chart" id="a-desm"></div></div></div>
+        </div>
+
       </div>
-      <div class="chart">
-        <h3>Quocientes locacionais (2021)</h3>
-        <p class="sub">A faixa cinza (0,8 a 1,2) é neutra. À direita dela, especialização (força); à esquerda, sub-representação (fraqueza).</p>
-        <div id="c-ql"></div>
-      </div>
-    </div>
-
-    <div class="chart">
-      <h3>Intensidade dos fatores externos</h3>
-      <p class="sub">0 = não se aplica · 1 = baixa · 2 = média · 3 = alta. Entram na matriz os fatores com nota ≥ <span class="corte"></span> (linha tracejada).</p>
-      <div class="legend"><span><i style="background:var(--s1)"></i>Oportunidade</span><span><i style="background:var(--s2)"></i>Ameaça</span></div>
-      <div id="c-ext"></div>
-    </div>
-
-    <div class="chart">
-      <h3>Todos os indicadores internos</h3>
-      <p class="sub">Valor do município, limiares efetivos e classificação automática da planilha.</p>
-      <div class="table-scroll"><table id="t-ind"></table></div>
-    </div>
-
-    <h3 id="evolucao">Evolução no tempo</h3>
-    <p class="sub-p">Séries das bases tratadas do projeto (IBGE, RAIS, BCB, Comex Stat, Siconfi, MapBiomas). Valores monetários em reais correntes, salvo quando o título indica outra base; o crescimento real do PIB já desconta a inflação.</p>
-    <div class="two">
-      <div class="chart"><h3>PIB per capita (R$ correntes)</h3><p class="sub">2002–2023</p><div class="legend" data-lg="mt"></div><div id="e-pib"></div></div>
-      <div class="chart"><h3>Crescimento real do PIB (2010 = 100)</h3><p class="sub">2002–2023 · PIB deflacionado; acima da linha de MT, o município cresceu mais que o estado desde 2010</p><div class="legend" data-lg="mt"></div><div id="e-real"></div></div>
-      <div class="chart"><h3>Composição do VAB (%)</h3><p class="sub">2002–2021 · participação de cada setor no VAB total</p><div class="legend" data-lg="vab"></div><div id="e-vab"></div></div>
-      <div class="chart"><h3>Rebanho bovino (mil cabeças)</h3><p class="sub">2000–2024 · efetivo em 31/12</p><div id="e-reb"></div></div>
-      <div class="chart"><h3>Valor da produção das lavouras por hectare (R$/ha)</h3><p class="sub">2000–2024 · base do indicador AGR-02</p><div class="legend" data-lg="mt"></div><div id="e-lav"></div></div>
-      <div class="chart"><h3>Crédito rural contratado (R$ milhões correntes)</h3><p class="sub">2013–2024</p><div id="e-cred"></div></div>
-      <div class="chart"><h3>Emprego formal (vínculos em 31/12)</h3><p class="sub">2000–2024 · RAIS</p><div id="e-emp"></div></div>
-      <div class="chart"><h3>Exportações (US$ milhões FOB)</h3><p class="sub">2000–2024 · anos sem barra não têm registro de exportação</p><div id="e-exp"></div></div>
-      <div class="chart"><h3>Bioeconomia (R$ milhões de 2024)</h3><p class="sub">2002–2024 · extrativismo vegetal, silvicultura e aquicultura</p><div class="legend"><span><i style="background:var(--s5)"></i>Extrativismo</span><span><i style="background:var(--s6)"></i>Silvicultura</span><span><i style="background:var(--s7)"></i>Aquicultura</span></div><div id="e-bio"></div></div>
-      <div class="chart"><h3>Autonomia fiscal (% da receita)</h3><p class="sub">2013–2023 · receita própria ÷ receita total, base do EST-05. MT = soma dos municípios</p><div class="legend" data-lg="mt"></div><div id="e-aut"></div></div>
-      <div class="chart"><h3>Área desmatada acumulada (% do território)</h3><p class="sub">2000–2023</p><div class="legend" data-lg="mt"></div><div id="e-desm"></div></div>
     </div>
   </section>
 
-  <section id="social">
-    <h2>Contexto social</h2>
-    <p class="sub-p">Indicadores da dimensão D3 (desenvolvimento social) das bases do projeto. Ficam fora da matriz SWOT, que trata do perfil econômico-produtivo, mas ajudam a ler os resultados do município escolhido acima.</p>
-    <div class="tiles" id="soc-tiles"></div>
-    <div class="two">
-      <div class="chart"><h3>População residente (mil habitantes)</h3><p class="sub">2000–2025 · estimativas e censos do IBGE</p><div id="s-pop"></div></div>
-      <div class="chart"><h3>Bolsa Família (% da população)</h3><p class="sub">2013–2024 · beneficiários ÷ população. MT = soma dos municípios</p><div class="legend" data-lg="mt"></div><div id="s-bf"></div></div>
-      <div class="chart"><h3>IFDM, Índice Firjan de Desenvolvimento Municipal</h3><p class="sub">2013–2023 · de 0 a 1; emprego e renda, educação e saúde. Tracejado: mediana dos municípios de MT</p><div class="legend" data-lg="mt-med"></div><div id="s-ifdm"></div></div>
-      <div class="chart"><h3>Mortalidade infantil (óbitos por mil nascidos vivos)</h3><p class="sub">2000–2022 · município: média móvel da base; MT: taxa anual dos 141 municípios</p><div class="legend" data-lg="mt"></div><div id="s-tmi"></div></div>
-      <div class="chart"><h3>IDEB da rede pública</h3><p class="sub">2005–2023 · anos iniciais e finais do ensino fundamental</p><div class="legend"><span><i style="background:var(--s1)"></i>Anos iniciais</span><span><i style="background:var(--s2)"></i>Anos finais</span><span>Tracejado: mediana dos municípios de MT</span></div><div id="s-ideb"></div></div>
-    </div>
-  </section>
+  <hr class="br-divider">
 
-  <section id="ambiental">
-    <h2>Contexto ambiental e infraestrutura</h2>
-    <p class="sub-p">Desmatamento, focos de calor, uso da terra, Cadastro Ambiental Rural e infraestrutura (dimensões D4 e D5). Estes dados embasam as notas dos fatores externos AM-01 (secas e incêndios), AM-03 (exigências ambientais ligadas a desmatamento) e OP-05 (corredores logísticos).</p>
-    <div class="tiles" id="amb-tiles"></div>
-    <div class="two">
-    <div class="chart"><h3>Focos de calor por ano</h3><p class="sub">2003–2022 · satélite de referência do INPE. 2023–2024 ficam de fora: a série muda de escala nesses anos</p><div id="a-fogo"></div></div>
-    <div class="chart"><h3>Infraestrutura</h3><p class="sub">Rodovias (malha mapeada), energia elétrica (2023) e saneamento (SNIS 2022)</p><div class="tiles" id="inf-tiles" style="margin:.4rem 0 0;grid-template-columns:1fr 1fr"></div></div>
-    </div>
-    <div class="chart"><h3>Uso e cobertura da terra (% do território)</h3><p class="sub">2000–2021 · MapBiomas. A queda da superfície de água é evidência do fator AM-01 (secas prolongadas)</p><div class="legend"><span><i style="background:var(--s6)"></i>Vegetação natural</span><span><i style="background:var(--s4)"></i>Agropecuária</span><span><i style="background:var(--s1)"></i>Água</span><span><i style="background:var(--s7)"></i>Área urbana</span></div><div id="a-uso"></div></div>
-    <div class="chart"><h3>Desmatamento anual por bioma (km²)</h3><p class="sub">2001–2023 · variação anual da área desmatada acumulada</p><div class="legend"><span><i style="background:var(--s6)"></i>Amazônia</span><span><i style="background:var(--s4)"></i>Cerrado</span><span><i style="background:var(--s1)"></i>Pantanal</span></div><div id="a-desm"></div></div>
-  </section>
-
-  <section id="fontes">
+  <section id="fontes" class="fontes">
     <h2>Fontes e método</h2>
-    <div class="card">
-      <p><b>Indicadores internos.</b> IBGE, PIB dos Municípios (SIDRA, Tabela 5938): quocientes locacionais do VAB e peso da administração pública em 2021; PIB per capita de 2023 com população do Censo 2022. QL = participação do setor no VAB municipal ÷ participação do setor no VAB de MT.</p>
+    <p><b>Indicadores internos.</b> IBGE, PIB dos Municípios (SIDRA, Tabela 5938): quocientes locacionais do VAB e peso da administração pública em 2021; PIB per capita de 2023 com população do Censo 2022. QL = participação do setor no VAB municipal ÷ participação do setor no VAB de MT.</p>
       <p><b>Classificação.</b> Critério "Absoluto" usa limiares manuais (QL 0,8 e 1,2). "Razão MT" usa a referência estadual ±10%. "Dif. MT (p.p.)" usa a referência ±2 pontos percentuais. Sentido "+": acima do limiar superior é força. Sentido "−": o inverso.</p>
       <p><b>Fatores externos.</b> Notas atribuídas em 25/09/2026 a partir de: IBGE/PPM 2023 (rebanho de MT e de Cáceres); Embrapa Pantanal, Comunicado Técnico 122; Corpo de Bombeiros-MT e INPE (área queimada em 2024: Cáceres ≈87 mil ha, Poconé ≈61,5 mil ha, Barão de Melgaço ≈2,6 mil ha); Rumo e BNDES (Ferrovia Estadual Rondonópolis–Lucas do Rio Verde); Governo de MT (Porto de Cáceres e ZPE); NovaCana (Cooperb em Lambari D'Oeste e Mirassol D'Oeste); EC 132/2023 e LC 214/2025; IBGE/REGIC 2018.</p>
       <details>
         <summary>Evidências por fator</summary>
-        <div class="table-scroll"><table id="t-evid"></table></div>
+        <div class="br-table"><div class="table-scroll"><table id="t-evid"></table></div></div>
       </details>
       <p><b>Bases tratadas.</b> AGR-02 (2024) e AGR-03 (2019–2024) e as séries da seção "Evolução no tempo" vêm de <code>d1_agropecuaria.csv</code> (IBGE PAM e PPM), <code>painel_pantanal_norte.csv</code> e <code>painel_municipios_mt.csv</code> (PIB, VAB, população, crédito rural do BCB e desmatamento). A referência de MT é a soma dos 141 municípios. O PIB per capita de 2023 dessas bases confere com os valores da planilha.</p>
       <p><b>Emprego e empresas.</b> IND-02 e CS-02 (variação dos vínculos 2019–2024), IND-03 (remuneração média industrial 2024), EST-03 (vínculos por 100 habitantes 2024) e EST-04 (HHI do emprego em 16 grupos setoriais, 2024) vêm de <code>d1_emprego_rais.csv</code> (RAIS). Indústria inclui construção, como no VAB do IBGE. CS-03 (empresas por mil habitantes, 2021) vem de <code>d1_empresas.csv</code> (CEMPRE). Onde a base industrial tem menos de 100 vínculos (Barão de Melgaço, Glória D'Oeste, Itiquira, Porto Esperidião), a variação de IND-02 é instável.</p>
@@ -235,11 +362,19 @@
       <p><b>Contexto ambiental.</b> Desmatamento de <code>d4_desmatamento.csv</code> (a área por bioma é acumulada; o gráfico mostra a variação anual) e CAR de <code>d4_car.csv</code> (SICAR, 2024). Com esses dados, a nota do AM-03 foi revista: Barão de Melgaço 2→3, Poconé 2→3 e Nossa Senhora do Livramento 1→2. Uso e cobertura da terra de <code>d4_uso_terra.csv</code> (MapBiomas, 2000–2021): a superfície de água caiu 63% em Cáceres, 46% em Santo Antônio do Leverger e 40% em Poconé, contra 29% em MT, o que reforça as notas do AM-01. Focos de calor de <code>d4_queimadas.csv</code>; a série muda de escala em 2023–2024 (o total de MT passa de cerca de 30 mil para 0,7 a 1,7 milhão de focos), por isso só 2003–2022 entra no gráfico e na revisão do AM-01 (Itiquira e Porto Esperidião 2→1, abaixo da média de MT).</p>
       <p><b>Infraestrutura e comércio exterior.</b> Unidades de conservação e terras indígenas de <code>d4_areas_protegidas.csv</code> (2019, com sobreposições tratadas; mesmas áreas de <code>d2_ig_ativos.csv</code>), que confirmam as notas do OP-03. <code>d2_painel_aeism.csv</code> repete comércio exterior, bioeconomia e áreas protegidas com valores idênticos. Saneamento de <code>d5_saneamento.csv</code> (SNIS 2022; só 40 dos 141 municípios de MT informam rede de esgoto, e 8 dos 13 da região não informam). Rodovias de <code>d5_rodovias.csv</code>, energia de <code>d5_energia.csv</code> (2023) e produto principal exportado (SH4) de <code>d2_comercio_exterior.csv</code>. Com eles, OP-01 de Mirassol D'Oeste subiu para 3 (a carne bovina congelada é 65% a 78% das exportações) e OP-05 de Santo Antônio do Leverger subiu para 3 (133 km de BR-163/364 duplicada). O consumo industrial alto de Poconé (46%) e de Nossa Senhora do Livramento (43%) vem da mineração de ouro, principal produto exportado pelos dois.</p>
       <p><b>Indicadores retirados.</b> AGR-04 (assistência técnica, Censo Agro 2017) e AGR-05 (diversificação das lavouras) foram retirados da matriz. A tabela passou de 16 para 14 indicadores, e a área-chave Agropecuária fica com AGR-01, AGR-02 e AGR-03.</p>
-    </div>
   </section>
-
-  <footer>Projeto DSIP-MT · UNEMAT/SUDECO. Dados gerados a partir da planilha <code>dados/Matriz_SWOT_PESM_Pantanal_Norte.xlsx</code>.</footer>
 </main>
+
+<footer class="br-footer">
+  <div class="container-lg">
+    <div class="foot-grid">
+      <div><div class="foot-title">Realização</div><p>Universidade do Estado de Mato Grosso (UNEMAT)</p></div>
+      <div><div class="foot-title">Convênio</div><p>984799/2025 · SUDECO-UNEMAT</p></div>
+      <div><div class="foot-title">Projeto</div><p>DSIP-MT · Meta 1 · Perfil Econômico-Produtivo Setorial Municipal</p></div>
+    </div>
+    <div class="foot-note">Página construída com o Padrão Digital de Governo (DSGov), licença MIT. Dados das bases tratadas do projeto; ver "Fontes e método".</div>
+  </div>
+</footer>
 
 <div id="tip" role="tooltip"></div>
 
@@ -251,7 +386,7 @@ const SHORT = {"Nossa Senhora do Livramento":"N. Sra. do Livramento","Santo Ant�
 const sh = m => SHORT[m] || m;
 const nf = (v, d=2) => v==null ? "–" : v.toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
 const pct = v => nf(v*100,1) + "%";
-const SECT = [["sA","Agropecuária","--s1","A"],["sI","Indústria","--s2","I"],["sS","Serviços (exc. adm. pública)","--s3","S"],["sAP","Administração pública","--s4","AP"]];
+const SECT = [["sA","Agropecuária","--s6","A"],["sI","Indústria","--s1","I"],["sS","Serviços (exc. adm. pública)","--s4","S"],["sAP","Administração pública","--s7","AP"]];
 const NS = "http://www.w3.org/2000/svg";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -310,7 +445,7 @@ function stacked(target, rows, labelW=170){
       const last = j === SECT.length-1;
       const w = Math.max(0, x1 - x0 - (last?0:2));
       if (last) hbar(s, x0, x0+w, y, h, `var(${k[2]})`); else el("rect",{x:x0,y,width:w,height:h,fill:`var(${k[2]})`},s);
-      if (v > (narrow(W) ? .16 : .1)) el("text",{x:x0+w/2,y:y+h/2+4,"text-anchor":"middle","font-size":11,fill:"#fff",style:"fill:#fff;font-weight:600"},s,Math.round(v*100)+"%");
+      if (v > (narrow(W) ? .16 : .1)) el("text",{x:x0+w/2,y:y+h/2+4,"text-anchor":"middle","font-size":11,fill:"#fff",style:"fill:#fff;font-weight:700"},s,Math.round(v*100)+"%");
       acc += v;
     });
     const hit = el("rect",{x:0,y:i*rowH,width:W,height:rowH,class:"hit"},s);
@@ -469,7 +604,7 @@ function renderEvol(i){
   document.querySelectorAll('[data-lg="vab"]').forEach(e => e.innerHTML = SECT.map(k => `<span><i style="background:var(${k[2]})"></i>${k[1].replace(" (exc. adm. pública)","")}</span>`).join(""));
   lineChart("e-pib", A.pibpc, [{n:nm,v:m.pibpc,c:"var(--s1)"},{n:"Mato Grosso",v:MT.pibpc,c:"var(--text)",dash:"5 4"}], fBRL, {zero:true});
   lineChart("e-real", A.real, [{n:nm,v:m.real,c:"var(--s1)"},{n:"Mato Grosso",v:MT.real,c:"var(--text)",dash:"5 4"}], v => nf(v,0), {zero:true});
-  lineChart("e-vab", A.vab, [["A","Agropecuária","--s1"],["I","Indústria","--s2"],["S","Serviços","--s3"],["AP","Adm. pública","--s4"]].map(k => ({n:k[1],v:m.vab[k[0]],c:`var(${k[2]})`})), v => nf(v,0)+"%", {zero:true});
+  lineChart("e-vab", A.vab, [["A","Agropecuária","--s6"],["I","Indústria","--s1"],["S","Serviços","--s4"],["AP","Adm. pública","--s7"]].map(k => ({n:k[1],v:m.vab[k[0]],c:`var(${k[2]})`})), v => nf(v,0)+"%", {zero:true});
   lineChart("e-bio", A.bio, [["extrativismo","Extrativismo","--s5"],["silvicultura","Silvicultura","--s6"],["aquicultura","Aquicultura","--s7"]].map(k => ({n:k[1],v:m.bio[k[0]].map(v => v==null?null:v/1e6),c:`var(${k[2]})`})), v => "R$ "+nf(v, v && v<10 ? 1 : 0)+" mi", {zero:true, stack:true, extra: i => { const p = m.bioP[i] || {}; return [p.produto_extrativismo_principal && "Extrativismo: "+esc(p.produto_extrativismo_principal), p.especie_aquicola_principal && "Aquicultura: "+esc(p.especie_aquicola_principal)].filter(Boolean).join("<br>"); }});
   lineChart("e-reb", A.reb, [{n:nm,v:m.reb.map(v => v==null?null:v/1000),c:"var(--s1)"}], v => nf(v,0)+(v>=1000?"":"")+" mil", {zero:true});
   lineChart("e-lav", A.lav, [{n:nm,v:m.lav,c:"var(--s1)"},{n:"Mato Grosso",v:MT.lav,c:"var(--text)",dash:"5 4"}], fBRL, {zero:true});
@@ -496,7 +631,7 @@ function renderEvol(i){
     <div class="tile"><b>Áreas protegidas</b><div class="v">${nf(m.prot.pct,1)}%</div><small>do território · ${m.prot.uc} UC, ${m.prot.ti} TI${m.prot.pi!=null ? " · UCs "+nf(m.prot.pi,0)+"% proteção integral" : ""}</small></div>`;
   lineChart("a-desm", A.dbio, [["amazonia","Amazônia","--s6"],["cerrado","Cerrado","--s4"],["pantanal","Pantanal","--s1"]].map(k => ({n:k[1],v:m.dbio[k[0]].map(v => v==null?null:Math.max(0,v)),c:`var(${k[2]})`})), (v,ax) => ax ? nf(v,0) : nf(v, v && v<10 ? 1 : 0)+" km²", {zero:true, stack:true});
   lineChart("a-fogo", A.fogo, [{n:nm,v:m.fogo,c:"var(--s2)",bars:true}], (v,ax) => ax && v >= 1000 ? nf(v/1000, v % 1000 ? 1 : 0)+" mil" : nf(v,0)+(ax?"":" focos"), {zero:true});
-  lineChart("a-uso", A.uso, [["natural","Vegetação natural","--s6"],["agropecuaria","Agropecuária","--s4"],["agua","Água","--s1"],["urbano","Área urbana","--s7"]].map(k => ({n:k[1],v:m.uso[k[0]],c:`var(${k[2]})`})), v => nf(v, v && v<10 ? 1 : 0)+"%", {zero:true});
+  lineChart("a-uso", A.uso, [["natural","Vegetação natural","--s6"],["agua","Água","--s1"],["agropecuaria","Agropecuária","--s4"],["urbano","Área urbana","--s7"]].map(k => ({n:k[1],v:m.uso[k[0]],c:`var(${k[2]})`})), v => nf(v, v && v<10 ? 1 : 0)+"%", {zero:true});
   const inf = m.infra;
   document.getElementById("inf-tiles").innerHTML = `
     <div class="tile"><b>Rodovias</b><div class="v">${nf(inf.km,0)} km</div><small>${nf(inf.pav,0)}% pavimentadas · MT ${nf(MT.pav,0)}%</small></div>
@@ -530,6 +665,23 @@ try { const h = decodeURIComponent(location.hash.slice(1)); const k = M.indexOf(
 sel.value = start; renderMun(start); renderEvol(start);
 let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { chartIdx(); chartVab(); chartPib(); renderMun(+sel.value); renderEvol(+sel.value); }, 150); });
 sel.addEventListener("change", () => { const i = +sel.value; renderMun(i); renderEvol(i); try { localStorage.setItem("pesm-mun", i); } catch (e) {} });
+
+// ---------- Abas (br-tab) ----------
+function activateTab(id){
+  const btn = document.querySelector(`#tabs .tab-item button[data-panel="${id}"]`); if (!btn) return false;
+  document.querySelectorAll('#tabs .tab-item').forEach(li => { const on = li.contains(btn); li.classList.toggle("active", on); li.querySelector("button").setAttribute("aria-selected", on); });
+  document.querySelectorAll('#tabs .tab-panel').forEach(p => p.classList.toggle("active", p.id === id));
+  const i = +sel.value; renderMun(i); renderEvol(i);
+  try { localStorage.setItem("pesm-tab", id); } catch (e) {}
+  return true;
+}
+document.querySelectorAll('#tabs .tab-item button').forEach(b => b.addEventListener("click", () => activateTab(b.dataset.panel)));
+(function(){
+  const h = location.hash.slice(1), map = {evolucao:"p-evol", social:"social", ambiental:"ambiental"};
+  if (map[h] && activateTab(map[h])) { document.getElementById("municipio").scrollIntoView(); return; }
+  try { const t = localStorage.getItem("pesm-tab"); if (t) activateTab(t); } catch (e) {}
+})();
+
 </script>
 </body>
 </html>
