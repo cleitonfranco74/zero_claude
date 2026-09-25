@@ -28,7 +28,7 @@ Pasta: [`pesm-pantanal-norte/`](pesm-pantanal-norte/)
 
 | Arquivo | Conteúdo |
 |---|---|
-| `index.html` | Página com o panorama regional (índice SWOT, estrutura do VAB 2021, PIB per capita 2023) e, por município, a matriz SWOT, os quocientes locacionais, a intensidade dos fatores externos e a tabela de indicadores |
+| `index.html` | Página com o panorama regional (índice SWOT, estrutura do VAB 2021, PIB per capita 2023) e, por município, a matriz SWOT, os quocientes locacionais, a intensidade dos fatores externos, a tabela de indicadores e a evolução no tempo (PIB per capita, composição do VAB, rebanho, valor das lavouras por hectare, crédito rural e desmatamento) |
 | `dados/Matriz_SWOT_PESM_Pantanal_Norte.xlsx` | Planilha da matriz (Projeto DSIP-MT, Meta 1), com os fatores externos pontuados e as fontes registradas na aba "Fontes e Notas" |
 
-Os dados da página vêm da planilha recalculada. Resultados provisórios: 11 dos 16 indicadores internos continuam pendentes (PAM, PPM, Censo Agro, RAIS, CEMPRE, Siconfi).
+Os dados da página vêm da planilha recalculada e das bases tratadas do projeto (`d1_agropecuaria.csv`, `painel_pantanal_norte.csv`, `painel_municipios_mt.csv`). Resultados provisórios: 9 dos 16 indicadores internos continuam pendentes (Censo Agro, diversificação das lavouras, RAIS, CEMPRE, Siconfi).
