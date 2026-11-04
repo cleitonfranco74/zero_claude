@@ -39,7 +39,7 @@ Pasta: [`curso-auxiliar-contabilidade-rural/`](curso-auxiliar-contabilidade-rura
 
 | Arquivo | Conteúdo |
 |---|---|
-| `index.html` | Página do curso com os seis tópicos (Raio X da gestão rural, gestão e planejamento, contabilidade, COE e COT, fluxo de caixa, tributação), gráficos, simuladores (contratos agrários, balanço, depreciação, sensibilidade do preço da soja, nivelamento, fluxo de caixa da safra, IRPF, Lucro Presumido, Funrural × folha), matriz FOFA e Gantt editáveis, questões de revisão com correção na hora, glossário e referências |
+| `index.html` | Página do curso com os seis tópicos (Raio X da gestão rural, gestão e planejamento, contabilidade, COE e COT, fluxo de caixa, tributação), gráficos, simuladores (contratos agrários, balanço, depreciação, sensibilidade do preço da soja, nivelamento, fluxo de caixa da safra, IRPF, Lucro Presumido, Funrural × folha), matriz FOFA e Gantt editáveis, questões de revisão com correção na hora, a seção Praticar (exercícios de cálculo dos cadernos para resolver online, com correção campo a campo e gabarito comentado), glossário e referências |
 | `materiais/` | Cadernos de atividades dos tópicos 1 a 6 e a planilha de ferramentas do Tópico 2 (FOFA, PDCA e Gantt) |
 
 A avaliação final não está publicada, porque é aplicada em sala.
