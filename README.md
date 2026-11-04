@@ -32,3 +32,14 @@ Pasta: [`pesm-pantanal-norte/`](pesm-pantanal-norte/)
 | `dados/Matriz_SWOT_PESM_Pantanal_Norte.xlsx` | Planilha da matriz (Projeto DSIP-MT, Meta 1), com os fatores externos pontuados e as fontes registradas na aba "Fontes e Notas" |
 
 Os dados da página vêm da planilha recalculada e das bases tratadas do projeto (`d1_agropecuaria.csv`, `d1_emprego_rais.csv`, `d1_empresas.csv`, `d1_comex.csv`, `d1_pib_vab.csv`, `d2_bioeconomia.csv`, `d6_financas.csv`, bases `d2_*`, `d3_*`, `d4_*`, `d5_*`, `painel_pantanal_norte.csv`, `painel_municipios_mt.csv`). Os 14 indicadores internos têm dado (AGR-04 e AGR-05 foram retirados da matriz). As notas dos fatores externos são preliminares.
+
+## Curso: Auxiliar Administrativo em Contabilidade Rural (SENAR-MT)
+
+Pasta: [`curso-auxiliar-contabilidade-rural/`](curso-auxiliar-contabilidade-rural/)
+
+| Arquivo | Conteúdo |
+|---|---|
+| `index.html` | Página do curso com os seis tópicos (Raio X da gestão rural, gestão e planejamento, contabilidade, COE e COT, fluxo de caixa, tributação), gráficos, simuladores (contratos agrários, balanço, depreciação, sensibilidade do preço da soja, nivelamento, fluxo de caixa da safra, IRPF, Lucro Presumido, Funrural × folha), matriz FOFA e Gantt editáveis, questões de revisão com correção na hora, glossário e referências |
+| `materiais/` | Cadernos de atividades dos tópicos 1 a 6 e a planilha de ferramentas do Tópico 2 (FOFA, PDCA e Gantt) |
+
+A avaliação final não está publicada, porque é aplicada em sala.
