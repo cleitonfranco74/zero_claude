@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contabilidade Rural na Prática</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Curso Auxiliar Administrativo em Contabilidade Rural: conteúdos, gráficos, simuladores e exercícios dos seis tópicos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: caderno de campo — faixa de navegação fixa, seções por tópico em coluna de leitura (~72ch) com blocos largos para tabelas, gráficos e simuladores. */
+:root {
+  --bg: #f4f6f1;
+  --surface: #ffffff;
+  --surface-2: #e8ede3;
+  --ink: #1b281e;
+  --muted: #56655a;
+  --line: #d2dbcb;
+  --accent: #2d6a3e;
+  --accent-soft: #dceadb;
+  --gold: #a5740f;
+  --gold-soft: #f3e6c6;
+  --neg: #a6422b;
+  --neg-soft: #f5dfd6;
+  --blue: #2f5f86;
+  --blue-soft: #dbe6ef;
+  --font-display: "Archivo Narrow", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 8px;
+  --capa-bg: #13291a; --capa-ink: #f2f4ea; --capa-ouro: #e4b44c; --capa-linha: rgba(242,244,234,.28); --capa-veu: rgba(13,30,18,.86);
+  --maxw: 1080px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111711; --surface: #182019; --surface-2: #212b22; --ink: #e2e9de; --muted: #9bab9d;
+    --line: #2e3a2f; --accent: #7fc28f; --accent-soft: #1e3323; --gold: #e0b450; --gold-soft: #3a3019;
+    --neg: #ee8f78; --neg-soft: #3b2219; --blue: #8db8de; --blue-soft: #1c2b38; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111711; --surface: #182019; --surface-2: #212b22; --ink: #e2e9de; --muted: #9bab9d;
+  --line: #2e3a2f; --accent: #7fc28f; --accent-soft: #1e3323; --gold: #e0b450; --gold-soft: #3a3019;
+  --neg: #ee8f78; --neg-soft: #3b2219; --blue: #8db8de; --blue-soft: #1c2b38; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap {
+  max-width: var(--maxw); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; letter-spacing: .005em; }
+h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); font-weight: 700; }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.3rem); font-weight: 700; }
+h3 { font-size: 1.35rem; font-weight: 600; }
+h4 { font-size: 1.08rem; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--gold); outline-offset: 2px;
+}
+.num, td.v, .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.muted { color: var(--muted); }
+.small { font-size: .88rem; }
+.prose { max-width: 72ch; display: grid; gap: .8rem; }
+
+/* Barra de navegação */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; gap: 1rem; min-height: 54px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.navlinks { display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.navlinks::-webkit-scrollbar { display: none; }
+.navlinks a {
+  font-family: var(--font-mono); font-size: .8rem; text-decoration: none; color: var(--muted);
+  padding: .35rem .6rem; border-radius: 999px; white-space: nowrap;
+}
+.navlinks a:hover, .navlinks a.ativo { background: var(--accent-soft); color: var(--accent); }
+
+
+/* Capa */
+.capa { position: relative; overflow: hidden; background: var(--capa-bg); color: var(--capa-ink); isolation: isolate; }
+.capa canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; }
+.capa::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(100deg, var(--capa-veu) 0%, var(--capa-veu) 38%, transparent 78%), linear-gradient(0deg, var(--capa-veu) 0%, transparent 45%); }
+.capa-in { padding-block: clamp(3.2rem, 9vw, 6.5rem) clamp(2.4rem, 6vw, 4.2rem); display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.2rem; justify-items: start; }
+.capa-sel { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--capa-ouro);
+  border: 1px solid var(--capa-ouro); padding: .3rem .65rem; border-radius: 3px; }
+.capa h1 { font-size: clamp(2.6rem, 7.4vw, 5.4rem); line-height: .98; max-width: 13ch; letter-spacing: -.005em; color: var(--capa-ink); }
+.capa h1 span { display: block; color: var(--capa-ouro); }
+.capa-lead { font-size: clamp(1.05rem, 2vw, 1.25rem); max-width: 46ch; color: var(--capa-ink); opacity: .92; }
+.capa-fichas { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .6rem 2rem; width: 100%; margin: .4rem 0 0; padding-top: .9rem; border-top: 1px solid var(--capa-linha); max-width: 52rem; }
+.capa-fichas dt { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--capa-ouro); }
+.capa-fichas dd { margin: 0; font-size: .95rem; color: var(--capa-ink); }
+.capa-btn { display: inline-block; font-weight: 600; font-size: .92rem; text-decoration: none; padding: .6rem 1.1rem; border-radius: 6px;
+  background: var(--capa-ouro); color: var(--capa-bg); border: 1px solid var(--capa-ouro); }
+.capa-btn.sec { background: transparent; color: var(--capa-ink); border-color: var(--capa-linha); }
+.capa-btn:hover { filter: brightness(1.08); }
+.abertura { padding-block: 2rem 2rem; }
+
+/* Abertura */
+.abertura { padding-block: 2.6rem 2rem; display: grid; gap: 1.4rem; }
+.abertura .lead { font-size: 1.15rem; max-width: 62ch; color: var(--muted); }
+.fichas { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; font-size: .92rem; }
+.fichas div b { display: block; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.trilha { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .6rem; counter-reset: t; }
+.trilha a {
+  display: grid; gap: .25rem; padding: .8rem .9rem; text-decoration: none; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.trilha a:hover { border-color: var(--accent); }
+.trilha .n { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); }
+.trilha b { font-family: var(--font-display); font-size: 1.05rem; line-height: 1.2; }
+.trilha small { color: var(--muted); font-size: .8rem; }
+
+/* Régua do ano agrícola */
+.regua { display: grid; grid-template-columns: repeat(12, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+.regua span { font-family: var(--font-mono); font-size: .72rem; text-align: center; padding: .35rem 0; border-right: 1px solid var(--line); }
+.regua span:last-child { border-right: 0; }
+.regua .plantio { background: var(--accent-soft); }
+.regua .colheita { background: var(--gold-soft); }
+.legenda { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .8rem; color: var(--muted); }
+.legenda i { display: inline-block; width: .8rem; height: .8rem; border-radius: 2px; vertical-align: -1px; margin-right: .3rem; }
+
+/* Tópicos */
+.topico { padding-block: 3rem 1rem; border-top: 1px solid var(--line); display: grid; gap: 2rem; }
+.topico > header { display: grid; gap: .55rem; }
+.topico > header .pergunta { font-size: 1.1rem; max-width: 64ch; }
+.topico > header .pergunta b { color: var(--accent); }
+.bloco { display: grid; gap: 1rem; min-width: 0; }
+.bloco > h3 { display: flex; align-items: baseline; gap: .6rem; }
+
+.grade { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.grade.g2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grade.g4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.cartao { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; display: grid; gap: .45rem; align-content: start; min-width: 0; }
+.cartao h4 { color: var(--ink); }
+.cartao .tag { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.cartao.ouro .tag { color: var(--gold); }
+.cartao.neg .tag { color: var(--neg); }
+.cartao.azul .tag { color: var(--blue); }
+.cartao ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .2rem; }
+
+.nota { border-left: 3px solid var(--gold); background: var(--gold-soft); padding: .75rem 1rem; border-radius: 0 var(--radius) var(--radius) 0; max-width: 80ch; }
+.nota.verde { border-color: var(--accent); background: var(--accent-soft); }
+.nota.vermelha { border-color: var(--neg); background: var(--neg-soft); }
+.nota b:first-child { font-family: var(--font-display); font-size: 1.02rem; }
+
+.formula { font-family: var(--font-mono); background: var(--surface-2); padding: .5rem .75rem; border-radius: 6px; font-size: .92rem; overflow-x: auto; }
+
+/* Tabelas */
+.tabela { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { padding: .5rem .75rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 400; background: var(--surface-2); }
+tbody tr:last-child td { border-bottom: 0; }
+td.v, th.v { text-align: right; white-space: nowrap; }
+tr.total td { font-weight: 600; background: var(--surface-2); }
+tr.res td { font-weight: 700; color: var(--accent); }
+.negv { color: var(--neg); }
+.posv { color: var(--accent); }
+
+/* Simuladores */
+.sim { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; display: grid; gap: 1rem; min-width: 0; }
+.sim .cab { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem 1rem; align-items: baseline; }
+.sim .cab .eyebrow { color: var(--gold); }
+.campos { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.campo { display: grid; gap: .25rem; font-size: .86rem; color: var(--muted); min-width: 0; }
+.campo input, .campo select, textarea {
+  font: inherit; font-family: var(--font-mono); font-size: .95rem; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: .45rem .55rem; width: 100%; min-width: 0;
+}
+textarea { font-family: var(--font-body); resize: vertical; min-height: 6.5rem; }
+input[type="range"] { accent-color: var(--accent); width: 100%; padding: 0; background: none; border: 0; }
+.saidas { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.saida { border-top: 2px solid var(--accent); padding-top: .4rem; display: grid; gap: .1rem; }
+.saida span { font-size: .8rem; color: var(--muted); }
+.saida b { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 1.15rem; font-weight: 600; }
+.saida.ouro { border-color: var(--gold); }
+.saida.neg { border-color: var(--neg); }
+.saida.azul { border-color: var(--blue); }
+.saida.neg b { color: var(--neg); }
+.botoes { display: flex; flex-wrap: wrap; gap: .5rem; }
+button {
+  font: inherit; font-size: .88rem; font-weight: 600; cursor: pointer; border-radius: 6px; padding: .45rem .85rem;
+  border: 1px solid var(--accent); background: var(--accent); color: var(--surface);
+}
+button.sec { background: transparent; color: var(--accent); }
+button:hover { filter: brightness(1.08); }
+.grafico { position: relative; height: 300px; min-width: 0; }
+.grafico.alto { height: 360px; }
+.grafico.baixo { height: 220px; }
+.chip { display: inline-block; font-family: var(--font-mono); font-size: .74rem; padding: .1rem .5rem; border-radius: 999px; background: var(--surface-2); color: var(--muted); white-space: nowrap; }
+.chip.ok { background: var(--accent-soft); color: var(--accent); }
+.chip.alerta { background: var(--gold-soft); color: var(--gold); }
+.chip.perigo { background: var(--neg-soft); color: var(--neg); }
+
+/* Diagramas */
+.ciclo { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; position: relative; }
+.ciclo .q { padding: .9rem 1rem; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); display: grid; gap: .3rem; }
+.ciclo .q b { font-family: var(--font-display); font-size: 1.15rem; }
+.ciclo .q .seta { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); }
+.ciclo .q.p { border-top: 4px solid var(--accent); }
+.ciclo .q.d { border-top: 4px solid var(--gold); }
+.ciclo .q.c { border-top: 4px solid var(--blue); }
+.ciclo .q.a { border-top: 4px solid var(--neg); }
+
+.escada { display: grid; gap: .35rem; }
+.degrau { display: grid; grid-template-columns: 2rem 1fr; align-items: center; gap: .6rem; }
+.degrau .letra { font-family: var(--font-mono); font-weight: 600; color: var(--accent); text-align: center; }
+.degrau .barra { background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: .4rem .7rem; font-size: .92rem; }
+.degrau .barra small { color: var(--muted); }
+
+.fofa { display: grid; grid-template-columns: auto 1fr 1fr; gap: .5rem; }
+.fofa .rot { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); align-self: center; }
+.fofa .rot.v { writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; }
+.fofa .cel { border-radius: var(--radius); padding: .8rem .9rem; display: grid; gap: .3rem; align-content: start; min-width: 0; }
+.fofa .cel h4 { font-size: 1rem; }
+.fofa .cel ul { margin: 0; padding-left: 1.1rem; font-size: .92rem; }
+.fofa .f { background: var(--accent-soft); }
+.fofa .o { background: var(--blue-soft); }
+.fofa .fr { background: var(--gold-soft); }
+.fofa .a { background: var(--neg-soft); }
+.fofa .cel textarea { background: var(--surface); }
+
+.gantt { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.gantt table { min-width: 860px; font-size: .86rem; }
+.gantt td, .gantt th { padding: .35rem .4rem; }
+.gantt td.m { padding: 0; border-left: 1px solid var(--line); width: 3.2%; }
+.gantt td.m.on { background: var(--accent); }
+.gantt td.m.on.adm { background: var(--gold); }
+.gantt td.m.on.mec { background: var(--blue); }
+.gantt input { width: 3.6rem; font-family: var(--font-mono); font-size: .85rem; padding: .2rem .3rem; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); }
+.gantt input.nome { width: 100%; min-width: 12rem; font-family: var(--font-body); }
+
+.zonas { display: grid; gap: .4rem; }
+.zonas .faixa { position: relative; height: 46px; border-radius: 6px; overflow: hidden; display: flex; }
+.zonas .faixa div { height: 100%; }
+.zonas .marca { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); }
+.zonas .marca span { position: absolute; top: 2px; left: 5px; font-family: var(--font-mono); font-size: .72rem; white-space: nowrap; background: var(--surface); padding: 0 .25rem; border-radius: 3px; }
+.zonas .marca.atual { background: var(--gold); width: 4px; }
+.zonas .marca.atual span { top: auto; bottom: 2px; color: var(--gold); font-weight: 600; }
+
+.linha-tempo { position: relative; padding-block: .5rem; overflow-x: auto; }
+.lt { min-width: 640px; display: grid; gap: .5rem; }
+.lt .trilho { display: grid; grid-template-columns: repeat(5, 1fr); font-size: .82rem; text-align: center; }
+.lt .trilho div { border-top: 4px solid var(--ink); padding-top: .3rem; position: relative; }
+.lt .trilho div::before { content: ""; position: absolute; top: -9px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--gold); }
+.lt .faixas { display: grid; grid-template-columns: repeat(20, 1fr); gap: 0; font-size: .78rem; font-family: var(--font-mono); }
+.lt .faixas div { padding: .35rem .5rem; border-radius: 4px; }
+.lt .pmp { grid-column: 1 / span 7; background: var(--blue-soft); color: var(--blue); }
+.lt .cc { grid-column: 8 / span 13; background: var(--neg-soft); color: var(--neg); }
+
+
+/* Praticar */
+.cad-grupo { display: grid; gap: 1rem; }
+.cad-grupo > h3 { padding-top: .6rem; border-top: 2px solid var(--accent); }
+.ex { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.ex > summary { cursor: pointer; list-style: none; padding: .85rem 1.1rem; display: flex; flex-wrap: wrap; gap: .3rem 1rem; justify-content: space-between; align-items: baseline; }
+.ex > summary::-webkit-details-marker { display: none; }
+.ex > summary h4 { display: inline; }
+.ex > summary h4::before { content: "▸ "; color: var(--accent); }
+.ex[open] > summary h4::before { content: "▾ "; }
+.ex .corpo { padding: 0 1.1rem 1.1rem; display: grid; gap: .9rem; min-width: 0; }
+.ex .enun { max-width: 80ch; display: grid; gap: .4rem; font-size: .95rem; }
+.ex .enun ul { margin: 0; padding-left: 1.2rem; }
+.ex .campos .campo span.r { color: var(--ink); }
+.ex input.resp, .ex select.resp {
+  font-family: var(--font-mono); font-size: .92rem; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 5px; padding: .38rem .5rem; width: 100%; min-width: 0;
+}
+.ex table input.resp { min-width: 6.4rem; text-align: right; padding: .3rem .4rem; }
+.ex .resp.ok { border-color: var(--accent); background: var(--accent-soft); }
+.ex .resp.erro { border-color: var(--neg); background: var(--neg-soft); }
+.ex small.gab { font-family: var(--font-mono); font-size: .76rem; color: var(--accent); display: block; }
+.ex td.fixo { font-family: var(--font-mono); text-align: right; color: var(--muted); white-space: nowrap; }
+.ex .coment { font-size: .92rem; max-width: 80ch; }
+
+/* Quiz */
+.quiz { display: grid; gap: .9rem; }
+.quiz .placar { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; }
+.questao { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; display: grid; gap: .6rem; }
+.questao .enun { font-weight: 600; }
+.questao .enun .eyebrow { display: block; margin-bottom: .2rem; font-weight: 400; }
+.opcoes { display: grid; gap: .35rem; }
+.opcao {
+  text-align: left; font-weight: 400; background: var(--bg); color: var(--ink); border: 1px solid var(--line);
+  display: grid; grid-template-columns: 1.7rem 1fr; gap: .4rem; align-items: start; padding: .5rem .7rem;
+}
+.opcao .l { font-family: var(--font-mono); font-weight: 600; color: var(--muted); }
+.opcao:hover:not([disabled]) { border-color: var(--accent); filter: none; }
+.opcao[disabled] { cursor: default; }
+.opcao.certa { background: var(--accent-soft); border-color: var(--accent); }
+.opcao.errada { background: var(--neg-soft); border-color: var(--neg); }
+.feedback { font-size: .93rem; display: grid; gap: .3rem; padding: .6rem .8rem; border-radius: 6px; background: var(--surface-2); }
+.feedback .v { font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; }
+.feedback .v.ok { color: var(--accent); }
+.feedback .v.no { color: var(--neg); }
+
+details.gab { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .7rem 1rem; }
+details.gab summary { cursor: pointer; font-weight: 600; }
+details.gab[open] summary { margin-bottom: .6rem; }
+
+.docs { display: grid; gap: .6rem; }
+.doc { display: grid; grid-template-columns: auto 1fr auto; gap: .3rem 1rem; align-items: center; padding: .8rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.doc .fmt { font-family: var(--font-mono); font-size: .75rem; font-weight: 600; padding: .25rem .45rem; border-radius: 4px; background: var(--surface-2); color: var(--muted); }
+.doc .fmt.xlsx { background: var(--accent-soft); color: var(--accent); }
+.doc .fmt.pdf { background: var(--neg-soft); color: var(--neg); }
+.doc .fmt.docx { background: var(--blue-soft); color: var(--blue); }
+.doc div { min-width: 0; }
+.doc small { color: var(--muted); display: block; }
+@media (max-width: 560px) { .doc { grid-template-columns: auto 1fr; } .doc a.baixar { grid-column: 1 / -1; } }
+
+dl.glossario { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .8rem 1.4rem; margin: 0; }
+dl.glossario div { display: grid; gap: .15rem; }
+dt { font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; }
+dd { margin: 0; color: var(--muted); font-size: .93rem; }
+.refs { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; font-size: .93rem; max-width: 90ch; }
+
+footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-block: 1.6rem 2.4rem; color: var(--muted); font-size: .88rem; }
+
+@media (max-width: 560px) {
+  .ciclo { grid-template-columns: 1fr; }
+  .fofa { grid-template-columns: 1fr; }
+  .fofa .rot { display: none; }
+  .grafico { height: 260px; }
+  .brand { display: none; }
+}
+</style>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Contabilidade Rural</a>
+    <nav class="navlinks" aria-label="Tópicos do curso">
+      <a href="#t1">1 · Raio X</a>
+      <a href="#t2">2 · Planejamento</a>
+      <a href="#t3">3 · Contabilidade</a>
+      <a href="#t4">4 · COE e COT</a>
+      <a href="#t5">5 · Fluxo de caixa</a>
+      <a href="#t6">6 · Tributação</a>
+      <a href="#praticar">Praticar</a>
+      <a href="#atividades">Atividades</a>
+      <a href="#glossario">Glossário</a>
+    </nav>
+  </div>
+</div>
+
+<section class="capa" id="inicio" aria-label="Capa do curso">
+  <canvas id="capaArte" aria-hidden="true"></canvas>
+  <div class="wrap capa-in">
+    <p class="capa-sel">Curso de qualificação profissional · Sorriso e Sinop-MT · 2026</p>
+    <h1><span>Auxiliar Administrativo</span> em Contabilidade Rural</h1>
+    <p class="capa-lead">Da porteira para dentro: como a fazenda se organiza, registra o que tem e o que deve, apura custos, controla o caixa da safra e paga seus tributos.</p>
+    <dl class="capa-fichas">
+      <div><dt>Professor</dt><dd>Cleiton Franco</dd></div>
+      <div><dt>Conteúdo</dt><dd>6 tópicos · atividades · avaliação final</dd></div>
+      <div><dt>Público</dt><dd>Auxiliares administrativos e gestores rurais</dd></div>
+      <div><dt>Ano agrícola</dt><dd>setembro a agosto</dd></div>
+    </dl>
+    <div class="botoes"><a class="capa-btn" href="#t1">Começar pelo Tópico 1</a><a class="capa-btn sec" href="#atividades">Atividades</a></div>
+  </div>
+</section>
+
+<main class="wrap">
+
+<header class="abertura">
+  <p class="lead">Cada tópico traz o conteúdo da aula, exemplos com números reais de Mato Grosso, simuladores para testar hipóteses e questões de revisão com correção na hora.</p>
+  <nav class="trilha" aria-label="Sequência do curso">
+    <a href="#t1"><span class="n">Tópico 1 · 14/09</span><b>Raio X da gestão rural</b><small>Empresa rural, contratos, PF × PJ</small></a>
+    <a href="#t2"><span class="n">Tópico 2 · 05/10</span><b>Gestão e planejamento</b><small>PDCA, FOFA, Gantt, inventário</small></a>
+    <a href="#t3"><span class="n">Tópico 3 · 06/10</span><b>Contabilidade na gestão</b><small>Princípios, BP, DRE, depreciação</small></a>
+    <a href="#t4"><span class="n">Tópico 4 · 08/10</span><b>Custos: COE e COT</b><small>Margens, nivelamento, equilíbrio</small></a>
+    <a href="#t5"><span class="n">Tópico 5 · 08/10</span><b>Fluxo de caixa</b><small>Lucro × caixa, vale da safra</small></a>
+    <a href="#t6"><span class="n">Tópico 6 · 08/10</span><b>Tributação rural</b><small>IRPF, Lucro Presumido, Funrural</small></a>
+  </nav>
+  <div class="bloco">
+    <p class="small muted">O calendário que organiza todo o curso: soja de setembro a fevereiro, milho safrinha de fevereiro a julho, fechamento em agosto.</p>
+    <div class="regua" aria-label="Ano agrícola de setembro a agosto">
+      <span class="plantio">Set</span><span class="plantio">Out</span><span class="plantio">Nov</span><span>Dez</span><span>Jan</span><span class="colheita">Fev</span><span class="colheita">Mar</span><span>Abr</span><span>Mai</span><span class="colheita">Jun</span><span class="colheita">Jul</span><span>Ago</span>
+    </div>
+    <div class="legenda"><span><i style="background:var(--accent-soft)"></i>Plantio e custeio pesado</span><span><i style="background:var(--gold-soft)"></i>Colheitas e entradas de caixa</span></div>
+  </div>
+</header>
+
+<!-- ============ TÓPICO 1 ============ -->
+<section class="topico" id="t1">
+  <header>
+    <p class="eyebrow">Tópico 1 · 14/09/2026</p>
+    <h2>Raio X da gestão rural</h2>
+    <p class="pergunta"><b>Pergunta-chave:</b> o que transforma uma fazenda em empresa rural, e qual estrutura jurídica e contratual protege o patrimônio e reduz impostos?</p>
+  </header>
+
+  <div class="bloco">
+    <h3>O que é empresa rural</h3>
+    <div class="prose">
+      <p>O Estatuto da Terra (Lei n. 4.504/64) não define a empresa rural pelo CNPJ, e sim pela natureza da exploração. É empresa rural a <b>pessoa física ou jurídica, pública ou privada, que explora de forma racional e contínua um imóvel rural</b>, atinge rendimento econômico compatível com a região e explora a área mínima agricultável.</p>
+      <p>Um produtor com CPF que planta 300 ha de soja com gestão, registro e continuidade é empresa rural. Um CNPJ que só possui terra parada, não.</p>
+    </div>
+    <div class="grade g4">
+      <div class="cartao"><span class="tag">Grupo 1</span><h4>Agricultura</h4><p class="small">Cultivo e colheita: soja, milho, algodão, hortaliças, culturas permanentes.</p></div>
+      <div class="cartao"><span class="tag">Grupo 2</span><h4>Pecuária</h4><p class="small">Criação de bovinos, suínos, aves, peixes; cria, recria e engorda.</p></div>
+      <div class="cartao"><span class="tag">Grupo 3</span><h4>Extração e exploração</h4><p class="small">Extração vegetal e animal, apicultura, exploração de pequenos animais.</p></div>
+      <div class="cartao"><span class="tag">Grupo 4</span><h4>Transformação in natura</h4><p class="small">Processamento primário que não altera a composição do produto: pasteurizar e embalar leite, descascar e secar grãos.</p></div>
+    </div>
+    <p class="small muted">Classificação da Lei n. 8.023/90. A pasteurização do leite é o exemplo clássico do grupo 4: o produto muda de forma, mas não de composição química.</p>
+  </div>
+
+  <div class="bloco">
+    <h3>Particularidades que a contabilidade precisa respeitar</h3>
+    <div class="grade">
+      <div class="cartao"><span class="tag">Exercício social</span><h4>Ano agrícola ≠ ano civil</h4><p class="small">O exercício é fixado pela colheita da cultura de maior representatividade econômica. Em MT, a fazenda de soja costuma fechar após a colheita, e não em 31 de dezembro.</p></div>
+      <div class="cartao"><span class="tag">Culturas</span><h4>Temporárias × permanentes</h4><p class="small">Temporária exige replantio a cada safra (soja, milho, feijão). Permanente dá várias colheitas da mesma planta (café, laranja, eucalipto em ciclos) e entra no ativo imobilizado.</p></div>
+      <div class="cartao"><span class="tag">Contexto MT</span><h4>Margem estreita, risco alto</h4><p class="small">Insumos dolarizados, frete até os portos e clima. A resposta é profissionalizar: contabilidade de precisão e contratos bem feitos.</p></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Pessoa física ou pessoa jurídica?</h3>
+    <div class="tabela"><table>
+      <thead><tr><th>Dimensão</th><th>Produtor pessoa física (CPF)</th><th>Pessoa jurídica (CNPJ)</th></tr></thead>
+      <tbody>
+        <tr><td>Escrituração</td><td>Livro Caixa / LCDPR (obrigatório acima de R$ 4,8 milhões de receita)</td><td>Contabilidade completa por partidas dobradas</td></tr>
+        <tr><td>Patrimônio</td><td>Patrimônio da família exposto a dívidas trabalhistas e comerciais</td><td>Separação patrimonial (SLU, Ltda.)</td></tr>
+        <tr><td>Tributação</td><td>IRPF progressivo sobre o resultado ou sobre 20% da receita</td><td>Lucro Presumido, Real ou Simples. PIS e COFINS incidem sobre a receita mesmo em ano de prejuízo</td></tr>
+        <tr><td>Formas societárias</td><td>—</td><td>Empresário individual (sem separação), SLU (separação sem sócios), Ltda. (vários sócios), S.A. (grande porte)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="bloco">
+    <h3>Os quatro contratos agrários</h3>
+    <p class="small muted">Lei n. 4.504/64 e Decreto n. 59.566/66.</p>
+    <div class="tabela"><table>
+      <thead><tr><th>Contrato</th><th>Como funciona</th><th>Receita do proprietário</th><th>Risco principal</th></tr></thead>
+      <tbody>
+        <tr><td><b>Arrendamento</b></td><td>Cede o uso da terra por prazo, mediante renda fixa</td><td>Fixa e previsível, independe da safra. Tributada como aluguel (Carnê-Leão, até 27,5%)</td><td>Perde o controle da área e não captura uma supersafra</td></tr>
+        <tr><td><b>Parceria</b></td><td>Proprietário e produtor dividem custos e resultados</td><td>Variável, conforme a produção. Tributada como atividade rural</td><td>Receita oscila com clima e preço</td></tr>
+        <tr><td><b>Comodato</b></td><td>Empréstimo gratuito por prazo determinado, com devolução no mesmo estado</td><td>Nenhuma</td><td>Conservação do bem</td></tr>
+        <tr><td><b>Condomínio</b></td><td>Exploração conjunta da mesma terra por vários produtores</td><td>Conforme a cota de cada um</td><td>Governança entre os condôminos</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sim" id="simContrato">
+      <div class="cab"><h4>Arrendamento ou parceria: quanto fica no bolso?</h4><span class="eyebrow">Simulador</span></div>
+      <p class="small muted">Proprietário já na faixa de 27,5% do IRPF. Arrendamento: aluguel no Carnê-Leão, 27,5% sobre a renda. Parceria: presunção de 20% × 27,5% = alíquota efetiva de 5,5% sobre a receita.</p>
+      <div class="campos">
+        <label class="campo" for="ctReceita">Receita do contrato no ano (R$)<input id="ctReceita" type="number" min="0" step="1000" value="1000"></label>
+      </div>
+      <div class="saidas">
+        <div class="saida neg"><span>Arrendamento: líquido</span><b id="ctArr">—</b></div>
+        <div class="saida"><span>Parceria: líquido</span><b id="ctPar">—</b></div>
+        <div class="saida ouro"><span>Economia da parceria</span><b id="ctEco">—</b></div>
+      </div>
+      <div class="nota vermelha small"><b>Operação Declara Grãos.</b> Contrato de parceria no papel com aluguel fixo mensal na prática, sem nota fiscal da parte do proprietário, é arrendamento disfarçado. O resultado é autuação por sonegação, multa pesada e possível bloqueio de bens.</div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Holding rural</h3>
+    <div class="grade">
+      <div class="cartao"><span class="tag">Integralização</span><h4>Do CPF para o CNPJ</h4><p class="small">Terras e bens saem do CPF do produtor e formam o capital social da holding. A fazenda física vira quotas. Integralizar <b>não é</b> doar aos herdeiros.</p></div>
+      <div class="cartao"><span class="tag">Sucessão</span><h4>Quotas em vez de hectares</h4><p class="small">Os herdeiros recebem quotas, evitando disputa por hectares em inventário caro e demorado.</p></div>
+      <div class="cartao"><span class="tag">Governança</span><h4>Acordo de sócios</h4><p class="small">Regras claras impedem a venda de quotas a terceiros e dão gestão empresarial aos arrendamentos, contratos e contas.</p></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Revisão do Tópico 1</h3>
+    <p class="small muted">As 14 questões da avaliação de aprendizagem do Tópico 1. Clique na alternativa: a correção aparece na hora.</p>
+    <div class="quiz" data-quiz="t1"></div>
+  </div>
+</section>
+
+<!-- ============ TÓPICO 2 ============ -->
+<section class="topico" id="t2">
+  <header>
+    <p class="eyebrow">Tópico 2 · 05/10/2026</p>
+    <h2>Gestão e planejamento rural</h2>
+    <p class="pergunta"><b>Pergunta-chave:</b> como sair do improviso e planejar a safra, do diagnóstico de longo prazo à rotina de cada dia?</p>
+  </header>
+
+  <div class="bloco">
+    <h3>O motor da administração: quatro funções em ciclo</h3>
+    <div class="ciclo">
+      <div class="q p"><span class="seta">1 → 2</span><b>Planejamento</b><p class="small">Desenhar o caminho: estado atual × futuro desejado. Resultado: Plano de Desenvolvimento Institucional (PDI).</p></div>
+      <div class="q d"><span class="seta">2 → 3</span><b>Organização</b><p class="small">Recursos físicos, financeiros e humanos certos, no lugar certo e no tempo certo (organograma).</p></div>
+      <div class="q a"><span class="seta">4 → 1</span><b>Controle</b><p class="small">Medir e corrigir: metas, coleta de dados, comparação e análise do planejado com o executado.</p></div>
+      <div class="q c"><span class="seta">3 → 4</span><b>Direção</b><p class="small">Liderança, comunicação e distribuição de responsabilidades. Mais importante que saber quem é o chefe é saber quem é o líder.</p></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Ciclo PDCA aplicado à fazenda</h3>
+    <div class="grade g4">
+      <div class="cartao"><span class="tag">P · Planejar</span><p class="small">Plano de plantio, dimensionamento de insumos e definição de metas.</p></div>
+      <div class="cartao ouro"><span class="tag">D · Fazer</span><p class="small">Alocar recursos, delegar tarefas e executar o calendário agropecuário.</p></div>
+      <div class="cartao azul"><span class="tag">C · Checar</span><p class="small">Coletar dados de campo e comparar metas com resultados técnicos e econômicos.</p></div>
+      <div class="cartao neg"><span class="tag">A · Agir</span><p class="small">Corrigir o que falhou e padronizar o que deu certo. O padrão alimenta o próximo Planejar.</p></div>
+    </div>
+    <div class="sim">
+      <div class="cab"><h4>Plano de ação da fazenda</h4><span class="eyebrow">Da planilha do Tópico 2</span></div>
+      <div class="saidas" id="pdcaPainel"></div>
+      <div class="tabela"><table>
+        <thead><tr><th>Etapa</th><th>Ação</th><th>Responsável</th><th>Prazo</th><th>Meta</th><th>Situação</th></tr></thead>
+        <tbody id="pdcaTab"></tbody>
+      </table></div>
+      <p class="small muted">Uma ação sem responsável e sem prazo não é ação, é intenção.</p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Os quatro pilares e os três horizontes</h3>
+    <div class="grade g4">
+      <div class="cartao"><span class="tag">Produção</span><p class="small">Terra, maquinário e biologia. Tecnologia adequada e insumos comprados na hora certa.</p></div>
+      <div class="cartao"><span class="tag">Recursos humanos</span><p class="small">Liderança, competências, mão de obra capacitada.</p></div>
+      <div class="cartao"><span class="tag">Econômico-financeira</span><p class="small">Caixa, custos, crédito rural e política agrícola.</p></div>
+      <div class="cartao"><span class="tag">Comercialização</span><p class="small">Conhecimento de mercado, precificação, venda.</p></div>
+    </div>
+    <div class="tabela"><table>
+      <thead><tr><th>Nível</th><th>Prazo</th><th>Foco</th><th>Ferramenta / resultado</th></tr></thead>
+      <tbody>
+        <tr><td><b>Estratégico</b></td><td>Longo prazo</td><td>O rumo da empresa: oportunidades e ameaças externas, pontos fortes e fracos internos</td><td>PDI, matriz FOFA</td></tr>
+        <tr><td><b>Tático</b></td><td>Curto e médio prazo (uma safra)</td><td>Operações e recursos específicos: um plantio, um silo, um confinamento</td><td>Orçamento e gráfico de Gantt</td></tr>
+        <tr><td><b>Operacional</b></td><td>Rotina diária</td><td>Racionalização das tarefas e especialização da equipe</td><td>Programação de tarefas e roteiros</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grade g4">
+      <div class="cartao"><h4>O que produzir?</h4><p class="small">Coerente com a missão e os objetivos da empresa.</p></div>
+      <div class="cartao"><h4>Como produzir?</h4><p class="small">Tecnologia e método. Milho em plantio direto ou convencional?</p></div>
+      <div class="cartao"><h4>Quanto produzir?</h4><p class="small">Volume e metas para otimizar preço.</p></div>
+      <div class="cartao"><h4>Quando produzir?</h4><p class="small">Sincronia com clima e biologia: o milho exige chuva na formação do grão, e o plantio obedece a essa janela.</p></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Diagnóstico estratégico: matriz FOFA</h3>
+    <p class="small muted">Interno é o que está sob controle do produtor. Externo vem do mercado e da natureza. Caso: Fazenda Recanto do Lago, 37 ha, produção leiteira.</p>
+    <div class="fofa">
+      <span></span><span class="rot">Ajuda</span><span class="rot">Atrapalha</span>
+      <span class="rot v">Interno</span>
+      <div class="cel f"><h4>Forças</h4><ul><li>Solo com alta fertilidade</li><li>Boa disponibilidade de água</li><li>Topografia plana</li><li>Bom potencial genético do rebanho</li></ul></div>
+      <div class="cel fr"><h4>Fraquezas</h4><ul><li>Pouco capital de giro</li><li>Áreas degradadas</li><li>Sem ordenha mecanizada</li><li>Produção insuficiente de volumoso</li></ul></div>
+      <span class="rot v">Externo</span>
+      <div class="cel o"><h4>Oportunidades</h4><ul><li>Assistência técnica e gerencial (ATeG)</li><li>Proximidade de centros consumidores</li><li>Malha rodoviária em boas condições</li><li>Linhas de crédito atrativas</li></ul></div>
+      <div class="cel a"><h4>Ameaças</h4><ul><li>Instabilidades climáticas</li><li>Custo de oportunidade da terra elevado</li><li>Instabilidade do preço do leite</li><li>Alta dos insumos</li></ul></div>
+    </div>
+    <div class="sim">
+      <div class="cab"><h4>Minha propriedade</h4><span class="eyebrow">Exercício · um item por linha</span></div>
+      <div class="fofa">
+        <span></span><span class="rot">Ajuda</span><span class="rot">Atrapalha</span>
+        <span class="rot v">Interno</span>
+        <label class="cel f" for="fofaF"><h4>Forças <span class="chip" id="fofaFn">0</span></h4><textarea id="fofaF" data-fofa="F" placeholder="Ex.: equipe experiente na colheita"></textarea></label>
+        <label class="cel fr" for="fofaFr"><h4>Fraquezas <span class="chip" id="fofaFrn">0</span></h4><textarea id="fofaFr" data-fofa="Fr" placeholder="Ex.: não há controle de custo por talhão"></textarea></label>
+        <span class="rot v">Externo</span>
+        <label class="cel o" for="fofaO"><h4>Oportunidades <span class="chip" id="fofaOn">0</span></h4><textarea id="fofaO" data-fofa="O" placeholder="Ex.: nova armazenadora na região"></textarea></label>
+        <label class="cel a" for="fofaA"><h4>Ameaças <span class="chip" id="fofaAn">0</span></h4><textarea id="fofaA" data-fofa="A" placeholder="Ex.: veranico em janeiro"></textarea></label>
+      </div>
+      <p class="small muted">O texto fica salvo apenas neste navegador. Como ler: uma força que aproveita uma oportunidade vira prioridade; uma fraqueza exposta a uma ameaça é o risco a tratar primeiro. O que é externo não se corrige, se antecipa.</p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Cronograma da safra: gráfico de Gantt</h3>
+    <p class="small muted">Mês de início: 1 = setembro, 12 = agosto. Altere início e duração e a barra se redesenha. O valor do cronograma está nas dependências: se o preparo do solo atrasa, o plantio desloca e a colheita sai da janela climática.</p>
+    <div class="gantt"><table>
+      <thead><tr><th>Atividade</th><th>Responsável</th><th>Início</th><th>Duração</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th><th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Ago</th></tr></thead>
+      <tbody id="ganttTab"></tbody>
+    </table></div>
+    <div class="legenda"><span><i style="background:var(--accent)"></i>Campo</span><span><i style="background:var(--gold)"></i>Administrativo</span><span><i style="background:var(--blue)"></i>Mecânica</span><span id="ganttTotal" class="mono"></span></div>
+  </div>
+
+  <div class="bloco">
+    <h3>Inventário rural: os quatro capitais e a escada de liquidez</h3>
+    <div class="grade g4">
+      <div class="cartao"><span class="tag">Físico</span><p class="small">Máquinas, construções, benfeitorias, equipamentos. Exige controle do estado de uso e da vida útil.</p></div>
+      <div class="cartao"><span class="tag">Financeiro</span><p class="small">Caixa, contas a receber, estoques de insumos e produtos.</p></div>
+      <div class="cartao"><span class="tag">Natural</span><p class="small">Fertilidade do solo, topografia, recursos hídricos, florestas.</p></div>
+      <div class="cartao"><span class="tag">Humano</span><p class="small">Administrador, gerente, inseminador, tratorista.</p></div>
+    </div>
+    <div class="grade g2">
+      <div class="cartao">
+        <span class="tag">Ativos · do menos para o mais líquido</span>
+        <p class="small">Liquidez é a facilidade de transformar o bem em dinheiro sem perder valor.</p>
+        <div class="escada">
+          <div class="degrau"><span class="letra">A</span><div class="barra" style="width:45%">Terras e culturas <small>menor liquidez</small></div></div>
+          <div class="degrau"><span class="letra">B</span><div class="barra" style="width:55%">Construções e benfeitorias</div></div>
+          <div class="degrau"><span class="letra">C</span><div class="barra" style="width:65%">Máquinas e equipamentos</div></div>
+          <div class="degrau"><span class="letra">D</span><div class="barra" style="width:75%">Animais de produção e trabalho</div></div>
+          <div class="degrau"><span class="letra">E</span><div class="barra" style="width:87%">Produtos e insumos em estoque</div></div>
+          <div class="degrau"><span class="letra">F</span><div class="barra" style="width:100%">Depósitos em bancos <small>maior liquidez</small></div></div>
+        </div>
+      </div>
+      <div class="cartao neg">
+        <span class="tag">Passivos · por exigibilidade</span>
+        <h4>G · Financiamentos</h4><p class="small">Curto prazo (ano corrente), médio (até 5 anos) e longo (mais de 5 anos).</p>
+        <h4>H · Obrigações financeiras</h4><p class="small">Salários, encargos, impostos.</p>
+        <p class="small muted">No Balanço Patrimonial societário a mesma dívida aparece como Passivo Circulante ou Não Circulante. São classificações diferentes para instrumentos diferentes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Toda decisão aparece no Balanço e na DRE</h3>
+    <div class="tabela"><table>
+      <thead><tr><th>Painel</th><th>Contexto e ação</th><th>Impacto no BP</th><th>Impacto na DRE</th></tr></thead>
+      <tbody>
+        <tr><td><b>Estratégico</b><br><span class="small muted">longo prazo</span></td><td>Fazenda Nova Esperança, 500 ha de soja e milho. Implanta ILPF em 200 ha ao longo de 7 anos e busca certificação ambiental.</td><td><span class="chip ok">↑ Ativo imobilizado</span> pastagens, reflorestamento, máquinas adaptadas</td><td>Custos maiores na implantação; receita e valor de mercado maiores no longo prazo</td></tr>
+        <tr><td><b>Tático</b><br><span class="small muted">uma safra</span></td><td>Fazenda Boa Colheita, 300 ha de soja. Financia 50% do custeio na cooperativa e trava em contrato futuro 40% da produção.</td><td><span class="chip alerta">↑ Passivo circulante</span> empréstimo pago na safra</td><td>Menor volatilidade da receita: o preço travado protege a margem</td></tr>
+        <tr><td><b>Operacional</b><br><span class="small muted">diário</span></td><td>Fazenda Santa Clara, 150 ha de milho. Trator parado atrasou a colheita; implanta manutenção preventiva mensal e diaristas só na semana crítica.</td><td>Menor perda de valor da máquina (vida útil maior)</td><td>Leve alta no custo de manutenção; queda forte nas perdas de campo</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="bloco">
+    <h3>Revisão do Tópico 2</h3>
+    <div class="quiz" data-quiz="t2"></div>
+  </div>
+</section>
+
+<!-- ============ TÓPICO 3 ============ -->
+<section class="topico" id="t3">
+  <header>
+    <p class="eyebrow">Tópico 3 · 06/10/2026</p>
+    <h2>Contabilidade na gestão rural</h2>
+    <p class="pergunta"><b>Pergunta-chave:</b> como a fazenda mostra ao banco, ao fisco e ao próprio dono quanto tem, quanto deve e quanto ganhou na safra?</p>
+  </header>
+
+  <div class="bloco">
+    <h3>A regra de ouro: princípio da entidade</h3>
+    <div class="grade g2">
+      <div class="cartao"><span class="tag">Caixa da fazenda</span><p>Dinheiro que entra da soja e sai para insumos, diesel e salários. Totalmente focado na atividade rural.</p></div>
+      <div class="cartao ouro"><span class="tag">Conta pessoal da família</span><p>Escola, viagens, carro, piscina. Não gera receita para a fazenda e não entra no Balanço Patrimonial rural.</p></div>
+    </div>
+    <div class="sim">
+      <div class="cab"><h4>Estudo de caso: o vazamento oculto da Fazenda Boa Colheita</h4><span class="eyebrow">300 ha de soja · R$ 1,35 milhão de receita</span></div>
+      <div class="grade g2">
+        <div class="grafico baixo"><canvas id="gEntidade" aria-label="Gráfico comparando o lucro da DRE misturada com o da DRE segregada"></canvas></div>
+        <div class="prose small">
+          <p>O Sr. João quer crédito no banco. Na DRE misturada, R$ 210.000 de despesas da família (escola, viagem, carro) aparecem como se fossem da fazenda. O lucro apresentado cai de <b class="num">R$ 670.000</b> para <b class="num">R$ 460.000</b>.</p>
+          <p>O banco enxerga uma margem artificialmente baixa e reduz a capacidade de pagamento. O carro de R$ 120.000 comprado no CNPJ sabota o acesso a crédito com juros baixos.</p>
+          <p><b>Solução:</b> contas bancárias separadas e um pró-labore fixo mensal transferido para a conta da família.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Princípios de calibragem do negócio</h3>
+    <div class="grade g4">
+      <div class="cartao"><span class="tag">Competência</span><h4>O cronômetro</h4><p class="small">Receitas e despesas entram no período em que ocorrem, não quando o dinheiro entra ou sai. Soja vendida em novembro para receber em março é receita de novembro.</p></div>
+      <div class="cartao"><span class="tag">Continuidade</span><h4>A bússola</h4><p class="small">A contabilidade pressupõe que a fazenda continuará operando. Base para o banco avaliar riscos de longo prazo.</p></div>
+      <div class="cartao"><span class="tag">Prudência</span><h4>O freio</h4><p class="small">Na dúvida, estimativas conservadoras: não superestime a safra futura nem subestime a dívida.</p></div>
+      <div class="cartao"><span class="tag">Valor original</span><h4>A balança</h4><p class="small">Bens entram pelo valor pago. A terra comprada há 10 anos fica pelo custo de aquisição, não pela especulação de hoje.</p></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>A tríade contábil</h3>
+    <div class="grade">
+      <div class="cartao"><span class="tag">Fotografia</span><h4>Balanço Patrimonial (BP)</h4><p class="small">Ativo = Passivo + Patrimônio Líquido. A riqueza num dia específico. Avalia endividamento e solidez.</p></div>
+      <div class="cartao ouro"><span class="tag">Filme</span><h4>Demonstração do Resultado (DRE)</h4><p class="small">Receitas − custos e despesas = lucro ou prejuízo do ano agrícola. Mede rentabilidade e eficiência.</p></div>
+      <div class="cartao azul"><span class="tag">Respiração</span><h4>Fluxo de Caixa (FC)</h4><p class="small">Entradas e saídas de dinheiro. Garante a sobrevivência e a capacidade de pagar as contas.</p></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Balanço Patrimonial: onde o dinheiro foi aplicado e de onde veio</h3>
+    <div class="sim" id="simBP">
+      <div class="cab"><h4>Monte o balanço</h4><span class="eyebrow">Simulador · exemplo: Fazenda Boa Terra, abril de 2026</span></div>
+      <div class="grade g2">
+        <div class="campos">
+          <label class="campo" for="bpCaixa">Caixa e bancos<input id="bpCaixa" type="number" step="1000" value="93000"></label>
+          <label class="campo" for="bpEstoque">Estoques (grãos, insumos)<input id="bpEstoque" type="number" step="1000" value="0"></label>
+          <label class="campo" for="bpMaq">Máquinas e equipamentos<input id="bpMaq" type="number" step="1000" value="570000"></label>
+          <label class="campo" for="bpTerra">Terras (valor original)<input id="bpTerra" type="number" step="1000" value="1000000"></label>
+          <label class="campo" for="bpDep">(−) Depreciação acumulada<input id="bpDep" type="number" step="1000" value="0"></label>
+        </div>
+        <div class="campos">
+          <label class="campo" for="bpForn">Fornecedores, salários e tributos a pagar<input id="bpForn" type="number" step="1000" value="0"></label>
+          <label class="campo" for="bpEmpCP">Empréstimos de curto prazo<input id="bpEmpCP" type="number" step="1000" value="300000"></label>
+          <label class="campo" for="bpEmpLP">Financiamentos de longo prazo<input id="bpEmpLP" type="number" step="1000" value="0"></label>
+        </div>
+      </div>
+      <div class="saidas">
+        <div class="saida"><span>Total do ativo</span><b id="bpAtivo">—</b></div>
+        <div class="saida neg"><span>Passivo exigível</span><b id="bpPass">—</b></div>
+        <div class="saida ouro"><span>Patrimônio Líquido (riqueza real)</span><b id="bpPL">—</b></div>
+        <div class="saida azul"><span>Endividamento (passivo ÷ ativo)</span><b id="bpEnd">—</b></div>
+      </div>
+      <div class="grafico baixo"><canvas id="gBP" aria-label="Gráfico do Balanço Patrimonial: ativo de um lado, passivo e patrimônio líquido do outro"></canvas></div>
+      <p class="small muted">Teste: pague parte do empréstimo com o caixa (diminua os dois campos pelo mesmo valor) e observe o que acontece com o Patrimônio Líquido. Depois compre uma máquina à vista.</p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>A DRE da empresa rural: do grão ao resultado</h3>
+    <div class="grade g2">
+      <div class="tabela"><table>
+        <thead><tr><th>Linha</th><th class="v">R$</th></tr></thead>
+        <tbody>
+          <tr><td>(+) Receita bruta <span class="small muted">grãos, animais, leite</span></td><td class="v">1.350.000</td></tr>
+          <tr><td>(−) Deduções <span class="small muted">Funrural, PIS e COFINS quando cabíveis</span></td><td class="v negv">(20.000)</td></tr>
+          <tr class="total"><td>(=) Receita líquida</td><td class="v">1.330.000</td></tr>
+          <tr><td>(−) Custo da produção vendida <span class="small muted">insumos, mão de obra do campo, diesel, depreciação</span></td><td class="v negv">(680.000)</td></tr>
+          <tr class="total"><td>(=) Margem bruta</td><td class="v">650.000</td></tr>
+          <tr><td>(−) Despesas administrativas</td><td class="v negv">(60.000)</td></tr>
+          <tr><td>(−) Despesas financeiras <span class="small muted">juros de custeio</span></td><td class="v negv">(45.000)</td></tr>
+          <tr class="res"><td>(=) Resultado do exercício</td><td class="v">545.000</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grafico alto"><canvas id="gDRE" aria-label="Gráfico em cascata da DRE"></canvas></div>
+    </div>
+    <p class="small muted">Valores ilustrativos do Tópico 3. Separar custo de produção de despesa mostra se o problema está na lavoura ou no escritório. Números entre parênteses são negativos, como no padrão contábil.</p>
+  </div>
+
+  <div class="bloco">
+    <h3>Custos, renda e receita</h3>
+    <div class="tabela"><table>
+      <thead><tr><th></th><th>Custos variáveis</th><th>Custos fixos</th></tr></thead>
+      <tbody>
+        <tr><td><b>Comportamento</b></td><td>Variam com a quantidade produzida</td><td>Não mudam no curto prazo</td></tr>
+        <tr><td><b>Controle</b></td><td>Evitáveis se não houver produção</td><td>Ocorrem mesmo com o recurso parado</td></tr>
+        <tr><td><b>Exemplos</b></td><td>Sementes, ração, fertilizantes, defensivos, combustível, mão de obra temporária</td><td>Salários fixos, arrendamento, depreciação de máquinas, manutenção de benfeitorias</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grade g2">
+      <div class="cartao"><span class="tag">Receita</span><h4>O que foi vendido</h4><p class="small">Valor obtido pela venda da produção (Crepaldi).</p></div>
+      <div class="cartao ouro"><span class="tag">Renda</span><h4>Tudo o que foi produzido</h4><p class="small">Vendas + consumo da família + uso interno (milho para engorda) + formação de estoques (Rezende e Oliveira).</p></div>
+    </div>
+    <p class="small muted">Custos diretos ligam-se a uma cultura (sementes de soja). Indiretos são compartilhados e exigem rateio (conservação geral de máquinas). Custeio por absorção inclui fixos e variáveis no custo do produto; custeio variável considera só os variáveis e serve para decisões rápidas.</p>
+  </div>
+
+  <div class="bloco">
+    <h3>Depreciação: o custo invisível da sobrevivência</h3>
+    <div class="prose"><p>A depreciação não sai do caixa no mês, mas é custo real. Quem não a registra está “comendo” o próprio trator: quando a máquina acabar, não haverá reserva para trocá-la. Vida útil típica: tratores e máquinas, 5 a 10 anos; currais e benfeitorias, 15 a 20 anos. Também se depreciam culturas permanentes, animais de trabalho e reprodutores adultos.</p></div>
+    <div class="formula">Depreciação anual = (valor de aquisição − valor residual) ÷ vida útil</div>
+    <div class="sim" id="simDep">
+      <div class="cab"><h4>Calculadora de depreciação linear</h4><span class="eyebrow">Simulador · exemplo: colheitadeira</span></div>
+      <div class="campos">
+        <label class="campo" for="dpValor">Valor de aquisição (R$)<input id="dpValor" type="number" step="1000" value="450000"></label>
+        <label class="campo" for="dpRes">Valor residual (R$)<input id="dpRes" type="number" step="1000" value="45000"></label>
+        <label class="campo" for="dpVida">Vida útil (anos)<input id="dpVida" type="number" min="1" step="1" value="10"></label>
+        <label class="campo" for="dpCompra">Compra (mês/ano)<input id="dpCompra" type="month" value="2021-07"></label>
+        <label class="campo" for="dpBase">Data-base<input id="dpBase" type="month" value="2026-01"></label>
+      </div>
+      <div class="saidas">
+        <div class="saida"><span>Depreciação anual</span><b id="dpAnual">—</b></div>
+        <div class="saida"><span>Depreciação mensal</span><b id="dpMensal">—</b></div>
+        <div class="saida neg"><span>Depreciação acumulada</span><b id="dpAcum">—</b></div>
+        <div class="saida ouro"><span>Valor contábil na data-base</span><b id="dpContabil">—</b></div>
+        <div class="saida azul"><span>Valor atual ÷ aquisição</span><b id="dpIdade">—</b></div>
+      </div>
+      <div class="grafico baixo"><canvas id="gDep" aria-label="Gráfico do valor contábil da máquina ao longo da vida útil"></canvas></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Amador ou gestor profissional?</h3>
+    <div class="tabela"><table>
+      <thead><tr><th></th><th>Fazendeiro amador</th><th>Gestor profissional</th></tr></thead>
+      <tbody>
+        <tr><td><b>Veículos e máquinas</b></td><td>Caminhonete e trator da fazenda em passeios da família</td><td>Veículos da fazenda só na operação; patrimônio privado separado</td></tr>
+        <tr><td><b>Registro de bens</b></td><td>Piscina e quadra no Balanço da fazenda, inflando o ativo</td><td>Só ativos produtivos: terras, silos, tratores</td></tr>
+        <tr><td><b>Controle de fluxo</b></td><td>Paga fornecedor sem aprovação formal</td><td>Software, controle de estoque de insumos e aprovação de pagamentos</td></tr>
+      </tbody>
+    </table></div>
+    <div class="nota verde"><b>Para levar.</b> A contabilidade não é para o fisco, é para você. Bancos não financiam a desorganização: um Balanço limpo, conforme o CFC e os CPCs, garante as melhores taxas do Sistema Nacional de Crédito Rural.</div>
+  </div>
+
+  <div class="bloco">
+    <h3>Revisão do Tópico 3</h3>
+    <div class="quiz" data-quiz="t3"></div>
+  </div>
+</section>
+
+<!-- ============ TÓPICO 4 ============ -->
+<section class="topico" id="t4">
+  <header>
+    <p class="eyebrow">Tópico 4 · 08/10/2026</p>
+    <h2>Custos operacionais da produção: COE e COT</h2>
+    <p class="pergunta"><b>Pergunta-chave:</b> a fazenda sobrevive a esta safra, continua daqui a dez anos e vale a pena continuar nesse negócio?</p>
+  </header>
+
+  <div class="bloco">
+    <h3>A anatomia completa do custo (metodologia Epagri)</h3>
+    <div class="grade">
+      <div class="cartao"><span class="tag">1 · COE</span><h4>Custo operacional efetivo</h4><p class="small">O que saiu do caixa no ciclo: sementes, fertilizantes, defensivos, ração, combustível, energia, mão de obra contratada, serviços, impostos e taxas.</p></div>
+      <div class="cartao ouro"><span class="tag">2 · COT</span><h4>Custo operacional total</h4><p class="small">COE + o que se consome sem pagar: depreciação de máquinas, benfeitorias, animais de trabalho e culturas permanentes, mais a mão de obra familiar não remunerada.</p></div>
+      <div class="cartao neg"><span class="tag">3 · CT</span><h4>Custo total</h4><p class="small">COT + custo de oportunidade: juros sobre o capital próprio e remuneração da terra (o que renderia arrendada).</p></div>
+    </div>
+    <div class="formula">COT = COE + mão de obra familiar + depreciação &nbsp;·&nbsp; CT = COT + juros sobre capital próprio + remuneração da terra</div>
+  </div>
+
+  <div class="bloco">
+    <h3>Os três horizontes: o que cada margem responde</h3>
+    <div class="grade g2">
+      <div class="grafico alto"><canvas id="gCascata" aria-label="Cascata da rentabilidade por hectare de soja"></canvas></div>
+      <div class="tabela"><table>
+        <thead><tr><th>Indicador</th><th>Pergunta</th><th>Se for negativo</th></tr></thead>
+        <tbody>
+          <tr><td><b>Margem bruta</b><br><span class="mono small">Receita − COE</span></td><td>Sobrevivo esta safra?</td><td>Não há dinheiro para fechar a safra. Emergência.</td></tr>
+          <tr><td><b>Margem líquida</b><br><span class="mono small">Receita − COT</span></td><td>Continuo daqui a dez anos?</td><td>A operação consome o patrimônio sem ninguém perceber.</td></tr>
+          <tr><td><b>Resultado econômico</b><br><span class="mono small">Receita − CT</span></td><td>Vale a pena continuar?</td><td>Arrendar a área ou aplicar o capital renderia mais.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <p class="small muted">Gráfico: um hectare de soja da Fazenda Três Safras (71 sc/ha a R$ 136). Uma fazenda pode ter margem bruta positiva e resultado econômico negativo por anos: ela não quebra, empobrece devagar.</p>
+  </div>
+
+  <div class="bloco">
+    <h3>Lucratividade e rentabilidade: a fazenda bate a aplicação financeira?</h3>
+    <div class="sim" id="simRent">
+      <div class="cab"><h4>Compare a fazenda com uma aplicação</h4><span class="eyebrow">Simulador · exemplo do Tópico 4</span></div>
+      <div class="campos">
+        <label class="campo" for="rtReceita">Receita bruta (R$)<input id="rtReceita" type="number" step="10000" value="1000000"></label>
+        <label class="campo" for="rtMargem">Margem líquida (R$)<input id="rtMargem" type="number" step="10000" value="150000"></label>
+        <label class="campo" for="rtCapital">Capital investido: terra, benfeitorias, máquinas, rebanho (R$)<input id="rtCapital" type="number" step="100000" value="5000000"></label>
+        <label class="campo" for="rtRef">Aplicação de referência que você conhece (% ao ano)<input id="rtRef" type="number" step="0.1" value="6"></label>
+      </div>
+      <div class="saidas">
+        <div class="saida"><span>Lucratividade (margem ÷ receita)</span><b id="rtLuc">—</b></div>
+        <div class="saida ouro"><span>Rentabilidade (margem ÷ capital)</span><b id="rtRen">—</b></div>
+        <div class="saida azul"><span>Leitura</span><b id="rtLeit" style="font-size:.95rem">—</b></div>
+      </div>
+      <p class="small muted">Em Mato Grosso, onde a terra é o maior ativo do balanço, é comum a lucratividade impressionar e a rentabilidade decepcionar. A saída não é cortar custo: é produzir mais sobre a mesma base, arrendar parte da área ou reduzir o imobilizado ocioso.</p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Exercício resolvido em aula: Fazenda Três Safras</h3>
+    <p class="small muted">2.980 ha em cada safra. Soja 71 sc/ha a R$ 136, custo de 45 sc/ha · Milho 157 sc/ha a R$ 50, custo de 70 sc/ha · Feijão 40 sc/ha a R$ 264,82, custo de 25 sc/ha. Custos e despesas fixos de R$ 17,3 milhões (R$ 12,5 milhões de administração e despesas financeiras + R$ 4,8 milhões de depreciação). Impostos de 15%.</p>
+    <div class="grade g2">
+      <div class="tabela"><table>
+        <thead><tr><th>Indicador</th><th class="v">Soja</th><th class="v">Milho</th><th class="v">Feijão</th><th class="v">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Produção (sc)</td><td class="v">211.580</td><td class="v">467.860</td><td class="v">119.200</td><td class="v">—</td></tr>
+          <tr><td>Receita</td><td class="v">28.774.880</td><td class="v">23.393.000</td><td class="v">31.566.544</td><td class="v">83.734.424</td></tr>
+          <tr><td>Custo variável</td><td class="v negv">(18.237.600)</td><td class="v negv">(10.430.000)</td><td class="v negv">(19.729.090)</td><td class="v negv">(48.396.690)</td></tr>
+          <tr class="total"><td>Margem de contribuição</td><td class="v">10.537.280</td><td class="v">12.963.000</td><td class="v">11.837.454</td><td class="v">35.337.734</td></tr>
+          <tr><td>Margem (%)</td><td class="v">36,6%</td><td class="v">55,4%</td><td class="v">37,5%</td><td class="v">42,2%</td></tr>
+          <tr><td>Custo variável por saca</td><td class="v">86,20</td><td class="v">22,29</td><td class="v">165,51</td><td class="v">—</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grafico alto"><canvas id="gSafras" aria-label="Receita, custo variável e margem de contribuição por cultura"></canvas></div>
+    </div>
+    <div class="grade g2">
+      <div class="tabela"><table>
+        <thead><tr><th>DRE pelo custeio variável</th><th class="v">R$</th></tr></thead>
+        <tbody>
+          <tr><td>Receita bruta</td><td class="v">83.734.424,00</td></tr>
+          <tr><td>(−) Custos variáveis</td><td class="v negv">(48.396.690,00)</td></tr>
+          <tr class="total"><td>(=) Margem de contribuição</td><td class="v">35.337.734,00</td></tr>
+          <tr><td>(−) Custos e despesas fixos</td><td class="v negv">(17.300.000,00)</td></tr>
+          <tr class="total"><td>(=) Resultado antes dos impostos</td><td class="v">18.037.734,00</td></tr>
+          <tr><td>(−) Impostos (15%)</td><td class="v negv">(2.705.660,10)</td></tr>
+          <tr class="res"><td>(=) Lucro líquido</td><td class="v">15.332.073,90</td></tr>
+        </tbody>
+      </table></div>
+      <div class="prose small">
+        <p><b>Ponto de equilíbrio.</b> Índice de margem de contribuição = 35.337.734 ÷ 83.734.424 = 42,20%. Ponto de equilíbrio = 17.300.000 ÷ 0,4220 = <span class="num">R$ 40.993.164</span>.</p>
+        <p>A fazenda cobre toda a estrutura com 49% do faturamento previsto. Os outros 51% são margem de segurança: quanto a receita pode cair antes do prejuízo, mantida a composição das três culturas.</p>
+        <p><b>Por que não ratear a depreciação para decidir o que plantar?</b> O trator perde valor plantando soja, milho, feijão ou parado. Se a soja fosse cortada por ter a menor margem percentual, a fazenda perderia R$ 10.537.280 de margem e manteria os R$ 17.300.000 de fixos: o resultado cairia de R$ 18.037.734 para R$ 7.500.454. Toda cultura com margem de contribuição positiva ajuda a pagar a estrutura.</p>
+      </div>
+    </div>
+
+    <div class="sim" id="simSoja">
+      <div class="cab"><h4>E se o preço da soja cair?</h4><span class="eyebrow">Simulador de sensibilidade</span></div>
+      <p class="small muted">Custo variável da soja mantido em R$ 6.120/ha, porque os insumos já foram comprados. Milho e feijão no cenário base.</p>
+      <label class="campo" for="sjPreco">Preço da saca de soja: <b class="num" id="sjPrecoTxt">R$ 136,00</b><input id="sjPreco" type="range" min="40" max="170" step="0.5" value="136"></label>
+      <div class="zonas">
+        <div class="faixa" id="sjFaixa"></div>
+        <div class="legenda"><span><i style="background:var(--neg-soft)"></i>A fazenda tem prejuízo</span><span><i style="background:var(--gold-soft)"></i>A soja dá prejuízo, a fazenda não</span><span><i style="background:var(--accent-soft)"></i>A soja se paga sozinha (cobre COT)</span></div>
+      </div>
+      <div class="saidas">
+        <div class="saida"><span>Receita da soja</span><b id="sjRec">—</b></div>
+        <div class="saida"><span>Margem da soja</span><b id="sjMarg">—</b></div>
+        <div class="saida ouro"><span>Resultado antes dos impostos</span><b id="sjRes">—</b></div>
+        <div class="saida azul"><span>Variação do resultado × receita total</span><b id="sjVar">—</b></div>
+      </div>
+      <p class="small" id="sjLeitura"></p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Nivelamento: preço mínimo e produtividade mínima</h3>
+    <div class="grade g2">
+      <div class="cartao"><span class="tag">Preço de nivelamento</span><p class="formula">custo por hectare ÷ sacas por hectare</p><p class="small">Por qual preço mínimo preciso vender para não ter prejuízo? Serve para travar contrato futuro.</p></div>
+      <div class="cartao ouro"><span class="tag">Produtividade de nivelamento</span><p class="formula">custo por hectare ÷ preço da saca</p><p class="small">Quantas sacas por hectare preciso colher só para pagar a conta?</p></div>
+    </div>
+    <div class="sim" id="simNiv">
+      <div class="cab"><h4>Calculadora de nivelamento</h4><span class="eyebrow">Simulador · soja da Fazenda Três Safras no COT</span></div>
+      <div class="campos">
+        <label class="campo" for="nvCusto">Custo por hectare (R$/ha)<input id="nvCusto" type="number" step="10" value="8114.98"></label>
+        <label class="campo" for="nvProd">Produtividade obtida (sc/ha)<input id="nvProd" type="number" step="0.5" value="71"></label>
+        <label class="campo" for="nvPreco">Preço de venda (R$/sc)<input id="nvPreco" type="number" step="0.5" value="136"></label>
+      </div>
+      <div class="botoes">
+        <button type="button" class="sec" data-niv="6120">Só custo variável (R$ 6.120)</button>
+        <button type="button" class="sec" data-niv="7561.46">COE (R$ 7.561,46)</button>
+        <button type="button" class="sec" data-niv="8114.98">COT (R$ 8.114,98)</button>
+      </div>
+      <div class="saidas">
+        <div class="saida"><span>Preço mínimo</span><b id="nvPrecoMin">—</b></div>
+        <div class="saida ouro"><span>Produtividade mínima</span><b id="nvProdMin">—</b></div>
+        <div class="saida azul"><span>Margem de segurança</span><b id="nvFolga">—</b></div>
+      </div>
+      <p class="small muted">A folga é a mesma pelo preço ou pela produtividade: receita é preço × quantidade, então perder 16% em um ou no outro dá no mesmo. Os R$ 1.441,46 e R$ 553,52 que levam do custo variável ao COE e ao COT são a fatia de 34,36% da estrutura que cabe à soja (a parte dela no faturamento) dividida pelos 2.980 ha.</p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>A matriz de sobrevivência e crescimento</h3>
+    <div class="tabela"><table>
+      <thead><tr><th>Camada</th><th>Métrica agrícola</th><th>Reflexo contábil</th><th>Significado</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chip alerta">1 · Piso</span> Sobrevivência</td><td>Receita &gt; COE</td><td>Fluxo de caixa positivo</td><td>Oxigênio para a próxima safra</td></tr>
+        <tr><td><span class="chip">2 · Meio</span> Sustentabilidade</td><td>Receita &gt; COT</td><td>Balanço protegido, sem perder ativos</td><td>Consegue repor as máquinas</td></tr>
+        <tr><td><span class="chip ok">3 · Topo</span> Expansão</td><td>Remuneração acima das alternativas</td><td>Lucro alto e PL crescendo</td><td>O negócio gera riqueza</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="bloco">
+    <h3>Revisão do Tópico 4</h3>
+    <div class="quiz" data-quiz="t4"></div>
+  </div>
+</section>
+
+<!-- ============ TÓPICO 5 ============ -->
+<section class="topico" id="t5">
+  <header>
+    <p class="eyebrow">Tópico 5 · 08/10/2026</p>
+    <h2>Fluxo de caixa na gestão rural</h2>
+    <p class="pergunta"><b>Pergunta-chave:</b> por que uma fazenda lucrativa pode quebrar no mês do plantio?</p>
+  </header>
+
+  <div class="bloco">
+    <h3>Lucro no papel, zero no banco</h3>
+    <div class="tabela"><table>
+      <thead><tr><th></th><th>Lucro (DRE)</th><th>Caixa (DFC)</th></tr></thead>
+      <tbody>
+        <tr><td><b>O que mede</b></td><td>Desempenho, eficiência, rentabilidade</td><td>Dinheiro disponível e liquidez imediata</td></tr>
+        <tr><td><b>Regime</b></td><td>Competência: quando o fato ocorre</td><td>Caixa: quando o dinheiro entra ou sai</td></tr>
+        <tr><td><b>Perigo oculto</b></td><td>Lucro sem caixa: vendas a prazo altas, sem dinheiro para insumos hoje</td><td>Caixa sem lucro: dinheiro de empréstimo mascarando uma operação que dá prejuízo</td></tr>
+      </tbody>
+    </table></div>
+    <div class="nota vermelha"><b>O risco fatal.</b> Nenhuma empresa quebra por falta de lucro no papel. Quebra por falta de dinheiro para pagar as contas hoje. Caixa é a disponibilidade imediata (D+0 a D+2): um trator vale dinheiro, mas não paga a conta de luz amanhã.</div>
+  </div>
+
+  <div class="bloco">
+    <h3>A máquina do tempo: onde o dinheiro se esconde</h3>
+    <div class="grade g2">
+      <div class="grafico"><canvas id="gTempo" aria-label="Compra de sementes: custo por competência de setembro a dezembro e pagamento em abril e maio"></canvas></div>
+      <div class="prose small">
+        <p>Compra de R$ 10.000 em sementes em agosto, para pagar em abril e maio. A contabilidade (competência) distribui o custo pelos meses do plantio: R$ 2.500, R$ 3.000, R$ 3.000 e R$ 1.500. O caixa exige R$ 5.000 em abril e R$ 5.000 em maio.</p>
+        <p>Olhar para a linha do tempo errada é o caminho mais rápido para o endividamento.</p>
+        <p><b>Por que mensal?</b> O mês é o período aceito para o pagamento do pessoal e da maior parte dos compromissos financeiros.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Os quatro quadrantes do movimento financeiro</h3>
+    <div class="grade g4">
+      <div class="cartao"><span class="tag">Entra · operacional</span><h4>1 · Receitas</h4><p class="small">Soja, gado, leite, serviços, subsídios e auxílios.</p></div>
+      <div class="cartao neg"><span class="tag">Sai · operacional</span><h4>2 · Despesas</h4><p class="small">Insumos, encargos financeiros, salários, impostos, manutenção.</p></div>
+      <div class="cartao azul"><span class="tag">Entra · estrutural</span><h4>3 · Financiamentos</h4><p class="small">Empréstimos, crédito rural, recursos próprios, aportes de capital.</p></div>
+      <div class="cartao ouro"><span class="tag">Sai · estrutural</span><h4>4 · Investimentos</h4><p class="small">Terras, maquinário pesado, infraestrutura. A depreciação afeta o lucro; a parcela do financiamento afeta o caixa.</p></div>
+    </div>
+    <div class="formula">Saldo acumulado = saldo inicial + entradas − saídas</div>
+  </div>
+
+  <div class="bloco">
+    <h3>O vão perigoso: o ciclo de caixa</h3>
+    <div class="linha-tempo"><div class="lt">
+      <div class="trilho"><div>Compra de insumos</div><div>Plantio</div><div>Colheita</div><div>Venda</div><div>Recebimento</div></div>
+      <div class="faixas"><div class="pmp">Prazo de pagamento ao fornecedor</div><div class="cc">Ciclo de caixa: a fazenda vive só do capital de giro</div></div>
+    </div></div>
+    <div class="grade g2">
+      <div class="cartao"><span class="tag">Agricultura · soja e milho</span><p class="small">Meses seguidos de despesas pesadas e faturamento concentrado na colheita. Desafio: atravessar o “vale da dívida” sem perder liquidez.</p></div>
+      <div class="cartao azul"><span class="tag">Agroindústria · leite e queijo</span><p class="small">Receitas e despesas constantes. Desafio: margens curtas e alta sensibilidade a investimentos, que derrubam o saldo. Caso Montes Claros: superávit de R$ 10 mil por mês e um tanque de R$ 40 mil à vista em março provoca o alerta vermelho.</p></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Simulador de fluxo de caixa da safra</h3>
+    <div class="sim" id="simFC">
+      <div class="cab"><h4>Projete o caixa de setembro a agosto</h4><span class="eyebrow">Exemplo ilustrativo · 500 ha de soja e milho safrinha</span></div>
+      <p class="small muted">Os valores abaixo são um exemplo para começar: substitua pelos da sua fazenda. Veja o mês em que o saldo acumulado fica negativo e quanto custeio é preciso contratar.</p>
+      <div class="campos">
+        <label class="campo" for="fcInicial">Saldo inicial em setembro (R$)<input id="fcInicial" type="number" step="10000" value="300000"></label>
+        <label class="campo" for="fcCusteio">Crédito de custeio recebido em setembro (R$)<input id="fcCusteio" type="number" step="10000" value="0"></label>
+        <label class="campo" for="fcPagto">Mês de quitação do custeio
+          <select id="fcPagto"><option value="5">Fevereiro</option><option value="6" selected>Março</option><option value="7">Abril</option><option value="8">Maio</option></select>
+        </label>
+        <label class="campo" for="fcJuros">Juros do custeio no período (%)<input id="fcJuros" type="number" step="0.5" value="8"></label>
+      </div>
+      <div class="tabela"><table class="mono" style="min-width:880px">
+        <thead><tr><th>Mês</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th><th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Ago</th></tr></thead>
+        <tbody id="fcTab"></tbody>
+      </table></div>
+      <div class="saidas">
+        <div class="saida neg"><span>Pior saldo acumulado</span><b id="fcPior">—</b></div>
+        <div class="saida ouro"><span>Custeio mínimo para não ficar negativo</span><b id="fcMin">—</b></div>
+        <div class="saida"><span>Saldo final em agosto</span><b id="fcFinal">—</b></div>
+      </div>
+      <div class="grafico alto"><canvas id="gFC" aria-label="Saldo do mês em barras e saldo acumulado em linha"></canvas></div>
+      <div class="botoes"><button type="button" class="sec" id="fcMinBtn">Usar o custeio mínimo</button><button type="button" class="sec" id="fcReset">Voltar ao exemplo</button></div>
+    </div>
+    <div class="nota verde"><b>Plano de ação em quatro passos.</b> Registre tudo, todos os dias. Separe e categorize (contas distintas para família e fazenda; custo, despesa ou investimento). Projete 3 a 6 meses à frente: com 90 dias de antecedência dá para renegociar prazos, antecipar recebíveis ou buscar crédito rural barato. Analise e ajuste em reunião mensal de orçado × realizado.</div>
+  </div>
+
+  <div class="bloco">
+    <h3>Revisão do Tópico 5</h3>
+    <div class="quiz" data-quiz="t5"></div>
+  </div>
+</section>
+
+<!-- ============ TÓPICO 6 ============ -->
+<section class="topico" id="t6">
+  <header>
+    <p class="eyebrow">Tópico 6 · 08/10/2026</p>
+    <h2>Tributação na atividade rural</h2>
+    <p class="pergunta"><b>Pergunta-chave:</b> CPF ou CNPJ, resultado real ou presunção: qual caminho deixa mais margem no bolso dentro da lei?</p>
+  </header>
+
+  <div class="bloco">
+    <h3>A encruzilhada tributária</h3>
+    <div class="tabela"><table>
+      <thead><tr><th></th><th>Pessoa física (CPF)</th><th>Pessoa jurídica · Lucro Presumido</th></tr></thead>
+      <tbody>
+        <tr><td><b>Base de cálculo</b></td><td>Resultado real (receitas − despesas comprovadas no LCDPR) <b>ou</b> presunção de 20% da receita bruta (Lei 8.023/90)</td><td>IRPJ: 8% da receita bruta · CSLL: 12% da receita bruta</td></tr>
+        <tr><td><b>Tributos</b></td><td>IRPF progressivo de 0% a 27,5%, com o redutor da Lei 15.270/2025 · Funrural 1,5%</td><td>IRPJ 15% + adicional de 10% sobre a base acima de R$ 240.000/ano · CSLL 9% · PIS 0,65% e COFINS 3% sobre a receita · Funrural 2,05%</td></tr>
+        <tr><td><b>Prejuízos</b></td><td>Compensáveis nos exercícios seguintes, com escrituração</td><td>Não se aproveitam no Presumido</td></tr>
+        <tr><td><b>Investimentos</b></td><td>Dedutíveis como despesa no mês do pagamento (art. 4º, § 2º, Lei 8.023/90)</td><td>Seguem as regras de depreciação</td></tr>
+        <tr><td><b>Obrigações</b></td><td>Livro Caixa / LCDPR. Custo de conformidade baixo</td><td>SPED Contábil, DCTF, ECF, NF-e. Custo administrativo maior</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grade">
+      <div class="cartao"><span class="tag">Simples Nacional</span><p class="small">Receita até R$ 4,8 milhões/ano. Impostos unificados, para estruturas pequenas.</p></div>
+      <div class="cartao ouro"><span class="tag">Lucro Presumido</span><p class="small">Receita até R$ 78 milhões/ano. Percentuais fixos sobre a receita.</p></div>
+      <div class="cartao neg"><span class="tag">Lucro Real</span><p class="small">Obrigatório acima de R$ 78 milhões, ou por opção. Vantajoso com margens abaixo da presunção, anos de alto investimento ou quebra de safra.</p></div>
+    </div>
+    <div class="nota"><b>LCDPR: a regra dos R$ 4,8 milhões.</b> Acima de R$ 4,8 milhões de receita bruta anual, o Livro Caixa Digital do Produtor Rural é obrigatório e transmitido pelo e-CAC. Abaixo, é facultativo, mas a documentação das despesas precisa ser guardada de qualquer forma.</div>
+  </div>
+
+  <div class="bloco">
+    <h3>A escada progressiva do IRPF</h3>
+    <div class="grade g2">
+      <div class="tabela"><table>
+        <thead><tr><th>Base de cálculo anual (R$)</th><th class="v">Alíquota</th><th class="v">Parcela a deduzir (R$)</th></tr></thead>
+        <tbody>
+          <tr><td>Até 29.145,60</td><td class="v">Isento</td><td class="v">—</td></tr>
+          <tr><td>29.145,61 a 33.919,80</td><td class="v">7,5%</td><td class="v">2.185,92</td></tr>
+          <tr><td>33.919,81 a 45.012,60</td><td class="v">15%</td><td class="v">4.729,92</td></tr>
+          <tr><td>45.012,61 a 55.976,16</td><td class="v">22,5%</td><td class="v">8.105,88</td></tr>
+          <tr><td>Acima de 55.976,16</td><td class="v">27,5%</td><td class="v">10.904,76</td></tr>
+        </tbody>
+      </table></div>
+      <div class="prose small">
+        <p>Tabela anual do ano-calendário de 2026. O imposto incide em fatias, e a parcela a deduzir corrige o cálculo para manter a progressividade.</p>
+        <p><b>Redutor da Lei 15.270/2025</b>, sobre o imposto da tabela: até R$ 60.000 de rendimento tributável anual o imposto é zerado; de R$ 60.000,01 a R$ 88.200 há redução decrescente; acima de R$ 88.200, sem redutor.</p>
+      </div>
+    </div>
+    <div class="sim" id="simPF">
+      <div class="cab"><h4>Produtor pessoa física: os dois caminhos da base</h4><span class="eyebrow">Simulador · exemplo do Tópico 6</span></div>
+      <div class="campos">
+        <label class="campo" for="pfReceita">Receita bruta da atividade rural (R$)<input id="pfReceita" type="number" step="1000" value="250000"></label>
+        <label class="campo" for="pfDesp">Despesas comprovadas no livro-caixa (R$)<input id="pfDesp" type="number" step="1000" value="150000"></label>
+      </div>
+      <div class="tabela"><table>
+        <thead><tr><th></th><th class="v">Resultado real</th><th class="v">Presunção de 20%</th></tr></thead>
+        <tbody id="pfTab"></tbody>
+      </table></div>
+      <p class="small" id="pfLeitura"></p>
+      <p class="small muted">O cálculo considera apenas a atividade rural como rendimento. Na faixa de R$ 60.000,01 a R$ 88.200 o redutor existe, mas não é calculado aqui: o imposto real será menor que o da tabela.</p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Anatomia do Lucro Presumido</h3>
+    <div class="sim" id="simLP">
+      <div class="cab"><h4>Calcule a carga da PJ rural</h4><span class="eyebrow">Simulador</span></div>
+      <div class="campos">
+        <label class="campo" for="lpReceita">Receita bruta anual (R$)<input id="lpReceita" type="number" step="10000" value="1000000"></label>
+        <label class="campo" for="lpFun">Incluir Funrural PJ (2,05%)
+          <select id="lpFun"><option value="0">Não</option><option value="1">Sim</option></select>
+        </label>
+      </div>
+      <div class="botoes">
+        <button type="button" class="sec" data-lp="1000000" data-fun="0">Exemplo de aula: R$ 1 milhão</button>
+        <button type="button" class="sec" data-lp="4800000" data-fun="1">Agropecuária Campos Verdes: R$ 4,8 milhões</button>
+      </div>
+      <div class="grade g2">
+        <div class="tabela"><table>
+          <thead><tr><th>Tributo</th><th>Base</th><th class="v">R$</th></tr></thead>
+          <tbody id="lpTab"></tbody>
+        </table></div>
+        <div class="grafico"><canvas id="gLP" aria-label="Composição da carga tributária do Lucro Presumido"></canvas></div>
+      </div>
+      <div class="nota small"><b>Atenção à presunção.</b> Os 20% são do produtor pessoa física. No Lucro Presumido da PJ rural a base é de 8% para o IRPJ e 12% para a CSLL. Usar 20% na PJ infla o imposto em cerca de 40%.</div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>O peso da previdência: Funrural ou folha?</h3>
+    <div class="sim" id="simFun">
+      <div class="cab"><h4>Compare as duas bases</h4><span class="eyebrow">Simulador · opção anual e irretratável</span></div>
+      <div class="campos">
+        <label class="campo" for="fnReceita">Receita bruta da comercialização (R$)<input id="fnReceita" type="number" step="10000" value="3000000"></label>
+        <label class="campo" for="fnFolha">Folha de salários anual (R$)<input id="fnFolha" type="number" step="10000" value="400000"></label>
+        <label class="campo" for="fnTipo">Contribuinte
+          <select id="fnTipo"><option value="0.015">Pessoa física · 1,5%</option><option value="0.0205">Pessoa jurídica · 2,05%</option></select>
+        </label>
+      </div>
+      <div class="saidas">
+        <div class="saida"><span>Funrural sobre a receita</span><b id="fnA">—</b></div>
+        <div class="saida ouro"><span>Patronal de 20% sobre a folha</span><b id="fnB">—</b></div>
+        <div class="saida azul"><span>Opção mais barata</span><b id="fnMelhor" style="font-size:.95rem">—</b></div>
+      </div>
+      <div class="grafico baixo"><canvas id="gFun" aria-label="Comparação entre Funrural e contribuição sobre a folha"></canvas></div>
+      <p class="small muted">PF: 1,2% previdência + 0,1% RAT + 0,2% de formação profissional rural = 1,5%, igual para lavoura e pecuária (Lei 13.606/2018). PJ: 1,7% + 0,1% + 0,25% = 2,05%. Na folha, somam-se ainda RAT e terceiros, não incluídos aqui. Funrural compensa em fazendas intensivas em mão de obra; a folha, em operações muito mecanizadas, de alta receita e pouca mão de obra registrada.</p>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <h3>Depreciação acelerada: MP 2.159-70, art. 6º</h3>
+    <div class="nota verde"><b>Incentivo à modernização.</b> Bens do ativo imobilizado (exceto terra nua) adquiridos para a atividade rural podem ser depreciados integralmente, 100%, no próprio ano da aquisição. A Receita Federal interpreta o benefício de forma restritiva: na lavoura canavieira, o fisco alegava exaustão e os produtores defendiam depreciação.</div>
+  </div>
+
+  <div class="bloco">
+    <h3>Revisão do Tópico 6</h3>
+    <div class="quiz" data-quiz="t6"></div>
+  </div>
+</section>
+
+<!-- ============ PRATICAR ============ -->
+<section class="topico" id="praticar">
+  <header>
+    <p class="eyebrow">Cadernos online</p>
+    <h2>Praticar</h2>
+    <p class="pergunta">Os exercícios de cálculo dos cadernos, para resolver aqui mesmo. Digite os valores como preferir (1350000, 1.350.000 ou 6.695,24; negativos com sinal de menos ou entre parênteses) e clique em <b>Conferir</b>: cada campo fica verde ou vermelho. <b>Ver gabarito</b> mostra o valor esperado e o comentário.</p>
+  </header>
+  <div class="nota small">Nas tabelas, células que deveriam ficar zeradas podem ser deixadas em branco. As respostas ficam salvas apenas neste navegador. As questões objetivas dos cadernos estão na revisão de cada tópico.</div>
+  <div id="cadernos"></div>
+</section>
+
+<!-- ============ ATIVIDADES ============ -->
+<section class="topico" id="atividades">
+  <header>
+    <p class="eyebrow">Material de apoio</p>
+    <h2>Atividades e avaliações</h2>
+    <p class="pergunta">Cadernos de atividades para baixar e resolver no papel. Os exercícios de cálculo também podem ser resolvidos online, com correção, na seção <a href="#praticar">Praticar</a>.</p>
+  </header>
+  <div class="docs">
+    <div class="doc"><span class="fmt docx">DOCX</span><div><b>Tópico 1 · Avaliação de aprendizagem: Raio X da gestão rural</b><small>14 questões de múltipla escolha: empresa rural, atividades, contratos agrários, PF × PJ, holding.</small></div><a class="baixar" href="materiais/Topico1_RaioX_Gestao_Rural_aluno.docx">Baixar</a></div>
+    <div class="doc"><span class="fmt xlsx">XLSX</span><div><b>Tópico 2 · Ferramentas de gestão: FOFA, PDCA e Gantt</b><small>Planilha com o caso da Fazenda Recanto do Lago e quadros em branco para a sua propriedade.</small></div><a class="baixar" href="materiais/Ferramentas_Gestao_Rural_Topico2.xlsx">Baixar</a></div>
+    <div class="doc"><span class="fmt docx">DOCX</span><div><b>Módulos 3, 4 e 5 · Atividades</b><small>13 atividades (princípios, Balanço, DRE segregada, depreciação, Boi Forte, Grãos do Cerrado, fluxo de caixa) e 9 questões de revisão.</small></div><a class="baixar" href="materiais/Atividades_Modulos345_aluno.docx">Baixar</a></div>
+    <div class="doc"><span class="fmt pdf">PDF</span><div><b>Tópico 5 · Atividades de fluxo de caixa</b><small>3 questões objetivas e 5 fluxos projetados: Lagoa Vermelha, Montes Claros, Três Irmãos, Sítio Boa Esperança, Serra Verde.</small></div><a class="baixar" href="materiais/Atividades_FluxoCaixa_Cap5.pdf">Baixar</a></div>
+    <div class="doc"><span class="fmt pdf">PDF</span><div><b>Tópico 6 · Atividades de tributação</b><small>5 questões objetivas e 4 de desenvolvimento: IRPF pela presunção, Lucro Presumido, PF × PJ, Campos Verdes.</small></div><a class="baixar" href="materiais/Atividades_Tributacao_Rural_Cap6.pdf">Baixar</a></div>
+  </div>
+  <div class="nota verde"><b>Avaliação final.</b> Aplicada em sala, com 1h30 de duração e consulta apenas ao quadro de referência da prova. Bloco 1: seis questões objetivas sobre contratos agrários, escada de liquidez, princípio da entidade, Balanço Patrimonial, COE × COT e os quadrantes do fluxo de caixa. Bloco 2: estudo de caso de uma fazenda de soja e engorda em Sorriso-MT, com renda, receita, COE, COT, custo total, margens, nivelamento e o fluxo de caixa da safra de setembro a fevereiro. Para se preparar, refaça os simuladores dos Tópicos 4 e 5.</div>
+</section>
+
+<!-- ============ GLOSSÁRIO ============ -->
+<section class="topico" id="glossario">
+  <header><p class="eyebrow">Consulta rápida</p><h2>Glossário</h2></header>
+  <dl class="glossario">
+    <div><dt>Ano agrícola</dt><dd>Período de setembro a agosto que acompanha o ciclo das safras em MT.</dd></div>
+    <div><dt>Arroba (@)</dt><dd>15 kg de carcaça. Unidade de venda do boi gordo.</dd></div>
+    <div><dt>Capital de giro</dt><dd>Recursos que sustentam a operação entre o pagamento dos insumos e o recebimento das vendas.</dd></div>
+    <div><dt>COE</dt><dd>Custo operacional efetivo: desembolsos do ciclo.</dd></div>
+    <div><dt>COT</dt><dd>Custo operacional total: COE + depreciação + mão de obra familiar.</dd></div>
+    <div><dt>Custo total (CT)</dt><dd>COT + juros sobre o capital próprio + remuneração da terra.</dd></div>
+    <div><dt>Custeio</dt><dd>Crédito rural para financiar as despesas de uma safra.</dd></div>
+    <div><dt>Depreciação</dt><dd>Perda de valor de um bem pelo uso e pelo tempo, registrada como custo.</dd></div>
+    <div><dt>DRE</dt><dd>Demonstração do Resultado do Exercício: receitas menos custos e despesas do período.</dd></div>
+    <div><dt>Funrural</dt><dd>Contribuição previdenciária sobre a receita da comercialização da produção rural.</dd></div>
+    <div><dt>LCDPR</dt><dd>Livro Caixa Digital do Produtor Rural, obrigatório acima de R$ 4,8 milhões de receita.</dd></div>
+    <div><dt>Liquidez</dt><dd>Facilidade de transformar um bem em dinheiro sem perder valor.</dd></div>
+    <div><dt>Margem de contribuição</dt><dd>Receita menos custos variáveis: quanto cada cultura deixa para pagar a estrutura.</dd></div>
+    <div><dt>Patrimônio Líquido</dt><dd>Ativo menos passivo exigível: a riqueza real do produtor na fazenda.</dd></div>
+    <div><dt>Ponto de equilíbrio</dt><dd>Faturamento que cobre todos os custos fixos e variáveis, com resultado zero.</dd></div>
+    <div><dt>Pró-labore</dt><dd>Retirada mensal fixa do dono, que separa as contas da família das da fazenda.</dd></div>
+    <div><dt>Renda</dt><dd>Valor de toda a produção do período, vendida ou não.</dd></div>
+    <div><dt>Saca (sc)</dt><dd>60 kg de grãos. Unidade de produtividade (sc/ha) e de preço (R$/sc).</dd></div>
+  </dl>
+</section>
+
+<section class="topico" id="referencias">
+  <header><p class="eyebrow">Para aprofundar</p><h2>Referências</h2></header>
+  <ul class="refs">
+    <li>MARION, J. C. <i>Contabilidade rural</i>: contabilidade agrícola, contabilidade da pecuária, imposto de renda pessoa jurídica. São Paulo: Atlas.</li>
+    <li>CREPALDI, S. A. <i>Contabilidade rural</i>: uma abordagem decisorial. São Paulo: Atlas.</li>
+    <li>REZENDE, J. L. P.; OLIVEIRA, A. D. <i>Análise econômica e social de projetos florestais</i>. Viçosa: UFV.</li>
+    <li>EPAGRI. Metodologia de cálculo de custos de produção (COE, COT e custo total). Florianópolis.</li>
+    <li>BRASIL. Lei n. 4.504/1964 (Estatuto da Terra) e Decreto n. 59.566/1966 (contratos agrários).</li>
+    <li>BRASIL. Lei n. 8.023/1990 (imposto de renda da atividade rural).</li>
+    <li>BRASIL. Medida Provisória n. 2.159-70/2001, art. 6º (depreciação acelerada).</li>
+    <li>BRASIL. Lei n. 13.606/2018 (alíquotas do Funrural) e Lei n. 15.270/2025 (redutor do IRPF).</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Curso Auxiliar Administrativo em Contabilidade Rural · FAMATO e Sindicato Rural · Prof. Cleiton Franco · 2026. Os casos e valores são didáticos; consulte um contador antes de decisões tributárias.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var fmt = function (n, d) { d = d || 0; return Number(n).toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d }); };
+  var brl = function (n, d) { return (n < 0 ? "−R$ " : "R$ ") + fmt(Math.abs(n), d === undefined ? 0 : d); };
+  var acc = function (n) { return n < 0 ? "(" + fmt(-n) + ")" : fmt(n); };
+  var pct = function (n, d) { return fmt(n * 100, d === undefined ? 1 : d) + "%"; };
+  var val = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var tok = function (name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); };
+  var hasChart = typeof window.Chart !== "undefined";
+
+  /* ---------- gráficos ---------- */
+  var charts = {};
+  var builders = {};
+  function chart(id, build) {
+    builders[id] = build;
+    draw(id);
+  }
+  function draw(id) {
+    if (!hasChart || !$(id)) return;
+    if (charts[id]) charts[id].destroy();
+    var cfg = builders[id]();
+    var ink = tok("--ink"), muted = tok("--muted"), line = tok("--line");
+    cfg.options = cfg.options || {};
+    var o = cfg.options;
+    o.responsive = true; o.maintainAspectRatio = false;
+    o.animation = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? false : { duration: 350 };
+    o.plugins = o.plugins || {};
+    o.plugins.legend = Object.assign({ labels: { color: ink, boxWidth: 12, font: { family: "Public Sans" } } }, o.plugins.legend || {});
+    o.plugins.tooltip = Object.assign({ callbacks: { label: function (c) { var v = c.parsed.y !== undefined && c.chart.config.type !== "doughnut" ? (o.indexAxis === "y" ? c.parsed.x : c.parsed.y) : c.parsed; if (Array.isArray(c.raw)) v = c.raw[1] - c.raw[0]; return (c.dataset.label ? c.dataset.label + ": " : (c.label ? c.label + ": " : "")) + brl(v); } } }, o.plugins.tooltip || {});
+    if (cfg.type !== "doughnut") {
+      o.scales = o.scales || {};
+      ["x", "y"].forEach(function (ax) {
+        o.scales[ax] = o.scales[ax] || {};
+        var s = o.scales[ax];
+        s.ticks = Object.assign({ color: muted, font: { family: "IBM Plex Mono", size: 11 } }, s.ticks || {});
+        s.grid = Object.assign({ color: line }, s.grid || {});
+        s.border = { color: line };
+      });
+    } else {
+      cfg.data.datasets.forEach(function (d) { d.borderColor = tok("--surface"); });
+    }
+    charts[id] = new Chart($(id), cfg);
+  }
+  function redrawAll() { Object.keys(builders).forEach(draw); }
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  if (mq.addEventListener) mq.addEventListener("change", redrawAll);
+  new MutationObserver(redrawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  var mil = function (v) { return Math.abs(v) >= 1e6 ? fmt(v / 1e6, 1) + " mi" : Math.abs(v) >= 1e3 ? fmt(v / 1e3, 0) + " mil" : fmt(v); };
+
+  /* ---------- T1: contrato ---------- */
+  function contrato() {
+    var r = val("ctReceita");
+    var a = r * 0.725, p = r * 0.945;
+    $("ctArr").textContent = brl(a, 2); $("ctPar").textContent = brl(p, 2); $("ctEco").textContent = brl(p - a, 2);
+  }
+  $("ctReceita").addEventListener("input", contrato); contrato();
+
+  /* ---------- T2: PDCA ---------- */
+  var acoes = [
+    ["P", "Definir a meta de produtividade da safra e dimensionar os insumos", "Produtor", "15/08/2026", "60 sc/ha de soja", "Concluída"],
+    ["P", "Implantar projeto de integração lavoura-pecuária-floresta", "Produtor", "01/12/2032", "Rebanho definido e 200 ha de eucalipto", "Não iniciada"],
+    ["D", "Executar o plantio dentro da janela climática recomendada", "Encarregado de campo", "30/10/2026", "300 ha plantados", "Concluída"],
+    ["D", "Executar o plantio da pastagem e da floresta", "Encarregado de campo", "01/12/2027", "200 ha de floresta", "Não iniciada"],
+    ["C", "Comparar o custo por hectare realizado com o orçado", "Auxiliar administrativo", "31/01/2027", "Desvio máximo de 5%", "Não iniciada"],
+    ["A", "Padronizar a manutenção preventiva que reduziu as paradas de máquina", "Produtor", "28/02/2027", "Rotina escrita e afixada", "Não iniciada"]
+  ];
+  var etapas = { P: "Planejar", D: "Fazer", C: "Checar", A: "Agir" };
+  $("pdcaTab").innerHTML = acoes.map(function (a) {
+    var ok = a[5] === "Concluída";
+    return "<tr><td><b>" + a[0] + "</b> · " + etapas[a[0]] + "</td><td>" + a[1] + "</td><td>" + a[2] + "</td><td class=\"mono\">" + a[3] + "</td><td>" + a[4] + "</td><td><span class=\"chip " + (ok ? "ok" : "") + "\">" + a[5] + "</span></td></tr>";
+  }).join("");
+  var conc = acoes.filter(function (a) { return a[5] === "Concluída"; }).length;
+  $("pdcaPainel").innerHTML = Object.keys(etapas).map(function (k) {
+    var n = acoes.filter(function (a) { return a[0] === k; }).length;
+    var c = acoes.filter(function (a) { return a[0] === k && a[5] === "Concluída"; }).length;
+    return "<div class=\"saida\"><span>" + k + " · " + etapas[k] + "</span><b>" + n + " ações · " + c + " ok</b></div>";
+  }).join("") + "<div class=\"saida ouro\"><span>Percentual concluído</span><b>" + pct(conc / acoes.length, 0) + "</b></div>";
+
+  /* ---------- T2: FOFA (salva no navegador) ---------- */
+  var KEY = "contabRural.fofa";
+  var salvo = {};
+  try { salvo = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { salvo = {}; }
+  document.querySelectorAll("[data-fofa]").forEach(function (t) {
+    var k = t.getAttribute("data-fofa");
+    if (salvo[k]) t.value = salvo[k];
+    var conta = function () { $(t.id + "n").textContent = t.value.split("\n").filter(function (l) { return l.trim(); }).length; };
+    conta();
+    t.addEventListener("input", function () {
+      conta(); salvo[k] = t.value;
+      try { localStorage.setItem(KEY, JSON.stringify(salvo)); } catch (e) {}
+    });
+  });
+
+  /* ---------- T2: Gantt ---------- */
+  var gantt = [
+    ["Preparo do solo e correção", "Encarregado de campo", 1, 2, ""],
+    ["Aquisição e recebimento de insumos", "Auxiliar administrativo", 1, 3, "adm"],
+    ["Plantio da soja", "Encarregado de campo", 2, 2, ""],
+    ["Tratos culturais e pulverizações", "Encarregado de campo", 3, 4, ""],
+    ["Colheita da soja", "Encarregado de campo", 6, 2, ""],
+    ["Plantio do milho safrinha", "Encarregado de campo", 7, 1, ""],
+    ["Colheita do milho", "Encarregado de campo", 11, 2, ""],
+    ["Manutenção preventiva de máquinas", "Mecânico", 8, 3, "mec"],
+    ["Fechamento contábil e apuração do resultado", "Auxiliar administrativo", 12, 1, "adm"],
+    ["", "", 0, 0, ""]
+  ];
+  var gt = $("ganttTab");
+  gt.innerHTML = gantt.map(function (g, i) {
+    var nome = g[0] ? g[0] : "<input class=\"nome\" id=\"gN" + i + "\" aria-label=\"Nova atividade\" placeholder=\"Nova atividade\">";
+    var cells = ""; for (var m = 1; m <= 12; m++) cells += "<td class=\"m " + g[4] + "\" data-m=\"" + m + "\"></td>";
+    return "<tr data-i=\"" + i + "\"><td>" + nome + "</td><td class=\"small\">" + (g[1] || "—") + "</td>" +
+      "<td><input type=\"number\" min=\"0\" max=\"12\" id=\"gI" + i + "\" aria-label=\"Mês de início\" value=\"" + (g[2] || "") + "\"></td>" +
+      "<td><input type=\"number\" min=\"0\" max=\"12\" id=\"gD" + i + "\" aria-label=\"Duração em meses\" value=\"" + (g[3] || "") + "\"></td>" + cells + "</tr>";
+  }).join("");
+  function desenhaGantt() {
+    var mn = 99, mx = 0;
+    gantt.forEach(function (g, i) {
+      var ini = parseInt($("gI" + i).value, 10) || 0, dur = parseInt($("gD" + i).value, 10) || 0;
+      gt.querySelectorAll("tr[data-i=\"" + i + "\"] td.m").forEach(function (td) {
+        var m = +td.getAttribute("data-m");
+        td.classList.toggle("on", ini > 0 && dur > 0 && m >= ini && m < ini + dur);
+      });
+      if (ini > 0 && dur > 0) { mn = Math.min(mn, ini); mx = Math.max(mx, Math.min(12, ini + dur - 1)); }
+    });
+    $("ganttTotal").textContent = mx ? "Duração total do cronograma: " + (mx - mn + 1) + " meses" : "";
+  }
+  gt.addEventListener("input", desenhaGantt); desenhaGantt();
+
+  /* ---------- T3: entidade ---------- */
+  chart("gEntidade", function () {
+    return { type: "bar", data: { labels: ["DRE misturada", "DRE segregada"], datasets: [
+      { label: "Lucro apresentado", data: [460000, 670000], backgroundColor: [tok("--neg"), tok("--accent")], borderRadius: 4 }
+    ] }, options: { indexAxis: "y", plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { callback: mil } } } } };
+  });
+
+  /* ---------- T3: BP ---------- */
+  var bpIds = ["bpCaixa", "bpEstoque", "bpMaq", "bpTerra", "bpDep", "bpForn", "bpEmpCP", "bpEmpLP"];
+  var bpData = {};
+  function bp() {
+    var circ = val("bpCaixa") + val("bpEstoque");
+    var naoCirc = val("bpMaq") + val("bpTerra") - val("bpDep");
+    var ativo = circ + naoCirc;
+    var pc = val("bpForn") + val("bpEmpCP"), plp = val("bpEmpLP");
+    var pass = pc + plp, pl = ativo - pass;
+    $("bpAtivo").textContent = brl(ativo); $("bpPass").textContent = brl(pass); $("bpPL").textContent = brl(pl);
+    $("bpEnd").textContent = ativo > 0 ? pct(pass / ativo) : "—";
+    bpData = { circ: circ, naoCirc: naoCirc, pc: pc, plp: plp, pl: pl };
+    draw("gBP");
+  }
+  builders.gBP = function () {
+    var d = bpData;
+    return { type: "bar", data: { labels: ["Ativo", "Passivo + PL"], datasets: [
+      { label: "Ativo circulante", data: [d.circ, 0], backgroundColor: tok("--accent-soft"), borderColor: tok("--accent"), borderWidth: 1 },
+      { label: "Ativo não circulante", data: [d.naoCirc, 0], backgroundColor: tok("--accent") },
+      { label: "Passivo circulante", data: [0, d.pc], backgroundColor: tok("--neg") },
+      { label: "Passivo não circulante", data: [0, d.plp], backgroundColor: tok("--neg-soft"), borderColor: tok("--neg"), borderWidth: 1 },
+      { label: "Patrimônio Líquido", data: [0, d.pl], backgroundColor: tok("--gold") }
+    ] }, options: { indexAxis: "y", scales: { x: { stacked: true, ticks: { callback: mil } }, y: { stacked: true } }, plugins: { legend: { position: "bottom" } } } };
+  };
+  bpIds.forEach(function (id) { $(id).addEventListener("input", bp); }); bp();
+
+  /* ---------- T3: DRE cascata ---------- */
+  function cascata(rotulos, passos, cores) {
+    var base = 0, dados = [];
+    passos.forEach(function (p) {
+      if (p.t === "total") { dados.push([0, p.v]); base = p.v; }
+      else { dados.push([base - p.v, base]); base = base - p.v; }
+    });
+    return { type: "bar", data: { labels: rotulos, datasets: [{ data: dados, backgroundColor: cores, borderRadius: 3 }] },
+      options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: mil } }, x: { ticks: { maxRotation: 0, autoSkip: false } } } } };
+  }
+  chart("gDRE", function () {
+    var A = tok("--accent"), N = tok("--neg"), G = tok("--gold");
+    return cascata(["Receita bruta", "Deduções", ["Receita", "líquida"], "Custo prod.", ["Margem", "bruta"], "Adm.", "Financ.", "Resultado"],
+      [{ t: "total", v: 1350000 }, { v: 20000 }, { t: "total", v: 1330000 }, { v: 680000 }, { t: "total", v: 650000 }, { v: 60000 }, { v: 45000 }, { t: "total", v: 545000 }],
+      [A, N, A, N, A, N, N, G]);
+  });
+
+  /* ---------- T3: depreciação ---------- */
+  var depSerie = [];
+  function dep() {
+    var v = val("dpValor"), r = val("dpRes"), vida = Math.max(1, val("dpVida"));
+    var anual = (v - r) / vida, mensal = anual / 12;
+    var c = $("dpCompra").value.split("-"), b = $("dpBase").value.split("-");
+    var meses = 0;
+    if (c.length === 2 && b.length === 2) meses = (+b[0] - +c[0]) * 12 + (+b[1] - +c[1]);
+    meses = Math.max(0, Math.min(meses, vida * 12));
+    var acum = mensal * meses, contabil = v - acum;
+    $("dpAnual").textContent = brl(anual, 2); $("dpMensal").textContent = brl(mensal, 2);
+    $("dpAcum").textContent = brl(acum, 2); $("dpContabil").textContent = brl(contabil, 2);
+    $("dpIdade").textContent = v > 0 ? pct(contabil / v) + " · " + fmt(meses / 12, 1) + " anos" : "—";
+    depSerie = [];
+    for (var a = 0; a <= vida; a++) depSerie.push({ x: (+c[0] || 0) + a, y: v - anual * a });
+    depSerie.marca = { x: (+c[0] || 0) + meses / 12, y: contabil };
+    draw("gDep");
+  }
+  builders.gDep = function () {
+    return { type: "line", data: { datasets: [
+      { label: "Valor contábil", data: depSerie.slice(), borderColor: tok("--accent"), backgroundColor: tok("--accent-soft"), fill: true, pointRadius: 2, tension: 0 },
+      { label: "Data-base", data: depSerie.marca ? [depSerie.marca] : [], borderColor: tok("--gold"), backgroundColor: tok("--gold"), pointRadius: 6, showLine: false }
+    ] }, options: { parsing: true, scales: { x: { type: "linear", ticks: { stepSize: 1, callback: function (v) { return String(v); } } }, y: { beginAtZero: true, ticks: { callback: mil } } },
+      plugins: { tooltip: { callbacks: { label: function (c) { return "Ano " + fmt(c.parsed.x, 1) + ": " + brl(c.parsed.y); } } } } } };
+  };
+  ["dpValor", "dpRes", "dpVida", "dpCompra", "dpBase"].forEach(function (id) { $(id).addEventListener("input", dep); }); dep();
+
+  /* ---------- T4: cascata por hectare ---------- */
+  chart("gCascata", function () {
+    var A = tok("--accent"), N = tok("--neg"), G = tok("--gold");
+    var c = cascata(["Receita", "(−) COE", ["Margem", "bruta"], "(−) Depreciação", ["Margem", "líquida"]],
+      [{ t: "total", v: 9656 }, { v: 7561.46 }, { t: "total", v: 2094.54 }, { v: 553.52 }, { t: "total", v: 1541.02 }], [A, N, G, N, A]);
+    c.options.scales.y.ticks.callback = function (v) { return fmt(v); };
+    c.options.plugins.tooltip = { callbacks: { label: function (x) { return brl(x.raw[1] - x.raw[0], 2) + " por ha"; } } };
+    return c;
+  });
+
+  /* ---------- T4: rentabilidade ---------- */
+  function rent() {
+    var r = val("rtReceita"), m = val("rtMargem"), k = val("rtCapital"), ref = val("rtRef") / 100;
+    var luc = r ? m / r : 0, ren = k ? m / k : 0;
+    $("rtLuc").textContent = pct(luc); $("rtRen").textContent = pct(ren) + " a.a.";
+    $("rtLeit").textContent = ren >= ref ? "Supera a referência de " + pct(ref) : "Abaixo da referência de " + pct(ref);
+  }
+  ["rtReceita", "rtMargem", "rtCapital", "rtRef"].forEach(function (id) { $(id).addEventListener("input", rent); }); rent();
+
+  /* ---------- T4: Três Safras ---------- */
+  chart("gSafras", function () {
+    return { type: "bar", data: { labels: ["Soja", "Milho", "Feijão"], datasets: [
+      { label: "Receita", data: [28774880, 23393000, 31566544], backgroundColor: tok("--blue") },
+      { label: "Custo variável", data: [18237600, 10430000, 19729090], backgroundColor: tok("--neg") },
+      { label: "Margem de contribuição", data: [10537280, 12963000, 11837454], backgroundColor: tok("--accent") }
+    ] }, options: { scales: { y: { beginAtZero: true, ticks: { callback: mil } } }, plugins: { legend: { position: "bottom" } } } };
+  });
+
+  var SC = 211580, CV = 18237600, OUTRAS = 24800454, FIXOS = 17300000, REC_TOT = 83734424, RES_BASE = 18037734;
+  var PMIN = 40, PMAX = 170;
+  function faixa() {
+    var pos = function (p) { return ((p - PMIN) / (PMAX - PMIN) * 100); };
+    var f = $("sjFaixa");
+    f.innerHTML = "<div style=\"width:" + pos(50.75) + "%;background:var(--neg-soft)\"></div>" +
+      "<div style=\"width:" + (pos(114.30) - pos(50.75)) + "%;background:var(--gold-soft)\"></div>" +
+      "<div style=\"flex:1;background:var(--accent-soft)\"></div>" +
+      "<span class=\"marca\" style=\"left:" + pos(50.75) + "%\"><span>R$ 50,75</span></span>" +
+      "<span class=\"marca\" style=\"left:" + pos(114.30) + "%\"><span>R$ 114,30</span></span>" +
+      "<span class=\"marca atual\" id=\"sjMarca\"><span id=\"sjMarcaTxt\"></span></span>";
+  }
+  function soja() {
+    var p = val("sjPreco");
+    var rec = SC * p, marg = rec - CV, res = marg + OUTRAS - FIXOS;
+    var recTot = REC_TOT - SC * 136 + rec;
+    $("sjPrecoTxt").textContent = brl(p, 2);
+    $("sjRec").textContent = brl(rec); $("sjMarg").textContent = brl(marg);
+    $("sjRes").textContent = brl(res);
+    $("sjRes").parentNode.classList.toggle("neg", res < 0);
+    $("sjMarg").parentNode.classList.toggle("neg", marg < 0);
+    var vr = recTot / REC_TOT - 1, vres = res / RES_BASE - 1;
+    $("sjVar").textContent = pct(vres) + " × " + pct(vr);
+    var m = $("sjMarca"); m.style.left = ((p - PMIN) / (PMAX - PMIN) * 100) + "%"; $("sjMarcaTxt").textContent = brl(p, 2);
+    var txt;
+    if (p < 50.75) txt = "Nem milho e feijão cobrem o buraco da soja: a fazenda inteira tem prejuízo.";
+    else if (p < 114.30) txt = "A soja não paga o próprio custo total, mas milho e feijão cobrem a diferença. É a zona perigosa: o resultado consolidado esconde a cultura deficitária.";
+    else txt = "A soja cobre insumos, estrutura e depreciação sozinha.";
+    if (p < 136 && p > 50.75) txt += " A receita total cai " + pct(-vr) + ", mas o resultado cai " + pct(-vres) + ": é a alavancagem operacional, porque os insumos já comprados não absorvem a queda de preço.";
+    $("sjLeitura").textContent = txt;
+  }
+  faixa(); $("sjPreco").addEventListener("input", soja); soja();
+
+  /* ---------- T4: nivelamento ---------- */
+  function niv() {
+    var c = val("nvCusto"), q = val("nvProd"), p = val("nvPreco");
+    var pm = q ? c / q : 0, qm = p ? c / p : 0, folga = q && p ? 1 - c / (q * p) : 0;
+    $("nvPrecoMin").textContent = brl(pm, 2) + "/sc";
+    $("nvProdMin").textContent = fmt(qm, 2) + " sc/ha";
+    $("nvFolga").textContent = pct(folga);
+    $("nvFolga").parentNode.classList.toggle("neg", folga < 0);
+  }
+  ["nvCusto", "nvProd", "nvPreco"].forEach(function (id) { $(id).addEventListener("input", niv); });
+  document.querySelectorAll("[data-niv]").forEach(function (b) { b.addEventListener("click", function () { $("nvCusto").value = b.getAttribute("data-niv"); niv(); }); });
+  niv();
+
+  /* ---------- T5: competência × caixa ---------- */
+  chart("gTempo", function () {
+    return { type: "bar", data: { labels: ["Set", "Out", "Nov", "Dez", "Jan", "Fev", "Mar", "Abr", "Mai"], datasets: [
+      { label: "Competência (custo)", data: [2500, 3000, 3000, 1500, 0, 0, 0, 0, 0], backgroundColor: tok("--gold") },
+      { label: "Caixa (pagamento)", data: [0, 0, 0, 0, 0, 0, 0, 5000, 5000], backgroundColor: tok("--blue") }
+    ] }, options: { scales: { y: { beginAtZero: true, ticks: { callback: function (v) { return fmt(v); } } } }, plugins: { legend: { position: "bottom" } } } };
+  });
+
+  /* ---------- T5: simulador de fluxo ---------- */
+  var MESES = ["Set", "Out", "Nov", "Dez", "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago"];
+  var EX_ENT = [0, 0, 0, 0, 0, 1400000, 900000, 0, 0, 350000, 300000, 0];
+  var EX_SAI = [650000, 520000, 180000, 120000, 110000, 160000, 260000, 90000, 80000, 140000, 120000, 60000];
+  var fcRes = {};
+  function fcMonta() {
+    var linha = function (nome, pref, arr) {
+      return "<tr><td>" + nome + "</td>" + arr.map(function (v, i) { return "<td><input type=\"number\" step=\"10000\" id=\"" + pref + i + "\" aria-label=\"" + nome + " " + MESES[i] + "\" value=\"" + v + "\" style=\"width:6.6rem\"></td>"; }).join("") + "</tr>";
+    };
+    $("fcTab").innerHTML = linha("Entradas operacionais", "fcE", EX_ENT) + linha("Saídas operacionais", "fcS", EX_SAI) +
+      "<tr class=\"total\"><td>Custeio (entra/sai)</td>" + MESES.map(function (m, i) { return "<td id=\"fcC" + i + "\" class=\"v\"></td>"; }).join("") + "</tr>" +
+      "<tr class=\"total\"><td>Saldo do mês</td>" + MESES.map(function (m, i) { return "<td id=\"fcM" + i + "\" class=\"v\"></td>"; }).join("") + "</tr>" +
+      "<tr class=\"res\"><td>Saldo acumulado</td>" + MESES.map(function (m, i) { return "<td id=\"fcA" + i + "\" class=\"v\"></td>"; }).join("") + "</tr>";
+  }
+  function fc() {
+    var saldo = val("fcInicial"), cust = val("fcCusteio"), pg = +$("fcPagto").value, j = val("fcJuros") / 100;
+    var mensal = [], acum = [], semCusteio = [], s0 = val("fcInicial");
+    for (var i = 0; i < 12; i++) {
+      var e = val("fcE" + i), s = val("fcS" + i);
+      var c = (i === 0 ? cust : 0) - (i === pg ? cust * (1 + j) : 0);
+      var m = e - s + c;
+      saldo += m; s0 += e - s;
+      mensal.push(m); acum.push(saldo); semCusteio.push(s0);
+      $("fcC" + i).textContent = c ? acc(c) : "—";
+      $("fcM" + i).textContent = acc(m); $("fcM" + i).className = "v " + (m < 0 ? "negv" : "");
+      $("fcA" + i).textContent = acc(saldo); $("fcA" + i).className = "v " + (saldo < 0 ? "negv" : "posv");
+    }
+    var pior = Math.min.apply(null, acum), iPior = acum.indexOf(pior);
+    $("fcPior").textContent = brl(pior) + " · " + MESES[iPior];
+    $("fcPior").parentNode.classList.toggle("neg", pior < 0);
+    // custeio mínimo: menor valor que mantém os saldos até a quitação não negativos (antes da quitação)
+    var antes = Math.min.apply(null, semCusteio.slice(0, pg));
+    var min = Math.max(0, -antes);
+    $("fcMin").textContent = brl(Math.ceil(min / 1000) * 1000);
+    $("fcFinal").textContent = brl(acum[11]);
+    fcRes = { mensal: mensal, acum: acum, min: Math.ceil(min / 1000) * 1000 };
+    draw("gFC");
+  }
+  builders.gFC = function () {
+    var N = tok("--neg"), A = tok("--accent");
+    return { data: { labels: MESES, datasets: [
+      { type: "line", label: "Saldo acumulado", data: fcRes.acum, borderColor: tok("--gold"), backgroundColor: tok("--gold"), pointRadius: 3, tension: 0, order: 0 },
+      { type: "bar", label: "Saldo do mês", data: fcRes.mensal, backgroundColor: fcRes.mensal.map(function (v) { return v < 0 ? N : A; }), order: 1 }
+    ] }, type: "bar", options: { scales: { y: { ticks: { callback: mil }, grid: { color: function (c) { return c.tick && c.tick.value === 0 ? tok("--muted") : tok("--line"); } } } }, plugins: { legend: { position: "bottom" } } } };
+  };
+  fcMonta();
+  $("simFC").addEventListener("input", fc);
+  $("fcMinBtn").addEventListener("click", function () { $("fcCusteio").value = fcRes.min; fc(); });
+  $("fcReset").addEventListener("click", function () { $("fcInicial").value = 300000; $("fcCusteio").value = 0; $("fcPagto").value = "6"; $("fcJuros").value = 8; fcMonta(); fc(); });
+  fc();
+
+  /* ---------- T6: IRPF ---------- */
+  var TAB = [[29145.60, 0, 0], [33919.80, 0.075, 2185.92], [45012.60, 0.15, 4729.92], [55976.16, 0.225, 8105.88], [Infinity, 0.275, 10904.76]];
+  function irpf(base) {
+    if (base <= 0) return { imp: 0, aliq: 0, nota: "Sem base" };
+    for (var i = 0; i < TAB.length; i++) if (base <= TAB[i][0]) break;
+    var imp = Math.max(0, base * TAB[i][1] - TAB[i][2]);
+    var nota = "Tabela";
+    if (base <= 60000) { nota = "Zerado pelo redutor (até R$ 60.000)"; imp = 0; }
+    else if (base <= 88200) nota = "Redutor parcial: imposto real menor";
+    return { imp: imp, aliq: TAB[i][1], nota: nota };
+  }
+  function pf() {
+    var r = val("pfReceita"), d = val("pfDesp");
+    var bReal = Math.max(0, r - d), bPres = r * 0.2;
+    var a = irpf(bReal), b = irpf(bPres);
+    var row = function (n, x, y) { return "<tr><td>" + n + "</td><td class=\"v\">" + x + "</td><td class=\"v\">" + y + "</td></tr>"; };
+    $("pfTab").innerHTML =
+      row("Base de cálculo", brl(bReal, 2), brl(bPres, 2)) +
+      row("Alíquota marginal", pct(a.aliq), pct(b.aliq)) +
+      row("IRPF pela tabela anual", brl(a.imp, 2), brl(b.imp, 2)) +
+      row("Situação", "<span class=\"chip\">" + a.nota + "</span>", "<span class=\"chip\">" + b.nota + "</span>") +
+      row("Alíquota efetiva sobre a receita", r ? pct(a.imp / r, 2) : "—", r ? pct(b.imp / r, 2) : "—");
+    var melhor = bReal < bPres ? "o resultado real" : bReal > bPres ? "a presunção de 20%" : "qualquer um dos dois";
+    $("pfLeitura").innerHTML = "Com despesas de " + pct(r ? d / r : 0, 0) + " da receita, a menor base vem de <b>" + melhor + "</b>. A presunção compensa quando as despesas comprovadas ficam abaixo de 80% da receita.";
+  }
+  ["pfReceita", "pfDesp"].forEach(function (id) { $(id).addEventListener("input", pf); }); pf();
+
+  /* ---------- T6: Lucro Presumido ---------- */
+  var lp = {};
+  function lpCalc() {
+    var r = val("lpReceita"), fun = $("lpFun").value === "1";
+    var bI = r * 0.08, bC = r * 0.12;
+    var irpj = bI * 0.15, adic = Math.max(0, bI - 240000) * 0.10, csll = bC * 0.09, pis = r * 0.0065, cof = r * 0.03, fr = fun ? r * 0.0205 : 0;
+    var tot = irpj + adic + csll + pis + cof + fr;
+    var row = function (n, b, v) { return "<tr><td>" + n + "</td><td class=\"small\">" + b + "</td><td class=\"v\">" + fmt(v, 2) + "</td></tr>"; };
+    $("lpTab").innerHTML =
+      row("IRPJ 15%", "8% da receita = " + brl(bI), irpj) +
+      row("Adicional de IRPJ 10%", "base acima de R$ 240.000", adic) +
+      row("CSLL 9%", "12% da receita = " + brl(bC), csll) +
+      row("PIS 0,65%", "receita bruta", pis) +
+      row("COFINS 3%", "receita bruta", cof) +
+      (fun ? row("Funrural PJ 2,05%", "comercialização", fr) : "") +
+      "<tr class=\"res\"><td>Carga total</td><td class=\"small\">" + (r ? pct(tot / r, 2) + " da receita" : "") + "</td><td class=\"v\">" + fmt(tot, 2) + "</td></tr>";
+    lp = { v: [irpj + adic, csll, pis, cof, fr], fun: fun };
+    draw("gLP");
+  }
+  builders.gLP = function () {
+    var labels = ["IRPJ + adicional", "CSLL", "PIS", "COFINS", "Funrural"];
+    var cores = [tok("--accent"), tok("--blue"), tok("--gold"), tok("--neg"), tok("--muted")];
+    var n = lp.fun ? 5 : 4;
+    return { type: "doughnut", data: { labels: labels.slice(0, n), datasets: [{ data: lp.v.slice(0, n), backgroundColor: cores.slice(0, n), borderWidth: 2 }] },
+      options: { cutout: "58%", plugins: { legend: { position: "bottom" }, tooltip: { callbacks: { label: function (c) { return c.label + ": " + brl(c.parsed); } } } } } };
+  };
+  $("lpReceita").addEventListener("input", lpCalc); $("lpFun").addEventListener("change", lpCalc);
+  document.querySelectorAll("[data-lp]").forEach(function (b) { b.addEventListener("click", function () { $("lpReceita").value = b.getAttribute("data-lp"); $("lpFun").value = b.getAttribute("data-fun"); lpCalc(); }); });
+  lpCalc();
+
+  /* ---------- T6: Funrural × folha ---------- */
+  var fn = {};
+  function fun() {
+    var r = val("fnReceita"), f = val("fnFolha"), a = parseFloat($("fnTipo").value);
+    var A = r * a, B = f * 0.20;
+    $("fnA").textContent = brl(A); $("fnB").textContent = brl(B);
+    $("fnMelhor").textContent = A < B ? "Funrural, economia de " + brl(B - A) : A > B ? "Folha, economia de " + brl(A - B) : "Empate";
+    fn = { A: A, B: B };
+    draw("gFun");
+  }
+  builders.gFun = function () {
+    return { type: "bar", data: { labels: ["Funrural (receita)", "Patronal (folha)"], datasets: [{ data: [fn.A, fn.B], backgroundColor: [tok("--accent"), tok("--gold")], borderRadius: 4 }] },
+      options: { indexAxis: "y", plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { callback: mil } } } } };
+  };
+  ["fnReceita", "fnFolha"].forEach(function (id) { $(id).addEventListener("input", fun); }); $("fnTipo").addEventListener("change", fun); fun();
+
+  /* ---------- Quizzes ---------- */
+  var Q = {
+    t1: [
+      { q: "Pelo Estatuto da Terra (Lei 4.504/64), quais elementos configuram uma empresa rural?", o: ["Pessoa jurídica com CNPJ ativo, qualquer atividade no campo e impostos rurais em dia.", "Pessoa física ou jurídica, pública ou privada, com exploração racional e contínua de imóvel rural, rendimento econômico compatível com a região e área mínima agricultável.", "Produtor pessoa física com Inscrição Estadual, mais de 100 ha e produção para exportação.", "Sociedade Ltda. com sede no município do imóvel e escrituração por partidas dobradas.", "Qualquer entidade com imóvel no INCRA, área acima do módulo fiscal e declaração anual de produção."], a: 1, why: "A lei define a empresa rural pela natureza da exploração, e não pelo registro no CNPJ." },
+      { q: "Um produtor pasteuriza e embala o leite da própria fazenda, sem alterar sua composição química. Que atividade rural ele exerce?", o: ["Pecuária, criação tradicional.", "Agricultura, cultivo e colheita.", "Transformação in natura (processamento primário).", "Agroindústria, transformação zootécnica.", "Extração e exploração de pequenos animais."], a: 2, why: "A Lei 8.023/90 enquadra como transformação in natura o processamento que não altera a composição fundamental do produto." },
+      { q: "Numa propriedade com culturas de colheitas em períodos distintos, como eucalipto e pecuária, como se fixa o exercício?", o: ["Sempre no ano civil.", "Pela cultura de menor custo por hectare.", "Um exercício distinto para cada cultura.", "A Receita Federal determina, independentemente do produtor.", "Pela colheita da cultura de maior representatividade econômica."], a: 4, why: "O exercício acompanha a atividade que mais pesa no resultado da propriedade." },
+      { q: "Sobre culturas permanentes e temporárias, qual afirmativa está correta?", o: ["Temporárias exigem replantio a cada safra; permanentes permitem várias colheitas da mesma planta.", "Permanentes têm ciclo menor que um ano.", "Após a primeira colheita, a permanente dispensa manutenção.", "A rotação de culturas é prática comum entre as permanentes.", "A cana exige replantio a cada colheita, por isso é temporária de ciclo longo."], a: 0, why: "É a distinção que leva a cultura permanente para o ativo imobilizado, sujeita a depreciação ou exaustão." },
+      { q: "I. A PF usa o LCDPR como escrituração simplificada. II. A PF expõe o patrimônio familiar a dívidas. III. A PJ exige partidas dobradas e contabilidade completa. IV. A PJ só paga tributo sobre o lucro, sendo isenta em ano de prejuízo. Estão corretas:", o: ["I e IV.", "II e III.", "I, II e III.", "I, III e IV.", "II, III e IV."], a: 2, why: "IV é falsa: PIS e COFINS incidem sobre a receita bruta, com ou sem lucro." },
+      { q: "Qual associação entre forma societária e característica está correta?", o: ["Empresário individual dá proteção patrimonial plena; SLU não separa patrimônio.", "S.A. é o modelo padrão de vários sócios; Ltda. é estrutura de grande porte de capital aberto.", "Empresário individual separa totalmente o patrimônio; PF tem a escrituração mais complexa.", "SLU dá proteção patrimonial sem sócios; Ltda. é o modelo padrão para vários sócios com responsabilidade limitada.", "Condomínio rural é forma societária do Código Civil equivalente à SLU."], a: 3, why: "O empresário individual não separa patrimônio; a SLU separa sem exigir sócios." },
+      { q: "O que é o comodato rural?", o: ["Divisão de custos e lucros entre proprietário e produtor.", "Empréstimo gratuito da terra por prazo determinado, com devolução no mesmo estado.", "Uso da terra mediante renda fixa, independentemente da safra.", "Exploração conjunta com Inscrição Estadual única.", "Cessão permanente com indenização ao final."], a: 1, why: "A alternativa A descreve a parceria, a C o arrendamento e a D o condomínio." },
+      { q: "I. Na parceria, os custos são divididos. II. No arrendamento, a receita do proprietário é fixa. III. O risco da parceria é a receita ficar limitada ao valor fixo. IV. No arrendamento o proprietário perde o controle da área. Estão corretas:", o: ["I, II e IV.", "I e III.", "II e III.", "I, III e IV.", "II, III e IV."], a: 0, why: "III descreve o risco do arrendamento, e não o da parceria: quem recebe renda fixa não captura a supersafra." },
+      { q: "Para cada R$ 1.000 de receita, o arrendamento deixa R$ 725 líquidos e a parceria R$ 945. Qual a economia da parceria?", o: ["R$ 55", "R$ 100", "R$ 150", "R$ 220", "R$ 275"], a: 3, why: "945 − 725 = 220. Teste outros valores no simulador de contratos acima." },
+      { q: "Quando o Lucro Real é mais vantajoso que o Presumido para o produtor?", o: ["Quando a margem real é sempre superior à presunção.", "Quando o faturamento supera R$ 78 milhões, tornando o Presumido obrigatório.", "Quando se quer simplificar a escrituração.", "Quando a atividade é só arrendar terras.", "Com margens apertadas, abaixo da presunção, anos de alto investimento ou quebra de safra com prejuízo."], a: 4, why: "No Real o imposto segue o lucro efetivo. Acima de R$ 78 milhões é o Real que se torna obrigatório, e não o Presumido." },
+      { q: "Sobre a holding rural, assinale a afirmativa INCORRETA:", o: ["A integralização transfere os bens do CPF para o CNPJ.", "Os bens formam o capital social e a fazenda vira quotas.", "Integralizar equivale a doar os bens aos herdeiros, antecipando a herança.", "A holding passa a administrar arrendamentos, contratos e contas.", "A família continua usufruindo, com gestão empresarial."], a: 2, why: "Integralizar é transferir bens para o capital da empresa. Doação de quotas aos herdeiros é outro ato, posterior e opcional." },
+      { q: "Qual é o benefício da sucessão pacífica na holding?", o: ["Os herdeiros recebem quotas em vez de disputar hectares em inventário caro e demorado.", "O patrimônio fica protegido de dívidas pessoais dos sócios.", "O acordo de sócios impede a venda a terceiros.", "Mais credibilidade nos bancos.", "Eliminação completa do ITCMD."], a: 0, why: "B é segurança patrimonial, C é governança e D é acesso a crédito. O ITCMD não é eliminado." },
+      { q: "Contrato de parceria no papel, aluguel fixo mensal na prática e sem nota fiscal. Qual a consequência mais provável?", o: ["Alíquota reduzida automaticamente a 5,5%.", "Autuação por sonegação, multas pesadas e possível bloqueio de bens.", "A Receita aceita o contrato desde que haja CNPJ.", "Só notificação prévia na primeira vez.", "Regularização a qualquer momento sem penalidade."], a: 1, why: "É o que mostrou a Operação Declara Grãos: vale a realidade da operação, e não o nome do contrato." },
+      { q: "I. O frete até os portos pode consumir a margem de uma safra em Sorriso. II. A fazenda moderna perdeu a autossuficiência, pela dependência de insumos dolarizados. III. A resposta é profissionalizar, com contabilidade de precisão e contratos. Estão corretas:", o: ["Apenas I.", "Apenas II e III.", "Apenas I e II.", "Apenas I e III.", "I, II e III."], a: 4, why: "As três descrevem o ambiente de margem estreita e risco alto do agro em MT." }
+    ],
+    t2: [
+      { q: "Pela escada de liquidez do inventário rural, qual a ordem do MENOR para o MAIOR grau de liquidez?", o: ["Terras e culturas, construções e benfeitorias, máquinas, animais, produtos e insumos, depósitos em bancos.", "Depósitos em bancos, produtos e insumos, animais, máquinas, construções, terras.", "Animais, máquinas, terras, estoques, construções, depósitos.", "Todos os ativos rurais têm a mesma liquidez."], a: 0, why: "A terra é o ativo menos líquido: vendê-la rápido costuma exigir desconto expressivo.", erro: "Marcar a ordem inversa. E confundir patrimônio com liquidez: fazenda grande e caixa vazio é a combinação que mais derruba produtor." },
+      { q: "No inventário rural, os passivos são organizados por exigibilidade em quais categorias?", o: ["Passivo permanente e transitório.", "Passivo circulante e não circulante, como no Balanço societário.", "Financiamentos, divididos por prazo, e obrigações financeiras, como salários, encargos e impostos.", "Passivo operacional e estratégico."], a: 2, why: "Financiamentos de curto prazo (ano corrente), médio (até 5 anos) e longo (mais de 5); de outro lado, as obrigações correntes.", erro: "A alternativa B é a classificação correta do Balanço societário, mas não a do inventário rural." },
+      { q: "A Fazenda Boa Colheita financia 50% dos custos na cooperativa e trava 40% da produção em contrato futuro. Quais os impactos no BP e na DRE?", o: ["BP: aumento do imobilizado pelo contrato futuro. DRE: redução das despesas fixas.", "BP: aumento do passivo circulante pelo empréstimo pago na safra. DRE: menor volatilidade da receita líquida, pelo preço travado.", "BP: sem impacto. DRE: aumento imediato da receita.", "BP: aumento do PL pela garantia. DRE: redução do custo de produção."], a: 1, why: "O contrato futuro não gera receita na assinatura: estreita a faixa de resultados possíveis. O custeio pago na safra é passivo circulante.", erro: "Achar que travar preço aumenta a receita. O contrato futuro é escudo, não alavanca." }
+    ],
+    t3: [
+      { q: "A Fazenda Sol Nascente vendeu soja em novembro de 2025 e receberá R$ 200.000 em janeiro e R$ 150.000 em março de 2026. Pelo regime de competência, quando se reconhece a receita?", o: ["R$ 200.000 em janeiro e R$ 150.000 em março, conforme os recebimentos.", "R$ 350.000 integralmente em novembro de 2025.", "R$ 350.000 em janeiro, no primeiro recebimento.", "Metade em 2025 e metade em 2026."], a: 1, why: "A receita pertence ao período em que a venda ocorreu. Os recebimentos aparecem no fluxo de caixa." },
+      { q: "A Fazenda Boa Terra paga R$ 50.000 de empréstimo com dinheiro do caixa. O que acontece com o patrimônio líquido de R$ 1.363.000?", o: ["Aumenta R$ 50.000.", "Diminui R$ 50.000.", "Permanece em R$ 1.363.000.", "Aumenta R$ 100.000."], a: 2, why: "Ativo e passivo caem juntos em R$ 50.000. A riqueza do dono não muda: só deixou de dever o que pagou. Confira no simulador de balanço." },
+      { q: "A Fazenda Verde tem R$ 1.150.000 de receita, R$ 490.000 de custos diretos e R$ 60.000 de despesas administrativas. Ao segregar a DRE em rural, industrial e serviços, o resultado total:", o: ["Aumenta, porque a base tributável cai.", "Diminui, porque cada atividade absorve parte da administração.", "Permanece em R$ 600.000: muda o que se enxerga, não o resultado.", "Não pode ser calculado sem separação prévia."], a: 2, why: "Segregar mostra qual atividade gera resultado e evita tratar receita industrial ou de serviços como rural, o que é risco fiscal." }
+    ],
+    t4: [
+      { q: "A Fazenda Grãos do Cerrado colheu 8.000 sc de soja (vendeu 6.000 a R$ 130) e 12.000 sc de milho (vendeu 10.000 a R$ 70). Receita bruta e renda total são:", o: ["Receita de R$ 1.880.000 e renda de R$ 1.480.000.", "Receita de R$ 1.480.000 e renda de R$ 1.880.000.", "Ambas de R$ 1.480.000.", "Receita de R$ 1.480.000 e renda de R$ 1.600.000."], a: 1, why: "Receita = 6.000 × 130 + 10.000 × 70 = 1.480.000. Renda inclui o que não foi vendido: 8.000 × 130 + 12.000 × 70 = 1.880.000." },
+      { q: "A receita cobriu o COE, mas ficou abaixo do COT. O que isso significa?", o: ["Prejuízo e contas do ciclo sem pagar.", "Pagou todas as contas do ciclo, mas não gerou recursos para repor máquinas e benfeitorias.", "Remunerou o capital de terceiros, mas não o próprio.", "Situação impossível."], a: 1, why: "É a camada 1 da matriz: sobrevive hoje, mas se descapitaliza no longo prazo e não troca o trator amanhã." },
+      { q: "A Fazenda Boi Forte teve R$ 1.450.000 de desembolsos, R$ 140.000 de depreciação e R$ 90.000 de juros sobre o capital próprio. Qual o COT?", o: ["R$ 1.450.000", "R$ 1.590.000", "R$ 1.680.000", "R$ 1.540.000"], a: 1, why: "COT = COE + depreciação. Os juros sobre o capital próprio entram só no custo total (R$ 1.680.000)." },
+      { q: "Com COT de R$ 1.590.000 e 5.400 arrobas vendidas a R$ 320, qual o preço de nivelamento da arroba?", o: ["R$ 263,33, considerando as vacas de descarte.", "R$ 294,44, com margem de segurança de 8%.", "R$ 320,00.", "R$ 351,11, indicando prejuízo."], a: 1, why: "1.590.000 ÷ 5.400 = 294,44. Folga = 1 − 294,44 ÷ 320 = 8%. Teste na calculadora de nivelamento." }
+    ],
+    t5: [
+      { q: "Quais são as quatro grandes categorias do fluxo de caixa da fazenda?", o: ["Ativo, passivo, patrimônio líquido e resultado.", "Receitas, despesas, financiamentos e investimentos.", "Custos fixos, variáveis, depreciação e resultado.", "Saldo inicial, do mês, acumulado e final."], a: 1, why: "São os quatro quadrantes: dois operacionais (receitas e despesas) e dois estruturais (financiamentos e investimentos)." },
+      { q: "Uma fazenda tem lucro contábil positivo no mês, mas saldo de caixa negativo. Qual a explicação?", o: ["É impossível.", "Erro de escrituração, porque lucro e caixa são a mesma coisa.", "O lucro segue a competência e o caixa registra o dinheiro movimentado; vendas a prazo e compras antecipadas de insumos produzem a diferença.", "Caixa negativo sempre indica prejuízo."], a: 2, why: "Veja o gráfico da máquina do tempo: o custo aparece em um mês, o pagamento em outro." },
+      { q: "A Fazenda Lagoa Vermelha começa janeiro com R$ 50.000 e gasta R$ 80.000 em insumos. Em fevereiro vende 2.000 sc de soja a R$ 130. Qual o saldo acumulado ao fim de fevereiro?", o: ["R$ 180.000", "R$ 230.000", "R$ 260.000", "R$ 210.000"], a: 1, why: "Janeiro: 50.000 − 80.000 = −30.000 (quebra de caixa). Fevereiro: −30.000 + 260.000 = 230.000. O alerta é janeiro, que pede custeio ou antecipação de venda." },
+      { q: "Por que o fluxo de caixa é elaborado, em geral, mês a mês?", o: ["Por exigência da legislação tributária.", "Porque o mês é o período aceito para o pagamento do pessoal e da maior parte dos compromissos financeiros.", "Porque os bancos só aceitam relatórios mensais.", "Porque a sazonalidade obriga."], a: 1, why: "Salários, energia, parcelas e fornecedores vencem em ciclos mensais." }
+    ],
+    t6: [
+      { q: "Um produtor pessoa física teve receita bruta de R$ 5.200.000. Quanto ao LCDPR:", o: ["É sempre facultativo.", "É obrigatório, porque a receita supera R$ 4.800.000 no ano.", "Só é obrigatório acima de R$ 10.000.000.", "A obrigação de declarar a atividade rural começa acima de R$ 5.000.000."], a: 1, why: "Acima de R$ 4,8 milhões a escrituração digital é obrigatória e transmitida pelo e-CAC.", erro: "Facultativo não é dispensado de comprovar: quem apura pelo resultado real guarda a documentação ou tem a dedução glosada." },
+      { q: "Uma agropecuária no Lucro Presumido teve receita de R$ 1.000.000. Qual a base do IRPJ e da CSLL?", o: ["R$ 200.000 para os dois (20%).", "R$ 1.000.000 para os dois.", "R$ 80.000 para o IRPJ (8%) e R$ 120.000 para a CSLL (12%).", "R$ 80.000 para os dois (8%)."], a: 2, why: "Sobre essas bases aplicam-se 15% e 9%. O adicional de 10% só incide sobre a base acima de R$ 240.000.", erro: "Usar os 20% da pessoa física no CNPJ infla o imposto em cerca de 40%." },
+      { q: "Quais são as duas formas de apurar a base do IRPF na atividade rural?", o: ["Lucro Presumido de 20% ou Simples Nacional.", "Resultado líquido (receitas − despesas comprovadas no LCDPR) ou presunção legal de 20% da receita bruta.", "Faturamento bruto ou alíquota fixa de 15%.", "Apenas Lucro Real."], a: 1, why: "A presunção compensa quando as despesas comprovadas ficam abaixo de 80% da receita. Teste no simulador da pessoa física." }
+    ]
+  };
+  var L = "ABCDE";
+  document.querySelectorAll("[data-quiz]").forEach(function (box) {
+    var k = box.getAttribute("data-quiz"), qs = Q[k] || [];
+    var acertos = 0, respondidas = 0;
+    function render() {
+      acertos = 0; respondidas = 0;
+      box.innerHTML = "<div class=\"placar\"><span class=\"chip\" id=\"pl-" + k + "\">0 de " + qs.length + " respondidas</span><button type=\"button\" class=\"sec\" data-reset>Refazer</button></div>" +
+        qs.map(function (x, i) {
+          return "<div class=\"questao\" data-i=\"" + i + "\"><p class=\"enun\"><span class=\"eyebrow\">Questão " + (i + 1) + "</span>" + x.q + "</p><div class=\"opcoes\">" +
+            x.o.map(function (op, j) { return "<button type=\"button\" class=\"opcao\" data-j=\"" + j + "\"><span class=\"l\">" + L[j] + "</span><span>" + op + "</span></button>"; }).join("") +
+            "</div><div class=\"feedback\" hidden></div></div>";
+        }).join("");
+      box.querySelector("[data-reset]").addEventListener("click", render);
+    }
+    box.addEventListener("click", function (ev) {
+      var b = ev.target.closest(".opcao"); if (!b || b.disabled) return;
+      var qd = b.closest(".questao"), x = qs[+qd.getAttribute("data-i")], j = +b.getAttribute("data-j");
+      var ok = j === x.a;
+      qd.querySelectorAll(".opcao").forEach(function (o) { o.disabled = true; var jj = +o.getAttribute("data-j"); if (jj === x.a) o.classList.add("certa"); else if (jj === j) o.classList.add("errada"); });
+      var fb = qd.querySelector(".feedback");
+      fb.innerHTML = "<span class=\"v " + (ok ? "ok" : "no") + "\">" + (ok ? "Correta." : "Não é essa. A resposta é a " + L[x.a] + ".") + "</span><span><b>Por quê:</b> " + x.why + "</span>" + (x.erro ? "<span><b>Erro comum:</b> " + x.erro + "</span>" : "");
+      fb.hidden = false;
+      respondidas++; if (ok) acertos++;
+      var pl = $("pl-" + k);
+      pl.textContent = respondidas < qs.length ? respondidas + " de " + qs.length + " respondidas · " + acertos + " certas" : "Resultado: " + acertos + " de " + qs.length;
+      pl.className = "chip " + (respondidas === qs.length ? (acertos / qs.length >= 0.7 ? "ok" : "alerta") : "");
+    });
+    render();
+  });
+
+
+  /* ---------- capa: vista aérea de talhões ---------- */
+  (function () {
+    var cv = $("capaArte"); if (!cv || !cv.getContext) return;
+    var CORES = ["#2c6a3b", "#3b7c45", "#4f8d3d", "#7fa43c", "#2f5e35", "#c9a23a", "#b8892c", "#6e4c2c", "#83603a", "#3f7347"];
+    function rnd(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+    function desenha() {
+      var r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+      if (!r.width) return;
+      cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
+      var c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var W = r.width, H = r.height, R = rnd(20260914);
+      c.fillStyle = "#d8cda6"; c.fillRect(0, 0, W, H);
+      c.save(); c.translate(W * .55, H * .5); c.rotate(-0.21);
+      var D = Math.hypot(W, H) * .75, pedacos = [];
+      (function corta(x, y, w, h, n) {
+        if (n === 0 || (w < 150 && h < 150)) { pedacos.push([x, y, w, h]); return; }
+        var vert = w > h ? R() < .8 : R() < .2, t = .3 + R() * .4;
+        if (vert) { corta(x, y, w * t, h, n - 1); corta(x + w * t, y, w * (1 - t), h, n - 1); }
+        else { corta(x, y, w, h * t, n - 1); corta(x, y + h * t, w, h * (1 - t), n - 1); }
+      })(-D, -D, 2 * D, 2 * D, 9);
+      pedacos.forEach(function (p) {
+        var g = 5, x = p[0] + g, y = p[1] + g, w = p[2] - 2 * g, h = p[3] - 2 * g; if (w < 4 || h < 4) return;
+        var cor = CORES[Math.floor(R() * CORES.length)];
+        c.fillStyle = cor; c.fillRect(x, y, w, h);
+        c.save(); c.beginPath(); c.rect(x, y, w, h); c.clip();
+        c.strokeStyle = "rgba(255,255,255,.10)"; c.lineWidth = 1.2;
+        var passo = 5 + Math.floor(R() * 4), horiz = R() < .5;
+        c.beginPath();
+        if (horiz) for (var yy = y; yy < y + h; yy += passo) { c.moveTo(x, yy); c.lineTo(x + w, yy); }
+        else for (var xx = x; xx < x + w; xx += passo) { c.moveTo(xx, y); c.lineTo(xx, y + h); }
+        c.stroke(); c.restore();
+      });
+      c.restore();
+      [[.8, .34, .11], [.93, .8, .085], [.66, .92, .07]].forEach(function (k) {
+        var cx = W * k[0], cy = H * k[1], rr = Math.max(W, H) * k[2];
+        c.fillStyle = "#3e8a47"; c.beginPath(); c.arc(cx, cy, rr, 0, Math.PI * 2); c.fill();
+        c.strokeStyle = "rgba(255,255,255,.12)"; c.lineWidth = 1;
+        for (var a = rr; a > 4; a -= 7) { c.beginPath(); c.arc(cx, cy, a, 0, Math.PI * 2); c.stroke(); }
+        c.fillStyle = "rgba(201,162,58,.32)"; c.beginPath(); c.moveTo(cx, cy); c.arc(cx, cy, rr, -0.6, 0.5); c.closePath(); c.fill();
+        c.strokeStyle = "rgba(242,244,234,.7)"; c.lineWidth = 2; c.beginPath(); c.moveTo(cx, cy); c.lineTo(cx + Math.cos(0.5) * rr, cy + Math.sin(0.5) * rr); c.stroke();
+      });
+    }
+    desenha();
+    var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(desenha, 150); });
+  })();
+
+
+  /* ---------- cadernos online ---------- */
+  (function () {
+    var N = function (r, a, t, u) { return { k: "n", r: r, a: [].concat(a), t: t, u: u || "" }; };
+    var S = function (r, o, a) { return { k: "s", r: r, o: o, a: a }; };
+    var G = function (cols, rows) { return { k: "g", cols: cols, rows: rows }; };
+    var Z = function (n, v) { var a = []; for (var i = 0; i < n; i++) a.push(v); return a; };
+    var M6 = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Total"];
+    var VF = ["Verdadeiro", "Falso"];
+    var L4 = ["A", "B", "C", "D"];
+
+    var CAD = [
+      { g: "Módulo 3 · Princípios, Balanço Patrimonial e DRE", f: "Atividades dos Módulos 3, 4 e 5", ex: [
+        { id: "a1", t: "Atividade 1 · Associação", e: "<p>Associe cada benefício ao princípio contábil que o gera: (A) Entidade, (B) Continuidade, (C) Oportunidade, (D) Competência.</p>", c: [
+          S("Permite decisões rápidas, baseadas em dados atualizados", L4, 2),
+          S("Separa as finanças pessoais das finanças da fazenda", L4, 0),
+          S("Ajuda a planejar investimentos de longo prazo", L4, 1),
+          S("Gera relatórios precisos ainda que o pagamento não tenha ocorrido", L4, 3)] },
+        { id: "a2", t: "Atividade 2 · Verdadeiro ou falso", e: "", c: [
+          S("a) A Prudência recomenda a estimativa mais conservadora ao projetar receitas e lucros.", VF, 0),
+          S("b) O registro pelo valor original permite controlar a depreciação de máquinas e benfeitorias.", VF, 0),
+          S("c) Misturar despesas pessoais com as da fazenda é aceitável quando o produtor é o único dono.", VF, 1),
+          S("d) A Continuidade considera que a fazenda seguirá operando no futuro previsível.", VF, 0),
+          S("e) Pela competência, a receita de venda a prazo só é reconhecida quando o dinheiro entra.", VF, 1)],
+          com: "c) é falsa pelo princípio da entidade, mesmo com um único dono. e) é falsa: a competência reconhece a receita quando a venda acontece." },
+        { id: "a3", t: "Atividade 3 · Princípio da competência", e: "<p>A Fazenda Sol Nascente vendeu 500 t de soja em novembro de 2025 e recebe R$ 200.000 em janeiro e R$ 150.000 em março de 2026.</p>", c: [
+          S("Mês de reconhecimento da receita", ["Novembro de 2025", "Janeiro de 2026", "Março de 2026", "Parte em janeiro, parte em março"], 0),
+          N("Valor reconhecido (R$)", 350000)],
+          com: "Sem a competência, 2025 fica com R$ 350.000 a menos de receita e 2026 com R$ 350.000 a mais: o resultado da safra aparece no ano errado e o planejamento da safra seguinte parte de números distorcidos." },
+        { id: "a4", t: "Atividade 4 · Depreciação do trator", e: "<p>Fazenda Boa Esperança: trator comprado em janeiro de 2023 por R$ 300.000, vida útil de 10 anos, valor residual desprezível. Calcule a posição em abril de 2025.</p>", c: [
+          N("Depreciação anual (R$)", 30000), N("Depreciação mensal (R$)", 2500),
+          N("Depreciação acumulada em abril de 2025 (R$)", [67500, 70000]), N("Valor contábil em abril de 2025 (R$)", [232500, 230000])],
+          com: "De janeiro de 2023 a abril de 2025 são 27 meses (27 × 2.500 = 67.500; valor contábil de 232.500). Quem conta abril inteiro chega a 28 meses (70.000 e 230.000): as duas leituras são aceitas. Sem esse registro, o lucro aparece maior que o real e a fazenda não forma reserva para trocar a máquina." },
+        { id: "a5", t: "Atividade 5 · Fazenda Boa Colheita: DRE misturada × correta", e: "<p>Venda de soja R$ 1.200.000 e de gado R$ 150.000. Insumos R$ 350.000, mão de obra R$ 200.000, combustível e manutenção R$ 90.000, tributos R$ 40.000. Pagos pela conta da fazenda: escola dos filhos R$ 60.000, viagens R$ 30.000 e carro pessoal R$ 120.000.</p>", c: [
+          N("a) Total que viola o princípio da entidade (R$)", 210000),
+          G(["Item", "DRE misturada", "DRE correta"], [
+            ["(+) Receita bruta", 1350000, 1350000], ["(−) Custos e despesas da atividade", 680000, 680000],
+            ["(−) Despesas pessoais", 210000, 0], ["(=) Resultado", 460000, 670000]])],
+          com: "O carro pessoal não pertence ao ativo da fazenda. Com a DRE misturada o banco enxerga R$ 460.000 em vez de R$ 670.000 e subestima a capacidade de pagamento. Controles: contas bancárias separadas e pró-labore fixo mensal; aprovação formal de pagamentos." },
+        { id: "a6", t: "Atividade 6 · Balanço da Fazenda Santa Luzia", e: "<p>Abril de 2026: caixa e bancos R$ 15.000; equipamentos R$ 80.000; terras R$ 200.000; empréstimos R$ 50.000.</p>", c: [
+          N("Total do ativo (R$)", 295000), N("Passivo (R$)", 50000), N("Patrimônio Líquido (R$)", 245000)],
+          com: "O PL é a riqueza que pertence de fato ao produtor depois de pagar todas as dívidas." },
+        { id: "a7", t: "Atividade 7 · Atualização do Balanço da Fazenda Boa Terra", e: "<p>Em maio a fazenda pagou R$ 50.000 de empréstimo e comprou uma máquina de R$ 30.000 à vista. Preencha a movimentação e o saldo depois.</p>", c: [
+          G(["Item", "Antes", "Movimentação", "Depois"], [
+            ["Caixa e bancos", "93.000", -80000, 13000], ["Equipamentos", "570.000", 30000, 600000], ["Terras", "1.000.000", 0, 1000000],
+            ["Total do ativo", "1.663.000", -50000, 1613000], ["Empréstimos bancários", "300.000", -50000, 250000],
+            ["Patrimônio Líquido", "1.363.000", 0, 1363000], ["Total passivo + PL", "1.663.000", -50000, 1613000]])],
+          com: "Pagar o empréstimo reduz ativo e passivo juntos; comprar a máquina à vista troca caixa por equipamento. Nenhuma das duas operações altera o PL." },
+        { id: "a8", t: "Atividade 8 · Depreciação acumulada de duas fazendas", e: "<p>Data-base janeiro de 2026, depreciação linear, valor residual desprezível.</p>", c: [
+          G(["Fazenda Terra Boa", "Compra", "Aquisição", "Vida", "Depr. anual", "Depr. acum.", "Valor atual"], [
+            ["Trator", "01/2022", "250.000", "10", 25000, 100000, 150000], ["Colheitadeira", "01/2020", "600.000", "10", 60000, 360000, 240000],
+            ["Curral", "01/2021", "80.000", "20", 4000, 20000, 60000], ["Cerca de divisa", "01/2019", "20.000", "10", 2000, 14000, 6000],
+            ["Total", "—", "950.000", "—", 91000, 494000, 456000]]),
+          G(["Fazenda Ipiranga", "Compra", "Aquisição", "Vida", "Depr. anual", "Depr. acum.", "Valor atual"], [
+            ["Trator", "01/2023", "500.000", "10", 50000, 150000, 350000], ["Colheitadeira", "01/2024", "900.000", "10", 90000, 180000, 720000],
+            ["Curral", "01/2022", "180.000", "20", 9000, 36000, 144000], ["Cerca de divisa", "01/2022", "200.000", "10", 20000, 80000, 120000],
+            ["Total", "—", "1.780.000", "—", 169000, 446000, 1334000]]),
+          N("Terra Boa: valor atual ÷ aquisição (%)", 48.0, 0.2, "%"), N("Ipiranga: valor atual ÷ aquisição (%)", 74.94, 0.2, "%"),
+          S("Qual fazenda tem o parque de máquinas mais novo?", ["Terra Boa", "Ipiranga"], 1)],
+          com: "A Ipiranga ainda tem 75% do valor de aquisição; a Terra Boa, 48%. O controle mostra ao banco o estado real das garantias e a necessidade de reposição." }
+      ] },
+      { g: "Módulo 4 · Renda, receita, custos e resultado", f: "Atividades dos Módulos 3, 4 e 5", ex: [
+        { id: "a10", t: "Atividade 10 · Fazenda Boi Forte (pecuária de corte)", e: "<ul><li>Boi gordo: 300 cabeças × 18 @ × R$ 320 = R$ 1.728.000</li><li>Vacas de descarte: 60 × R$ 2.800 = R$ 168.000</li><li>Bezerras retidas para reposição: 80 × R$ 2.200 (não vendidas)</li><li>Desembolsos: R$ 1.450.000 · Depreciação: R$ 140.000 · Juros sobre capital próprio: R$ 90.000</li></ul>", c: [
+          N("Receita bruta (R$)", 1896000), N("Renda total (R$)", 2072000),
+          N("COE (R$)", 1450000), N("COT (R$)", 1590000), N("Custo total (R$)", 1680000),
+          N("Margem bruta (R$)", 446000), N("Margem líquida (R$)", 306000), N("Resultado econômico (R$)", 216000),
+          N("d) Preço de nivelamento da arroba no COT (R$/@)", 294.44, 0.05), N("d) Margem de segurança (%)", 7.99, 0.2, "%"),
+          N("e) Nivelamento deduzindo o descarte (R$/@)", 263.33, 0.05)],
+          com: "A renda inclui as bezerras retidas (R$ 176.000), que viram patrimônio e não caixa. O nivelamento usa o COT ÷ 5.400 @. Deduzir o descarte do custo baixa o piso para R$ 263,33: na pecuária de ciclo completo, a vaca de descarte financia parte do custo do boi." },
+        { id: "a11", t: "Atividade 11 · Fazenda Grãos do Cerrado (soja e milho)", e: "<ul><li>200 ha: 100 de soja e 100 de milho</li><li>Soja: 8.000 sc colhidas, 6.000 vendidas a R$ 130, 2.000 na engorda do gado</li><li>Milho: 12.000 sc colhidas, 10.000 vendidas a R$ 70, 2.000 em estoque</li><li>Insumos R$ 280.000; mão de obra R$ 100.000; máquinas R$ 60.000; depreciação R$ 40.000; juros sobre capital próprio R$ 20.000</li></ul>", c: [
+          N("Receita bruta (R$)", 1480000), N("Renda total (R$)", 1880000),
+          N("COE (R$)", 440000), N("COT (R$)", 480000), N("Custo total (R$)", 500000),
+          N("Margem bruta (R$)", 1040000), N("Margem líquida (R$)", 1000000), N("Resultado econômico (R$)", 980000),
+          N("e) Produtividade da soja (sc/ha)", 80, 0.1), N("e) Produtividade do milho (sc/ha)", 120, 0.1),
+          N("f) COE com custeio regional: R$ 6.000/ha soja e R$ 3.500/ha milho (R$)", 950000), N("f) Nova margem bruta (R$)", 530000), N("f) Margem bruta ÷ receita (%)", 35.81, 0.15, "%"),
+          N("g) Produtividade de nivelamento da soja a R$ 130/sc (sc/ha)", [46.15, 48.46], 0.1)],
+          com: "O milho em estoque vai para o ativo circulante; a soja da engorda é uso interno, entra na renda mas não na receita. Os custos do caso são baixos para MT: com o custeio regional a margem cai de 70% para 36% da receita. No item g, 46,2 sc/ha considera só o custeio; 48,5 sc/ha inclui metade da depreciação e dos juros." }
+      ] },
+      { g: "Módulo 5 e Tópico 5 · Fluxo de caixa", f: "Atividades dos Módulos 3, 4 e 5 e caderno do Tópico 5", ex: [
+        { id: "a13", t: "Atividade 13 · Fazenda Terra Boa: abril", e: "<p>Saldo acumulado em março: R$ 93.000. Em abril: soja R$ 150.000, gado R$ 20.000; insumos R$ 10.000, funcionários R$ 12.000, outras despesas R$ 5.000.</p>", c: [
+          N("Entradas (R$)", 170000), N("Saídas (R$)", 27000), N("Saldo do mês (R$)", 143000), N("Saldo acumulado (R$)", 236000)],
+          com: "O saldo acumulado não é lucro: mostra dinheiro disponível. Na soja do norte de MT, os maiores déficits vêm entre setembro e janeiro, no plantio; a prevenção é contratar custeio ou travar vendas antecipadas." },
+        { id: "f1", t: "Exercício 1 · Fazenda Lagoa Vermelha (jan–jun)", e: "<p>Saldo inicial R$ 50.000. Fevereiro: 2.000 sc de soja a R$ 130. Maio: 3.000 sc de milho a R$ 70. Despesas: janeiro, insumos R$ 80.000; março, mão de obra R$ 30.000; abril, máquinas R$ 20.000; maio, juros R$ 10.000.</p>", c: [
+          G(M6.map(function (m) { return m; }).reduce(function (a, m) { a.push(m); return a; }, ["Item"]), [
+            ["Venda de soja", 0, 260000, 0, 0, 0, 0, 260000], ["Venda de milho", 0, 0, 0, 0, 210000, 0, 210000], ["Total de entradas", 0, 260000, 0, 0, 210000, 0, 470000],
+            ["Sementes e insumos", 80000, 0, 0, 0, 0, 0, 80000], ["Mão de obra temporária", 0, 0, 30000, 0, 0, 0, 30000], ["Manutenção de máquinas", 0, 0, 0, 20000, 0, 0, 20000], ["Juros", 0, 0, 0, 0, 10000, 0, 10000],
+            ["Total de saídas", 80000, 0, 30000, 20000, 10000, 0, 140000], ["Saldo mensal", -80000, 260000, -30000, -20000, 200000, 0, 330000],
+            ["Saldo acumulado", -30000, 230000, 200000, 180000, 380000, 380000, "—"]]),
+          S("Mês de déficit", ["Janeiro", "Março", "Abril", "Nenhum"], 0)],
+          com: "Janeiro quebra o caixa em R$ 30.000 antes da primeira receita: crédito de curto prazo ou venda antecipada (barter) resolvem." },
+        { id: "f2", t: "Exercício 2 · Agroindústria Montes Claros (jan–mar)", e: "<p>Leite R$ 33.000 e queijos R$ 25.000 por mês. Ração R$ 20.000, mão de obra R$ 15.000, energia R$ 5.000, insumos para queijo R$ 8.000 por mês. Tanque de resfriamento à vista em março: R$ 40.000. Saldo inicial: R$ 20.000.</p>", c: [
+          G(["Item", "Jan", "Fev", "Mar", "Total"], [
+            ["Venda de leite", 33000, 33000, 33000, 99000], ["Venda de queijos", 25000, 25000, 25000, 75000], ["Total de entradas", 58000, 58000, 58000, 174000],
+            ["Ração", 20000, 20000, 20000, 60000], ["Mão de obra", 15000, 15000, 15000, 45000], ["Energia elétrica", 5000, 5000, 5000, 15000], ["Insumos para queijo", 8000, 8000, 8000, 24000],
+            ["Tanque de resfriamento", 0, 0, 40000, 40000], ["Total de saídas", 48000, 48000, 88000, 184000], ["Saldo mensal", 10000, 10000, -30000, -10000],
+            ["Saldo acumulado", 30000, 40000, 10000, "—"]])],
+          com: "Com os R$ 20.000 iniciais o caixa não fica negativo, mas a reserva cai a R$ 10.000. O slide mostra −R$ 10.000 porque não conta o saldo inicial. Alternativas: crédito rural de investimento ou parcelar o tanque com o fornecedor." },
+        { id: "f3", t: "Exercício 3 · Fazenda Três Irmãos (jul–dez)", e: "<p>Venda de 200 bois em outubro a R$ 3.200 e de 300 em dezembro a R$ 3.400. Fixos mensais: ração R$ 18.000, mão de obra R$ 12.000, combustível R$ 5.000, parcela do financiamento R$ 8.000. Agosto: vacinas R$ 15.000. Setembro: 100 novilhos R$ 80.000. Saldo inicial: R$ 35.000.</p>", c: [
+          G(["Item", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"], [
+            ["Venda de bois", 0, 0, 0, 640000, 0, 1020000, 1660000],
+            ["Ração / sal mineral", 18000, 18000, 18000, 18000, 18000, 18000, 108000], ["Mão de obra", 12000, 12000, 12000, 12000, 12000, 12000, 72000],
+            ["Combustível e manutenção", 5000, 5000, 5000, 5000, 5000, 5000, 30000], ["Vacinas e medicamentos", 0, 15000, 0, 0, 0, 0, 15000],
+            ["Compra de novilhos", 0, 0, 80000, 0, 0, 0, 80000], ["Parcela do financiamento", 8000, 8000, 8000, 8000, 8000, 8000, 48000],
+            ["Total de saídas", 43000, 58000, 123000, 43000, 43000, 43000, 353000], ["Saldo mensal", -43000, -58000, -123000, 597000, -43000, 977000, 1307000],
+            ["Saldo acumulado", -8000, -66000, -189000, 408000, 365000, 1342000, "—"]]),
+          S("Mês de maior pressão de caixa", ["Julho", "Agosto", "Setembro", "Novembro"], 2)],
+          com: "Setembro acumula −R$ 189.000. Estratégias: adiar ou financiar a reposição dos novilhos, vender parte do gado antes ou contratar crédito de curto prazo até outubro." },
+        { id: "f4", t: "Exercício 4 · Sítio Boa Esperança (avicultura, jan–abr)", e: "<p>30.000 ovos/mês a R$ 0,55, de fevereiro a abril. Ração R$ 8.000, mão de obra R$ 3.500, energia R$ 1.200, medicamentos R$ 800 por mês. Janeiro: pintinhas R$ 12.000 e adaptação do galpão R$ 6.000. Saldo inicial: R$ 10.000.</p>", c: [
+          G(["Item", "Jan", "Fev", "Mar", "Abr", "Total"], [
+            ["Venda de ovos", 0, 16500, 16500, 16500, 49500],
+            ["Ração", 8000, 8000, 8000, 8000, 32000], ["Mão de obra", 3500, 3500, 3500, 3500, 14000], ["Energia elétrica", 1200, 1200, 1200, 1200, 4800], ["Medicamentos", 800, 800, 800, 800, 3200],
+            ["Pintinhas", 12000, 0, 0, 0, 12000], ["Adaptação do galpão", 6000, 0, 0, 0, 6000],
+            ["Total de saídas", 31500, 13500, 13500, 13500, 72000], ["Saldo mensal", -31500, 3000, 3000, 3000, -22500],
+            ["Saldo acumulado", -21500, -18500, -15500, -12500, "—"]]),
+          S("A partir de quando o saldo acumulado fica positivo?", ["Fevereiro", "Março", "Abril", "Só depois de abril"], 3)],
+          com: "O superávit é de R$ 3.000 por mês: o buraco de R$ 12.500 de abril só fecha em setembro, mantido o ritmo. O lote precisa de capital de giro ou crédito para a implantação." },
+        { id: "f5", t: "Exercício 5 · Fazenda Serra Verde (ano completo)", e: "<ul><li>Saldo inicial em janeiro: R$ 80.000</li><li>Arrendamento de 200 ha: 12 sc/ha = 2.400 sc a R$ 125, recebidas em fevereiro</li><li>Soja própria: 7.500 sc a R$ 128, metade recebida em março e metade em julho</li><li>Custeio: R$ 120.000/mês de setembro a novembro; R$ 40.000/mês de dezembro a fevereiro (dezembro, janeiro e fevereiro)</li><li>Administração R$ 15.000/mês; parcelas de R$ 25.000 em abril, julho e outubro; entrada do pulverizador R$ 72.000 em agosto</li></ul>", c: [
+          G(["Item", "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"], [
+            ["Venda de soja (50%)", 0, 0, 480000, 0, 0, 0, 480000, 0, 0, 0, 0, 0, 960000], ["Arrendamento", 0, 300000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300000],
+            ["Total de entradas", 0, 300000, 480000, 0, 0, 0, 480000, 0, 0, 0, 0, 0, 1260000],
+            ["Custeio / manutenção", 40000, 40000, 0, 0, 0, 0, 0, 0, 120000, 120000, 120000, 40000, 480000], ["Administração"].concat(Z(12, 15000), [180000]),
+            ["Parcela do financiamento", 0, 0, 0, 25000, 0, 0, 25000, 0, 0, 25000, 0, 0, 75000], ["Entrada do pulverizador", 0, 0, 0, 0, 0, 0, 0, 72000, 0, 0, 0, 0, 72000],
+            ["Total de saídas", 55000, 55000, 15000, 40000, 15000, 15000, 40000, 87000, 135000, 160000, 135000, 55000, 807000],
+            ["Saldo mensal", -55000, 245000, 465000, -40000, -15000, -15000, 440000, -87000, -135000, -160000, -135000, -55000, 453000],
+            ["Saldo acumulado", 25000, 270000, 735000, 695000, 680000, 665000, 1105000, 1018000, 883000, 723000, 588000, 533000, "—"]]),
+          N("a) Saldo final do ano (R$)", 533000), S("b) Mês de maior risco de iliquidez", ["Janeiro", "Agosto", "Outubro", "Dezembro"], 0)],
+          com: "Janeiro tem o menor saldo acumulado (R$ 25.000), antes da receita do arrendamento. Outubro tem a maior saída do ano (R$ 160.000), mas a fazenda chega a ele com folga. Prevenção: reservar caixa de dezembro ou antecipar o recebimento do arrendamento. O caderno escreve “R$ 12 sacas/ha”: aqui se lê 12 sacas por hectare." }
+      ] },
+      { g: "Tópico 6 · Tributação", f: "Caderno do Tópico 6 (versão revisada)", ex: [
+        { id: "q6", t: "Questão 6 · Sra. Mariana, pessoa física pela presunção", e: "<p>Receita bruta de R$ 320.000 com soja em Sinop-MT. Use a tabela anual de 2026 (Tópico 6).</p>", c: [
+          N("a) Base presumida (R$)", 64000), N("b) IRPF pela tabela (R$)", 6695.24, 0.05),
+          S("b) O redutor da Lei 15.270/2025 se aplica?", ["Sim, imposto zerado", "Sim, redução parcial", "Não"], 1),
+          N("c) Base com despesas comprovadas de R$ 200.000 (R$)", 120000), S("c) Opção mais vantajosa", ["Presunção de 20%", "Resultado real"], 0)],
+          com: "64.000 × 27,5% − 10.904,76 = 6.695,24. A base está entre R$ 60.000,01 e R$ 88.200, faixa do redutor decrescente: o imposto final será menor. A presunção dá base menor que o resultado real (R$ 120.000)." },
+        { id: "q7", t: "Questão 7 · Agropecuária Cerrado Vivo, Lucro Presumido", e: "<p>Receita bruta de R$ 2.500.000.</p>", c: [
+          N("Base do IRPJ, 8% (R$)", 200000), N("Base da CSLL, 12% (R$)", 300000), N("IRPJ 15% (R$)", 30000), N("Adicional de IRPJ (R$)", 0),
+          N("CSLL 9% (R$)", 27000), N("PIS 0,65% (R$)", 16250), N("COFINS 3% (R$)", 75000), N("Carga total (R$)", 148250)],
+          com: "A base do IRPJ (R$ 200.000) não passa de R$ 240.000, então não há adicional. Carga de 5,93% da receita." },
+        { id: "q8", t: "Questão 8 · Sr. Benedito, PF × PJ com Funrural", e: "<p>Receita bruta R$ 1.800.000; despesas comprovadas R$ 720.000. Toda a receita vem da comercialização.</p>", c: [
+          N("PF: base do IRPF (R$)", 1080000), N("PF: IRPF (R$)", 286095.24, 0.05), N("PF: Funrural 1,5% (R$)", 27000), N("PF: carga total (R$)", 313095.24, 0.05),
+          N("PJ: IRPJ (R$)", 21600), N("PJ: adicional de IRPJ (R$)", 0), N("PJ: CSLL (R$)", 19440), N("PJ: PIS (R$)", 11700), N("PJ: COFINS (R$)", 54000),
+          N("PJ: Funrural 2,05% (R$)", 36900), N("PJ: carga total (R$)", 143640), S("Recomendação", ["Pessoa física", "Pessoa jurídica"], 1)],
+          com: "A PF paga 17,4% da receita; a PJ, 8,0%. Com margem de 60% sobre a receita, as bases presumidas da PJ (8% e 12%) ficam muito abaixo do lucro real tributado na PF." },
+        { id: "q9", t: "Questão 9 · Agropecuária Campos Verdes", e: "<p>Receita bruta de R$ 4.800.000 (R$ 3.000.000 de soja e R$ 1.800.000 de gado), Lucro Presumido.</p>", c: [
+          N("Base do IRPJ (R$)", 384000), N("Base da CSLL (R$)", 576000), N("IRPJ 15% (R$)", 57600), N("Adicional de IRPJ (R$)", 14400),
+          N("CSLL (R$)", 51840), N("PIS (R$)", 31200), N("COFINS (R$)", 144000), N("Carga total (R$)", 299040), N("Carga ÷ receita (%)", 6.23, 0.02, "%")],
+          com: "Adicional: 10% × (384.000 − 240.000) = 14.400. Somando o Funrural PJ de 2,05% (R$ 98.400), a carga sobe para R$ 397.440, ou 8,28% da receita." }
+      ] }
+    ];
+
+    function parse(v) {
+      v = String(v).trim().replace(/R\$|%|\s/g, "").replace(/−/g, "-");
+      if (!v) return null;
+      var neg = /^\(.*\)$/.test(v) || v.charAt(0) === "-";
+      v = v.replace(/[()\-]/g, "");
+      if (v.indexOf(",") >= 0) v = v.replace(/\./g, "").replace(",", ".");
+      else if (/^\d{1,3}(\.\d{3})+$/.test(v)) v = v.replace(/\./g, "");
+      var n = parseFloat(v);
+      return isFinite(n) ? (neg ? -n : n) : NaN;
+    }
+    var KEY = "contabRural.cadernos", salvo = {};
+    try { salvo = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { salvo = {}; }
+    function guarda() { try { localStorage.setItem(KEY, JSON.stringify(salvo)); } catch (e) {} }
+    var esc = function (t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); };
+    var fmtAns = function (a, u) { return a.map(function (x) { return (u === "%" ? fmt(x, 2) + "%" : fmt(x, Math.round(x) === x ? 0 : 2)); }).join(" ou "); };
+
+    var html = "", campos = {};
+    CAD.forEach(function (gr) {
+      html += "<div class=\"cad-grupo\"><h3>" + gr.g + "</h3><p class=\"small muted\">Fonte: " + gr.f + ".</p>";
+      gr.ex.forEach(function (ex) {
+        var n = 0, list = campos[ex.id] = [];
+        var corpo = "";
+        var nums = [], extras = "";
+        ex.c.forEach(function (c) {
+          if (c.k === "g") {
+            if (nums.length) { corpo += "<div class=\"campos\">" + nums.join("") + "</div>"; nums = []; }
+            corpo += "<div class=\"tabela\"><table><thead><tr>" + c.cols.map(function (h, i) { return "<th" + (i ? " class=\"v\"" : "") + ">" + h + "</th>"; }).join("") + "</tr></thead><tbody>" +
+              c.rows.map(function (r) {
+                return "<tr><td>" + r[0] + "</td>" + r.slice(1).map(function (cell, j) {
+                  if (typeof cell === "string") return "<td class=\"fixo\">" + cell + "</td>";
+                  var id = ex.id + "-" + (n++);
+                  list.push({ id: id, a: [cell], t: null, u: "", zero: true });
+                  return "<td><input class=\"resp\" id=\"" + id + "\" inputmode=\"decimal\" autocomplete=\"off\" aria-label=\"" + esc(r[0] + " · " + c.cols[j + 1]) + "\"><small class=\"gab\" hidden></small></td>";
+                }).join("") + "</tr>";
+              }).join("") + "</tbody></table></div>";
+          } else if (c.k === "n") {
+            var id = ex.id + "-" + (n++);
+            list.push({ id: id, a: c.a, t: c.t, u: c.u });
+            nums.push("<label class=\"campo\" for=\"" + id + "\"><span class=\"r\">" + c.r + "</span><input class=\"resp\" id=\"" + id + "\" inputmode=\"decimal\" autocomplete=\"off\"><small class=\"gab\" hidden></small></label>");
+          } else {
+            var id2 = ex.id + "-" + (n++);
+            list.push({ id: id2, sel: true, a: c.a, o: c.o });
+            nums.push("<label class=\"campo\" for=\"" + id2 + "\"><span class=\"r\">" + c.r + "</span><select class=\"resp\" id=\"" + id2 + "\"><option value=\"\">Escolha…</option>" +
+              c.o.map(function (o, i) { return "<option value=\"" + i + "\">" + o + "</option>"; }).join("") + "</select><small class=\"gab\" hidden></small></label>");
+          }
+        });
+        if (nums.length) corpo += "<div class=\"campos\">" + nums.join("") + "</div>";
+        html += "<details class=\"ex\" id=\"ex-" + ex.id + "\"><summary><h4>" + ex.t + "</h4><span class=\"chip\" id=\"st-" + ex.id + "\">" + list.length + " respostas</span></summary><div class=\"corpo\">" +
+          (ex.e ? "<div class=\"enun\">" + ex.e + "</div>" : "") + corpo +
+          "<div class=\"botoes\"><button type=\"button\" data-acao=\"conferir\" data-ex=\"" + ex.id + "\">Conferir</button><button type=\"button\" class=\"sec\" data-acao=\"gabarito\" data-ex=\"" + ex.id + "\">Ver gabarito</button><button type=\"button\" class=\"sec\" data-acao=\"limpar\" data-ex=\"" + ex.id + "\">Limpar</button></div>" +
+          (ex.com ? "<p class=\"coment nota verde\" id=\"cm-" + ex.id + "\" hidden><b>Comentário.</b> " + ex.com + "</p>" : "") + "</div></details>";
+      });
+      html += "</div>";
+    });
+    var box = $("cadernos"); box.innerHTML = html; box.style.display = "grid"; box.style.gap = "1.6rem";
+
+    Object.keys(campos).forEach(function (k) { campos[k].forEach(function (f) { var el = $(f.id); if (salvo[f.id] !== undefined) el.value = salvo[f.id]; }); });
+    box.addEventListener("input", function (e) { if (e.target.classList.contains("resp")) { salvo[e.target.id] = e.target.value; guarda(); e.target.classList.remove("ok", "erro"); } });
+    box.addEventListener("change", function (e) { if (e.target.tagName === "SELECT") { salvo[e.target.id] = e.target.value; guarda(); e.target.classList.remove("ok", "erro"); } });
+
+    function certo(f, el) {
+      if (f.sel) return el.value !== "" && +el.value === f.a;
+      var v = parse(el.value);
+      if (v === null) return f.zero ? f.a[0] === 0 : false;
+      return f.a.some(function (a) { var tol = f.t !== null && f.t !== undefined ? f.t : Math.max(1.01, Math.abs(a) * 0.001); return Math.abs(v - a) <= tol; });
+    }
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-acao]"); if (!b) return;
+      var id = b.getAttribute("data-ex"), list = campos[id], acao = b.getAttribute("data-acao"), st = $("st-" + id);
+      if (acao === "limpar") {
+        list.forEach(function (f) { var el = $(f.id); el.value = ""; el.classList.remove("ok", "erro"); delete salvo[f.id]; el.nextElementSibling.hidden = true; });
+        guarda(); st.textContent = list.length + " respostas"; st.className = "chip"; var cm0 = $("cm-" + id); if (cm0) cm0.hidden = true; return;
+      }
+      var ok = 0;
+      list.forEach(function (f) {
+        var el = $(f.id), c = certo(f, el); if (c) ok++;
+        el.classList.toggle("ok", c); el.classList.toggle("erro", !c);
+        if (acao === "gabarito") { var g = el.nextElementSibling; g.textContent = f.sel ? "→ " + f.o[f.a] : "→ " + fmtAns(f.a, f.u); g.hidden = c; }
+      });
+      st.textContent = ok + " de " + list.length + " certas";
+      st.className = "chip " + (ok === list.length ? "ok" : ok >= list.length * 0.6 ? "alerta" : "perigo");
+      var cm = $("cm-" + id); if (cm && acao === "gabarito") cm.hidden = false;
+    });
+  })();
+
+  /* ---------- navegação ativa ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".navlinks a"));
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) links.forEach(function (a) { a.classList.toggle("ativo", a.getAttribute("href") === "#" + e.target.id); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    document.querySelectorAll("section.topico").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>

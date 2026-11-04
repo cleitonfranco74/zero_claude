@@ -6,7 +6,7 @@ A página inicial (`index.html` na raiz) lista todas as disciplinas do curso e d
 
 ## Publicação (GitHub Pages)
 
-Em **Settings → Pages**, escolha *Deploy from a branch*, a branch `main` e a pasta `/ (root)`. O site fica em `https://cleitonfranco74.github.io/zero_claude/`.
+Em **Settings → Pages**, escolha *Deploy from a branch*, a branch `main` e a pasta `/ (root)`. O site fica em `https://cleitonfranco74.github.io/gestao_publica/`.
 
 ## Disciplina 01: Estado, Governo e Mercado (30 h)
 
@@ -27,3 +27,14 @@ Para usar, abra `index.html` no navegador. Não é preciso instalar nada. As ava
 O projeto foi transferido para o repositório [`DSIP_pantanal`](https://github.com/cleitonfranco74/DSIP_pantanal), que tem a página e a planilha. A página está em https://cleitonfranco74.github.io/DSIP_pantanal/.
 
 A pasta `pesm-pantanal-norte/` ficou só com um redirecionamento para o novo endereço, para que links antigos continuem funcionando.
+
+## Curso: Auxiliar Administrativo em Contabilidade Rural
+
+Pasta: [`curso-auxiliar-contabilidade-rural/`](curso-auxiliar-contabilidade-rural/)
+
+| Arquivo | Conteúdo |
+|---|---|
+| `index.html` | Página do curso com os seis tópicos (Raio X da gestão rural, gestão e planejamento, contabilidade, COE e COT, fluxo de caixa, tributação), gráficos, simuladores (contratos agrários, balanço, depreciação, sensibilidade do preço da soja, nivelamento, fluxo de caixa da safra, IRPF, Lucro Presumido, Funrural × folha), matriz FOFA e Gantt editáveis, questões de revisão com correção na hora, a seção Praticar (exercícios de cálculo dos cadernos para resolver online, com correção campo a campo e gabarito comentado), glossário e referências |
+| `materiais/` | Cadernos de atividades dos tópicos 1 a 6 e a planilha de ferramentas do Tópico 2 (FOFA, PDCA e Gantt) |
+
+A avaliação final não está publicada, porque é aplicada em sala.
