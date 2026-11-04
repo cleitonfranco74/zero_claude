@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Contabilidade Rural na Prática</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Curso Auxiliar Administrativo em Contabilidade Rural (SENAR-MT): conteúdos, gráficos, simuladores e exercícios dos seis tópicos.">
+<meta name="description" content="Curso Auxiliar Administrativo em Contabilidade Rural: conteúdos, gráficos, simuladores e exercícios dos seis tópicos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
   --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --radius: 8px;
+  --capa-bg: #13291a; --capa-ink: #f2f4ea; --capa-ouro: #e4b44c; --capa-linha: rgba(242,244,234,.28); --capa-veu: rgba(13,30,18,.86);
   --maxw: 1080px;
 }
 @media (prefers-color-scheme: dark) {
@@ -85,6 +86,27 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: .35rem .6rem; border-radius: 999px; white-space: nowrap;
 }
 .navlinks a:hover, .navlinks a.ativo { background: var(--accent-soft); color: var(--accent); }
+
+
+/* Capa */
+.capa { position: relative; overflow: hidden; background: var(--capa-bg); color: var(--capa-ink); isolation: isolate; }
+.capa canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; }
+.capa::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(100deg, var(--capa-veu) 0%, var(--capa-veu) 38%, transparent 78%), linear-gradient(0deg, var(--capa-veu) 0%, transparent 45%); }
+.capa-in { padding-block: clamp(3.2rem, 9vw, 6.5rem) clamp(2.4rem, 6vw, 4.2rem); display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.2rem; justify-items: start; }
+.capa-sel { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--capa-ouro);
+  border: 1px solid var(--capa-ouro); padding: .3rem .65rem; border-radius: 3px; }
+.capa h1 { font-size: clamp(2.6rem, 7.4vw, 5.4rem); line-height: .98; max-width: 13ch; letter-spacing: -.005em; color: var(--capa-ink); }
+.capa h1 span { display: block; color: var(--capa-ouro); }
+.capa-lead { font-size: clamp(1.05rem, 2vw, 1.25rem); max-width: 46ch; color: var(--capa-ink); opacity: .92; }
+.capa-fichas { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .6rem 2rem; width: 100%; margin: .4rem 0 0; padding-top: .9rem; border-top: 1px solid var(--capa-linha); max-width: 52rem; }
+.capa-fichas dt { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--capa-ouro); }
+.capa-fichas dd { margin: 0; font-size: .95rem; color: var(--capa-ink); }
+.capa-btn { display: inline-block; font-weight: 600; font-size: .92rem; text-decoration: none; padding: .6rem 1.1rem; border-radius: 6px;
+  background: var(--capa-ouro); color: var(--capa-bg); border: 1px solid var(--capa-ouro); }
+.capa-btn.sec { background: transparent; color: var(--capa-ink); border-color: var(--capa-linha); }
+.capa-btn:hover { filter: brightness(1.08); }
+.abertura { padding-block: 2rem 2rem; }
 
 /* Abertura */
 .abertura { padding-block: 2.6rem 2rem; display: grid; gap: 1.4rem; }
@@ -307,18 +329,26 @@ footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-block: 1.6
   </div>
 </div>
 
-<main class="wrap" id="inicio">
+<section class="capa" id="inicio" aria-label="Capa do curso">
+  <canvas id="capaArte" aria-hidden="true"></canvas>
+  <div class="wrap capa-in">
+    <p class="capa-sel">Curso de qualificação profissional · Sorriso e Sinop-MT · 2026</p>
+    <h1><span>Auxiliar Administrativo</span> em Contabilidade Rural</h1>
+    <p class="capa-lead">Da porteira para dentro: como a fazenda se organiza, registra o que tem e o que deve, apura custos, controla o caixa da safra e paga seus tributos.</p>
+    <dl class="capa-fichas">
+      <div><dt>Professor</dt><dd>Cleiton Franco</dd></div>
+      <div><dt>Conteúdo</dt><dd>6 tópicos · atividades · avaliação final</dd></div>
+      <div><dt>Público</dt><dd>Auxiliares administrativos e gestores rurais</dd></div>
+      <div><dt>Ano agrícola</dt><dd>setembro a agosto</dd></div>
+    </dl>
+    <div class="botoes"><a class="capa-btn" href="#t1">Começar pelo Tópico 1</a><a class="capa-btn sec" href="#atividades">Atividades</a></div>
+  </div>
+</section>
+
+<main class="wrap">
 
 <header class="abertura">
-  <p class="eyebrow">SENAR-MT · FAMATO · Sindicato Rural — Sorriso e Sinop-MT, 2026</p>
-  <h1>Auxiliar Administrativo em Contabilidade Rural</h1>
-  <p class="lead">Da porteira para dentro: como a fazenda se organiza, registra o que tem e o que deve, apura custos, controla o caixa da safra e paga seus tributos. Cada tópico traz o conteúdo da aula, exemplos com números reais de Mato Grosso, simuladores para testar hipóteses e questões de revisão com correção na hora.</p>
-  <div class="fichas">
-    <div><b>Professor</b>Cleiton Franco</div>
-    <div><b>Público</b>Auxiliares administrativos e gestores rurais</div>
-    <div><b>Estrutura</b>6 tópicos, atividades e avaliação final</div>
-    <div><b>Ano agrícola</b>setembro a agosto</div>
-  </div>
+  <p class="lead">Cada tópico traz o conteúdo da aula, exemplos com números reais de Mato Grosso, simuladores para testar hipóteses e questões de revisão com correção na hora.</p>
   <nav class="trilha" aria-label="Sequência do curso">
     <a href="#t1"><span class="n">Tópico 1 · 14/09</span><b>Raio X da gestão rural</b><small>Empresa rural, contratos, PF × PJ</small></a>
     <a href="#t2"><span class="n">Tópico 2 · 05/10</span><b>Gestão e planejamento</b><small>PDCA, FOFA, Gantt, inventário</small></a>
@@ -495,7 +525,7 @@ footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-block: 1.6
       <div class="cel f"><h4>Forças</h4><ul><li>Solo com alta fertilidade</li><li>Boa disponibilidade de água</li><li>Topografia plana</li><li>Bom potencial genético do rebanho</li></ul></div>
       <div class="cel fr"><h4>Fraquezas</h4><ul><li>Pouco capital de giro</li><li>Áreas degradadas</li><li>Sem ordenha mecanizada</li><li>Produção insuficiente de volumoso</li></ul></div>
       <span class="rot v">Externo</span>
-      <div class="cel o"><h4>Oportunidades</h4><ul><li>Assistência técnica e gerencial (ATeG) do SENAR</li><li>Proximidade de centros consumidores</li><li>Malha rodoviária em boas condições</li><li>Linhas de crédito atrativas</li></ul></div>
+      <div class="cel o"><h4>Oportunidades</h4><ul><li>Assistência técnica e gerencial (ATeG)</li><li>Proximidade de centros consumidores</li><li>Malha rodoviária em boas condições</li><li>Linhas de crédito atrativas</li></ul></div>
       <div class="cel a"><h4>Ameaças</h4><ul><li>Instabilidades climáticas</li><li>Custo de oportunidade da terra elevado</li><li>Instabilidade do preço do leite</li><li>Alta dos insumos</li></ul></div>
     </div>
     <div class="sim">
@@ -1073,7 +1103,7 @@ footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-block: 1.6
         <div class="saida azul"><span>Opção mais barata</span><b id="fnMelhor" style="font-size:.95rem">—</b></div>
       </div>
       <div class="grafico baixo"><canvas id="gFun" aria-label="Comparação entre Funrural e contribuição sobre a folha"></canvas></div>
-      <p class="small muted">PF: 1,2% previdência + 0,1% RAT + 0,2% SENAR = 1,5%, igual para lavoura e pecuária (Lei 13.606/2018). PJ: 1,7% + 0,1% + 0,25% = 2,05%. Na folha, somam-se ainda RAT e terceiros, não incluídos aqui. Funrural compensa em fazendas intensivas em mão de obra; a folha, em operações muito mecanizadas, de alta receita e pouca mão de obra registrada.</p>
+      <p class="small muted">PF: 1,2% previdência + 0,1% RAT + 0,2% de formação profissional rural = 1,5%, igual para lavoura e pecuária (Lei 13.606/2018). PJ: 1,7% + 0,1% + 0,25% = 2,05%. Na folha, somam-se ainda RAT e terceiros, não incluídos aqui. Funrural compensa em fazendas intensivas em mão de obra; a folha, em operações muito mecanizadas, de alta receita e pouca mão de obra registrada.</p>
     </div>
   </div>
 
@@ -1147,7 +1177,7 @@ footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-block: 1.6
 </main>
 
 <footer>
-  <div class="wrap">Curso Auxiliar Administrativo em Contabilidade Rural · SENAR-MT, FAMATO e Sindicato Rural · Prof. Cleiton Franco · 2026. Os casos e valores são didáticos; consulte um contador antes de decisões tributárias.</div>
+  <div class="wrap">Curso Auxiliar Administrativo em Contabilidade Rural · FAMATO e Sindicato Rural · Prof. Cleiton Franco · 2026. Os casos e valores são didáticos; consulte um contador antes de decisões tributárias.</div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
@@ -1639,6 +1669,53 @@ footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-block: 1.6
     });
     render();
   });
+
+
+  /* ---------- capa: vista aérea de talhões ---------- */
+  (function () {
+    var cv = $("capaArte"); if (!cv || !cv.getContext) return;
+    var CORES = ["#2c6a3b", "#3b7c45", "#4f8d3d", "#7fa43c", "#2f5e35", "#c9a23a", "#b8892c", "#6e4c2c", "#83603a", "#3f7347"];
+    function rnd(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+    function desenha() {
+      var r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+      if (!r.width) return;
+      cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
+      var c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var W = r.width, H = r.height, R = rnd(20260914);
+      c.fillStyle = "#d8cda6"; c.fillRect(0, 0, W, H);
+      c.save(); c.translate(W * .55, H * .5); c.rotate(-0.21);
+      var D = Math.hypot(W, H) * .75, pedacos = [];
+      (function corta(x, y, w, h, n) {
+        if (n === 0 || (w < 150 && h < 150)) { pedacos.push([x, y, w, h]); return; }
+        var vert = w > h ? R() < .8 : R() < .2, t = .3 + R() * .4;
+        if (vert) { corta(x, y, w * t, h, n - 1); corta(x + w * t, y, w * (1 - t), h, n - 1); }
+        else { corta(x, y, w, h * t, n - 1); corta(x, y + h * t, w, h * (1 - t), n - 1); }
+      })(-D, -D, 2 * D, 2 * D, 9);
+      pedacos.forEach(function (p) {
+        var g = 5, x = p[0] + g, y = p[1] + g, w = p[2] - 2 * g, h = p[3] - 2 * g; if (w < 4 || h < 4) return;
+        var cor = CORES[Math.floor(R() * CORES.length)];
+        c.fillStyle = cor; c.fillRect(x, y, w, h);
+        c.save(); c.beginPath(); c.rect(x, y, w, h); c.clip();
+        c.strokeStyle = "rgba(255,255,255,.10)"; c.lineWidth = 1.2;
+        var passo = 5 + Math.floor(R() * 4), horiz = R() < .5;
+        c.beginPath();
+        if (horiz) for (var yy = y; yy < y + h; yy += passo) { c.moveTo(x, yy); c.lineTo(x + w, yy); }
+        else for (var xx = x; xx < x + w; xx += passo) { c.moveTo(xx, y); c.lineTo(xx, y + h); }
+        c.stroke(); c.restore();
+      });
+      c.restore();
+      [[.8, .34, .11], [.93, .8, .085], [.66, .92, .07]].forEach(function (k) {
+        var cx = W * k[0], cy = H * k[1], rr = Math.max(W, H) * k[2];
+        c.fillStyle = "#3e8a47"; c.beginPath(); c.arc(cx, cy, rr, 0, Math.PI * 2); c.fill();
+        c.strokeStyle = "rgba(255,255,255,.12)"; c.lineWidth = 1;
+        for (var a = rr; a > 4; a -= 7) { c.beginPath(); c.arc(cx, cy, a, 0, Math.PI * 2); c.stroke(); }
+        c.fillStyle = "rgba(201,162,58,.32)"; c.beginPath(); c.moveTo(cx, cy); c.arc(cx, cy, rr, -0.6, 0.5); c.closePath(); c.fill();
+        c.strokeStyle = "rgba(242,244,234,.7)"; c.lineWidth = 2; c.beginPath(); c.moveTo(cx, cy); c.lineTo(cx + Math.cos(0.5) * rr, cy + Math.sin(0.5) * rr); c.stroke();
+      });
+    }
+    desenha();
+    var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(desenha, 150); });
+  })();
 
   /* ---------- navegação ativa ---------- */
   var links = Array.prototype.slice.call(document.querySelectorAll(".navlinks a"));

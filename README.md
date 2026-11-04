@@ -33,7 +33,7 @@ Pasta: [`pesm-pantanal-norte/`](pesm-pantanal-norte/)
 
 Os dados da página vêm da planilha recalculada e das bases tratadas do projeto (`d1_agropecuaria.csv`, `d1_emprego_rais.csv`, `d1_empresas.csv`, `d1_comex.csv`, `d1_pib_vab.csv`, `d2_bioeconomia.csv`, `d6_financas.csv`, bases `d2_*`, `d3_*`, `d4_*`, `d5_*`, `painel_pantanal_norte.csv`, `painel_municipios_mt.csv`). Os 14 indicadores internos têm dado (AGR-04 e AGR-05 foram retirados da matriz). As notas dos fatores externos são preliminares.
 
-## Curso: Auxiliar Administrativo em Contabilidade Rural (SENAR-MT)
+## Curso: Auxiliar Administrativo em Contabilidade Rural
 
 Pasta: [`curso-auxiliar-contabilidade-rural/`](curso-auxiliar-contabilidade-rural/)
 
